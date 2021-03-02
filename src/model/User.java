@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cmc;
+package model;
 
 /**
  * @author Channa Kalsow
