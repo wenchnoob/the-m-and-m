@@ -4,7 +4,7 @@
 package model;
 
 /**
- * @author Channa Kalsow
+ * @author Channa Kalsow and Kristiana Anderson
  *
  */
 import java.util.List;
