@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model;
+package com.cmc.model;
 
 /**
  * @author wench

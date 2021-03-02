@@ -5,9 +5,9 @@ package com.cmc;
 
 import java.util.List;
 
-import model.Account;
-import model.University;
-import model.User;
+import com.cmc.model.Account;
+import com.cmc.model.University;
+import com.cmc.model.User;
 
 /**
  * @author wench
