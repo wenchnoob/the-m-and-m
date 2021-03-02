@@ -14,6 +14,9 @@ import model.User;
  *
  */
 public class PsuedoDatabase {
+	
+	private List<Account> users;
+	private List<University> universities;
 
 	/**
 	 * 
@@ -21,12 +24,23 @@ public class PsuedoDatabase {
 	public PsuedoDatabase() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	private void initUsers() {
+		
+	}
+	
+	private void initUniversities() {
+		
+	}
 
 	
 	public boolean getUsers() {
 		return true;
 	}
 	public Account getUserbyUsername(String username) {
+		for (Account acc: users) {
+			if (acc.getName)
+		}
 		return account; 
 	}
 	public University findUniversityByName(String name) {
@@ -39,10 +53,10 @@ public class PsuedoDatabase {
 		return universities;
 	}
 	public boolean save(User toAdd) {
-		return true;
+		return users.add(toAdd);
 	}
 	public boolean save(University toAdd) {
-		return true;
+		return universities.add(toAdd);
 	}
 	
 	}
