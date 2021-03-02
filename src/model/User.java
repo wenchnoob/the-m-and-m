@@ -4,7 +4,7 @@
 package model;
 
 /**
- * @author Channa Kalsow
+ * @author Channa Kalsow and Kristiana Anderson
  *
  */
 import java.util.List;
@@ -18,7 +18,7 @@ public class User extends Account{
 	public User(String firstName, String lastName, boolean enabled, String
 			recoveryQuestion, String recoveryAnswer, String username,
 			String password, List<UserSchool> savedSchools) {
-		super(firstName, lastName, enabled, recoveryQuestion, recoveryAnswer,
+		super(firstName, lastName, enabled, recoveryQuestion,
 				recoveryAnswer, username, password);
 		this.savedSchools = savedSchools;
 		
