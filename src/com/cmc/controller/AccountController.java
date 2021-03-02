@@ -1,7 +1,7 @@
 /**
  * 
  */
-package controller;
+package com.cmc.controller;
 
 /**
  * @author wench

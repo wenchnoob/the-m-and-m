@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model;
+package com.cmc.model;
 
 /**
  * @author Channa Kalsow and Kristiana Anderson
@@ -32,7 +32,7 @@ public class User extends Account{
 		//TODO
 	}
 	
-	public List getSavedSchools() {
+	public List<UserSchool> getSavedSchools() {
 		return savedSchools;
 	}
 } 
