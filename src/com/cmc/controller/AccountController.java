@@ -29,6 +29,7 @@ public class AccountController {
 	public Account logon(String username, String password) {
 		PsuedoDatabase db = PsuedoDatabase.getInstance();
 		Account user = db.getUserbyUsername(username);
+		// added a diff to help git
 		if (user == null) return null;
 		if (user.isEnabled() && user.logon(password)) return user;
 		return null;
