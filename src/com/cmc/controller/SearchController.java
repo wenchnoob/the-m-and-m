@@ -15,11 +15,11 @@ public class SearchController {
 	public List<University> searchUniversity(String schoolName, String state, String location, String control,
 			int numStudents1, int numStudents2, float pFemale1, float pFemale2, int satv1, int satv2, int satm1,int satm2, int exp1,
 			int exp2,float pFinAid1, float pFinAid2, int numApps1, int numApps2, float pAdmitted1, float pAdmitted2,
-			float pEnrolled1, float pEnrolled2,int academicScale1, int academicScale2, int socScale1, int socialScale2,
+			float pEnrolled1, float pEnrolled2,int academicScale1, int academicScale2, int socialScale1, int socialScale2,
 			int qualLife1, int qualLife2, List<String> emphases) {
 
 		List<University> universities = PsuedoDatabase.getInstance().getAllUniversities();
-
+		//by school name
 		if (!schoolName.equals("")) {
 			universities  = filterByName(universities, schoolName);
 
@@ -38,6 +38,7 @@ public class SearchController {
 			universities  = filterByControl(universities, control);
 
 		}
+		
 		if (numStudents1 != -1) {
 			if (numStudents2 != -1) {
 				universities  = filterByNumStudents(universities, numStudents1, numStudents2);
@@ -61,8 +62,268 @@ public class SearchController {
 
 			}
 		}
+		//Percent Female
+		if (pFemale1 != -1) {
+			if (pFemale2 != -1) {
+				universities  = filterByPerFemale(universities, pFemale1, pFemale2);
 
+			}
+			else{
+				pFemale2 = Float.MAX_VALUE;
+				universities = filterByPerFemale(universities, pFemale1, pFemale2);
+
+			}
+		}
+		else {
+			pFemale1 = 0;
+			if (pFemale2 != -1) {
+				universities  = filterByPerFemale(universities, pFemale1, pFemale2);
+
+			}
+			else{
+				pFemale2 = Float.MAX_VALUE;
+				universities  = filterByPerFemale(universities, pFemale1, pFemale2);
+
+			}
+		}
+		//SAT Verbal
+		if (satv1 != -1) {
+			if (satv2 != -1) {
+				universities  = filterBySatV(universities, satv1, satv2);
+
+			}
+			else{
+				satv2 = Integer.MAX_VALUE;
+				universities  = filterBySatV(universities, satv1, satv2);
+
+			}
+		}
+		else {
+			satv1 = 0;
+			if (satv2 != -1) {
+				universities  = filterBySatV(universities, satv1, satv2);
+
+			}
+			else{
+				satv2 = Integer.MAX_VALUE;
+				universities  = filterBySatV(universities, satv1, satv2);
+
+			}
+		}
+		//SAT Math
+		if (satm1 != -1) {
+			if (satm2 != -1) {
+				universities  = filterBySatM(universities, satm1, satm2);
+
+			}
+			else{
+				satm2 = Integer.MAX_VALUE;
+				universities  = filterBySatM(universities, satm1, satm2);
+
+			}
+		}
+		else {
+			satm1 = 0;
+			if (satm2 != -1) {
+				universities  = filterBySatM(universities, satm1, satm2);
+
+			}
+			else{
+				satm2 = Integer.MAX_VALUE;
+				universities  = filterBySatM(universities, satm1, satm2);
+
+			}
+		}
+		//By Expense
+		if (exp1 != -1) {
+			if (exp2 != -1) {
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+			else{
+				exp2 = Integer.MAX_VALUE;
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+		}
+		else {
+			exp1 = 0;
+			if (exp2 != -1) {
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+			else{
+				exp2 = Integer.MAX_VALUE;
+				universities  = filterByExp(universities, exp1, exp2);
+			}
+		}
+		//By financial aid
+		if (pFinAid1 != -1) {
+			if (pFinAid2 != -1) {
+				universities  = filterByPerFinAid(universities, pFinAid1, pFinAid2);
+
+			}
+			else{
+				pFinAid2 = Float.MAX_VALUE;
+				universities = filterByPerFinAid(universities, pFinAid1, pFinAid2);
+
+			}
+		}
+		else {
+			pFinAid1 = 0;
+			if (pFinAid2 != -1) {
+				universities  = filterByPerFinAid(universities, pFinAid1, pFinAid2);
+
+			}
+			else{
+				pFinAid2 = Float.MAX_VALUE;
+				universities  = filterByPerFinAid(universities, pFinAid1, pFinAid2);
+
+			}
+		}
 		
+		//By Number of Apps
+		if (numApps1 != -1) {
+			if (numApps2 != -1) {
+				universities  = filterByNumApps(universities, numApps1, numApps2);
+
+			}
+			else{
+				numApps2 = Integer.MAX_VALUE;
+				universities  = filterByNumApps(universities, numApps1, numApps2);
+
+			}
+		}
+		else {
+			numApps1 = 0;
+			if (numApps2 != -1) {
+				universities  = filterByNumApps(universities, numApps1, numApps2);
+
+			}
+			else{
+				numApps2 = Integer.MAX_VALUE;
+				universities  = filterByNumApps(universities, numApps1, numApps2);
+			}
+		}
+		
+		//By percent admitted
+		if (pAdmitted1 != -1) {
+			if (pAdmitted2 != -1) {
+				universities  = filterByPerAdmitted(universities, pAdmitted1, pAdmitted2);
+
+			}
+			else{
+				pAdmitted2 = Float.MAX_VALUE;
+				universities = filterByPerAdmitted(universities, pAdmitted1, pAdmitted2);
+
+			}
+		}
+		else {
+			pAdmitted1 = 0;
+			if (pAdmitted2 != -1) {
+				universities  = filterByPerAdmitted(universities, pAdmitted1, pAdmitted2);
+
+			}
+			else{
+				pAdmitted2 = Float.MAX_VALUE;
+				universities  = filterByPerAdmitted(universities, pAdmitted1, pAdmitted2);
+
+			}
+		}
+		
+		//By percent enrolled
+		if (pEnrolled1 != -1) {
+			if (pEnrolled2 != -1) {
+				universities  = filterByPerEnrolled(universities, pEnrolled1, pEnrolled2);
+
+			}
+			else{
+				pEnrolled2 = Float.MAX_VALUE;
+				universities = filterByPerEnrolled(universities, pEnrolled1, pEnrolled2);
+
+			}
+		}
+		else {
+			pEnrolled1 = 0;
+			if (pEnrolled2 != -1) {
+				universities  = filterByPerEnrolled(universities, pEnrolled1, pEnrolled2);
+
+			}
+			else{
+				pEnrolled2 = Float.MAX_VALUE;
+				universities  = filterByPerEnrolled(universities, pEnrolled1, pEnrolled2);
+
+			}
+		}
+		//Academic Scale
+		if (exp1 != -1) {
+			if (exp2 != -1) {
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+			else{
+				exp2 = Integer.MAX_VALUE;
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+		}
+		else {
+			exp1 = 0;
+			if (exp2 != -1) {
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+			else{
+				exp2 = Integer.MAX_VALUE;
+				universities  = filterByExp(universities, exp1, exp2);
+			}
+		}
+		//Social Scale
+		if (exp1 != -1) {
+			if (exp2 != -1) {
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+			else{
+				exp2 = Integer.MAX_VALUE;
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+		}
+		else {
+			exp1 = 0;
+			if (exp2 != -1) {
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+			else{
+				exp2 = Integer.MAX_VALUE;
+				universities  = filterByExp(universities, exp1, exp2);
+			}
+		}
+		//Quality of Life
+		if (exp1 != -1) {
+			if (exp2 != -1) {
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+			else{
+				exp2 = Integer.MAX_VALUE;
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+		}
+		else {
+			exp1 = 0;
+			if (exp2 != -1) {
+				universities  = filterByExp(universities, exp1, exp2);
+
+			}
+			else{
+				exp2 = Integer.MAX_VALUE;
+				universities  = filterByExp(universities, exp1, exp2);
+			}
+		}
 		return universities;
 	}
 	private static List<University> filterByName(List<University> universities, String schoolName){
