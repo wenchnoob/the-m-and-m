@@ -160,5 +160,9 @@ public class DriverTest {
 		controller.ChangeStatus(admin, PsuedoDatabase.getInstance().getUserByUsername("ckalsow"), false);
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
 	}
+	
+	public static void testSaveSchool() {
+		
+	}
 
 }

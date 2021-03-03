@@ -28,7 +28,7 @@ public class UserSchool {
 	}
 
 	/**
-	 * @param university the university to set
+	 * @param the university to set
 	 */
 	public void setUniversity(University university) {
 		this.university = university;

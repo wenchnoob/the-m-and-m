@@ -4,7 +4,9 @@
 package com.cmc;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.cmc.model.Account;
 import com.cmc.model.Address;
@@ -38,12 +40,12 @@ public class PsuedoDatabase {
 	}
 	
 	private void initUsers() {
-		List<UserSchool> list1 = new ArrayList<UserSchool>();
-		List<UserSchool> list2 = new ArrayList<UserSchool>();
+		Map<String, UserSchool> map1 = new HashMap<String, UserSchool>();
+		Map<String, UserSchool> map2 = new HashMap<String, UserSchool>();
 		User testUser = new User("Channa", "Kalsow", true, "What's your name?",
-				"Channa", "ckalsow", "Channaiskool", list1);
+				"Channa", "ckalsow", "Channaiskool", map1);
 		User testUser2 = new User("Kristiana", "Anderson", true, "What's Heather's cat's name?",
-				"Ned", "kanderson", "Kristianaiskool", list2);
+				"Ned", "kanderson", "Kristianaiskool", map2);
 		Admin admin = new Admin("Wench", "Dutreuil", true, "What?", "Do you want?", "admin", "admin");
 		
 		
