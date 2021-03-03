@@ -8,9 +8,14 @@ package com.cmc.controller;
  *
  */
 public class UniversityController {
-	public void editBasicUniversityInfo(Account account, University uni,
-			enum managedField, Object value) {
+	
+	public void editBasicUniversityInfo(Account src,  University uni,
+			ManagedField managedField, Object value) {
 		//TODO
 	}
-
+	
+	public enum ManagedField {
+		
+		
+	}
 }

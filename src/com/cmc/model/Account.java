@@ -12,8 +12,10 @@ public abstract class Account {
 	recoveryAnswer, username, password;
 	protected boolean enabled;
 	
+	protected AccountType type;
+	
 	public Account(String firstName, String lastName, boolean enabled, String
-			recoveryQuestion, String recoveryAnswer, String username, String password) {
+			recoveryQuestion, String recoveryAnswer, String username, String password, AccountType type) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.enabled = enabled;
@@ -21,6 +23,7 @@ public abstract class Account {
 		this.recoveryAnswer = recoveryAnswer;
 		this.username = username;
 		this.password = password;
+		this.type = type;
 	}
 	
 	public boolean logon(String password) {
@@ -134,5 +137,12 @@ public abstract class Account {
 		this.enabled = enabled;
 	}
 	
+	/**
+	 * Inner enumeration to help distinguish the user type
+	 * 
+	 * */
+	public enum AccountType {
+		BASIC_USER, ADMIN
+	}
 	
 }

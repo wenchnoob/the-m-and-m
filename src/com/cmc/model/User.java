@@ -19,7 +19,7 @@ public class User extends Account{
 			recoveryQuestion, String recoveryAnswer, String username,
 			String password, List<UserSchool> savedSchools) {
 		super(firstName, lastName, enabled, recoveryQuestion,
-				recoveryAnswer, username, password);
+				recoveryAnswer, username, password, AccountType.BASIC_USER);
 		this.savedSchools = savedSchools;
 		
 	}
