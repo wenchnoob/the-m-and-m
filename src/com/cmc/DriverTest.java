@@ -6,6 +6,7 @@ import java.util.List;
 import com.cmc.controller.AccountController;
 import com.cmc.controller.AdminFunctionalityController;
 import com.cmc.controller.SearchController;
+import com.cmc.controller.UniversityController;
 import com.cmc.model.Account;
 import com.cmc.model.University;
 
@@ -36,6 +37,14 @@ public class DriverTest {
 		System.out.println("Testing view all accounts: ");
 		testViewAllAccounts();
 		System.out.println();
+		
+		System.out.println("Testing view University: ");
+		testViewUniversity();
+		System.out.println();
+		
+		System.out.println("Testing editing basic university info: ");
+		testEditBasicUniversityInfo();
+		System.out.println();
 	}
 	
 	public static void testLogin() {
@@ -60,7 +69,7 @@ public class DriverTest {
 	
 	public static void testViewAccount() {
 		AccountController controller = AccountController.getInstance();
-		String view = controller.viewAccount(controller.logon("ckalsow", "Channaiskool"));
+		String view = controller.viewAccount("ckalsow");
 		if (view != null) {
 			System.out.println(view);
 		} else {
@@ -71,7 +80,7 @@ public class DriverTest {
 	public static void testSearchUniversities() {
 		SearchController controller = new SearchController();
 		System.out.println("Successful search: ");
-		List<University> results = controller.searchUniversity("Uni A", "", "", "", 
+		List<University> results = controller.searchUniversity("", "", "", "", 
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				new ArrayList<String>()
@@ -95,24 +104,39 @@ public class DriverTest {
 		System.out.println("User editing their own information: ");
 		Account channa = controller.logon("ckalsow", "Channaiskool");
 		controller.editBasicUserInfor(channa, channa , AccountController.ManagedField.LASTNAME, "Anderson");
-		System.out.println(controller.viewAccount(channa));
+		System.out.println(controller.viewAccount("ckalsow"));
 		System.out.println();
 		
 		// Admin editing user information
 		System.out.println("Admin editing user information");
 		Account admin = controller.logon("admin", "admin");
 		controller.editBasicUserInfor(admin, channa, AccountController.ManagedField.RECOVERY_QUESTION, "Three digits of pie?");
-		System.out.println(controller.viewAccount(channa));
+		System.out.println(controller.viewAccount("ckalsow"));
 	}
+	
 	public static void testViewAllUniversities() {
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		List<University> allUniversities = controller.viewAllUniversities();
 		System.out.println(allUniversities);
 	}
+	
 	public static void testViewAllAccounts() {
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		List<Account> allAccounts = controller.viewAllAccounts();
 		System.out.println(allAccounts);
+	}
+	
+	public static void testViewUniversity() {
+		System.out.println(UniversityController.getInstance().viewUniversity("Uni A"));
+	}
+	
+	public static void testEditBasicUniversityInfo() {
+		UniversityController controller = UniversityController.getInstance();
+		controller.editBasicUniversityInfo("admin", "Uni J", UniversityController.ManagedField.NAME, "Uni B");
+		System.out.println(UniversityController.getInstance().viewUniversity("Uni B"));
+		System.out.println();
+		System.out.println("Current list of all universities: ");
+		testViewAllUniversities();
 	}
 
 }

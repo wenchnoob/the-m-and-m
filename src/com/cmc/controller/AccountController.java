@@ -34,7 +34,8 @@ public class AccountController {
 		return null;
 	}
 	
-	public String viewAccount(Account user) {
+	public String viewAccount(String username) {
+		Account user = PsuedoDatabase.getInstance().getUserbyUsername(username);
 		String name = ("User Information : \n\tName: " + user.getFirstName() + " " + user.getLastName() + "\n\t" +
 				"UserName : " + user.getUsername() + "\n\t" + "Password : " + user.getPassword() + "\n\t" +
 				"Recovery Question: " + user.getRecoveryQuestion() + "\n\t" + "User Type : " + user.getType()) + "\n\t" + "Enabled: " + user.isEnabled()
