@@ -3,11 +3,6 @@
  */
 package com.cmc.model;
 
-/**
- * @author Channa Kalsow and Kristiana Anderson
- *
- */
-import java.util.List;
 import java.util.Map;
 
 import com.cmc.PsuedoDatabase;

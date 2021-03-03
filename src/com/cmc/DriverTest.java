@@ -14,48 +14,64 @@ public class DriverTest {
 
 
 	public static void main(String[] args) {
+		// 1
 		System.out.println("Testing login: ");
 		testLogin();
-
 		System.out.println();
 
+		// 2
 		System.out.println("Testing view account: ");
 		testViewAccount();
 		System.out.println();
 
+		// 3
 		System.out.println("Testing search Universities: ");
 		testSearchUniversities();
 		System.out.println();
 
+		// 4
 		System.out.println("Testing editing basic user information: ");
 		testEditBasicUserInfo();
 		System.out.println();
 
+		// 5
 		System.out.println("Testing view all universities: ");
 		testViewAllUniversities();
 		System.out.println();
 
+		// 6
 		System.out.println("Testing view all accounts: ");
 		testViewAllAccounts();
 		System.out.println();
 
+		// 7
 		System.out.println("Testing view University: ");
 		testViewUniversity();
 		System.out.println();
 
+		// 8
 		System.out.println("Testing editing basic university info: ");
 		testEditBasicUniversityInfo();
 		System.out.println();
 		
+		// 9
 		System.out.println("Testing activate/deactivate user: ");
 		testChangeStatus();
+		System.out.println();
 
+		// 10
 		System.out.println("Testing Logout: ");
 		testLogout();
 		System.out.println();
 		
+		// 11
 		System.out.println("Testing adding new User: ");
 		testAddUser();
+		System.out.println();
+		
+		// 12
+		System.out.println("Testing changer user type: ");
+		testChangeUserType();
 		System.out.println();
 	}
 
@@ -172,6 +188,15 @@ public class DriverTest {
 		System.out.println("Newly added account: ");
 		System.out.println(AccountController.getInstance().viewAccount("kkiskool"));
 		
+	}
+	
+	public static void testChangeUserType() {
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		Account admin = AccountController.getInstance().logon("kkiskool", "koool");
+		controller.ChangeStatus(admin, PsuedoDatabase.getInstance().getUserByUsername("ckalsow"), true);
+		Account user = AccountController.getInstance().logon("ckalsow", "Channaiskool");	
+		controller.changeUserType(admin, user, Account.AccountType.ADMIN);
+		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
 	}
 
 }
