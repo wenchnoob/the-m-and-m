@@ -42,12 +42,13 @@ public class PsuedoDatabase {
 	private void initUsers() {
 		Map<String, UserSchool> map1 = new HashMap<String, UserSchool>();
 		Map<String, UserSchool> map2 = new HashMap<String, UserSchool>();
-		User testUser = new User("Channa", "Kalsow", true, "What's your name?",
-				"Channa", "ckalsow", "Channaiskool", map1);
-		User testUser2 = new User("Kristiana", "Anderson", true, "What's Heather's cat's name?",
-				"Ned", "kanderson", "Kristianaiskool", map2);
-		Admin admin = new Admin("Wench", "Dutreuil", true, "What?", "Do you want?", "admin", "admin");
-		
+		User testUser = new User("Channa", "Kalsow", "ckalsow", "Channaiskool",
+				"What's your name?", "Channa", true,  map1);
+		User testUser2 = new User("Kristiana", "Anderson", "kanderson", "Kristianaiskool",
+				"What's Heather's cat's name?",
+				"Ned", true, map2);
+		Admin admin = new Admin("Wenchy", "Dutreuil", "admin", "admin",
+				"What?", "Do you want?", true);		
 		
 		users = new ArrayList<>();
 		users.add(testUser2);
@@ -105,7 +106,7 @@ public class PsuedoDatabase {
 	}
 	
 	
-	public boolean save(User toAdd) {
+	public boolean save(Account toAdd) {
 		return users.add(toAdd);
 	}
 	

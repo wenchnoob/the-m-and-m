@@ -53,6 +53,10 @@ public class DriverTest {
 		System.out.println("Testing Logout: ");
 		testLogout();
 		System.out.println();
+		
+		System.out.println("Testing adding new User: ");
+		testAddUser();
+		System.out.println();
 	}
 
 	public static void testLogin() {
@@ -161,7 +165,12 @@ public class DriverTest {
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
 	}
 	
-	public static void testSaveSchool() {
+	public static void testAddUser() {
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		controller.addUser("Kristian", "Kalsow", "kkiskool" , 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		System.out.println("Newly added account: ");
+		System.out.println(AccountController.getInstance().viewAccount("kkiskool"));
 		
 	}
 
