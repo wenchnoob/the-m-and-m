@@ -17,6 +17,10 @@ public class SearchController {
 			int exp2,float pFinAid1, float pFinAid2, int numApps1, int numApps2, float pAdmitted1, float pAdmitted2,
 			float pEnrolled1, float pEnrolled2,int academicScale1, int academicScale2, int socialScale1, int socialScale2,
 			int qualLife1, int qualLife2, List<String> emphases) {
+		
+		// numStrudents guard
+		if (numStudents1 == -1) numStudents1 = 0;
+		if (numStudents2 == -1) numStudents2 = Integer.MAX_VALUE;
 
 		List<University> universities = PsuedoDatabase.getInstance().getAllUniversities();
 		//by school name
@@ -40,29 +44,8 @@ public class SearchController {
 		}
 		
 		//by number of students
-		if (numStudents1 != -1) {
-			if (numStudents2 != -1) {
-				universities  = filterByNumStudents(universities, numStudents1, numStudents2);
-
-			}
-			else{
-				numStudents2 = Integer.MAX_VALUE;
-				universities  = filterByNumStudents(universities, numStudents1, numStudents2);
-
-			}
-		}
-		else {
-			numStudents1 = 0;
-			if (numStudents2 != -1) {
-				universities  = filterByNumStudents(universities, numStudents1, numStudents2);
-
-			}
-			else{
-				numStudents2 = Integer.MAX_VALUE;
-				universities  = filterByNumStudents(universities, numStudents1, numStudents2);
-
-			}
-		}
+		universities  = filterByNumStudents(universities, numStudents1, numStudents2);
+		
 		//Percent Female
 		if (pFemale1 != -1) {
 			if (pFemale2 != -1) {
