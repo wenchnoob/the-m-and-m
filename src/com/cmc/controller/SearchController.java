@@ -115,65 +115,79 @@ public class SearchController {
 		//Quality of Life
 		universities  = filterByQualLife(universities, qualLife1, qualLife2);
 
+		//Emphases
+		universities = filterByEmphases(universities, emphases);
+
 		return universities;
 	}
+
+	// works
 	private static List<University> filterByName(List<University> universities, String schoolName){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
-			if (school.getName().equals(schoolName)){
+		for (University school: universities) {
+			if (school.getName().equals(schoolName)) {
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
+
+	// works
 	private static List<University> filterByState(List<University> universities, String state){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
-			if (school.getAddress().getState().equals(state)){
+			if (school.getAddress().getState().equalsIgnoreCase(state)) {
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
 
+	// works
 	private static List<University> filterByLocation(List<University> universities, String location){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
-			if (school.getLocation().equals(location)){
+		for (University school: universities) {
+			if (school.getLocation().equalsIgnoreCase(location)) {
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
 
+	// works
 	private static List<University> filterByControl(List<University> universities, String control){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
-			if (school.getControl().equals(control)){
+		for (University school: universities) {
+			if (school.getControl().equalsIgnoreCase(control)) {
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
 
+	// works
 	private static List<University> filterByNumStudents(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
-			if (school.getNumStudents() <= upperBound && school.getNumStudents() >= lowerBound){
+		for (University school: universities) {
+			if (school.getNumStudents() <= upperBound && school.getNumStudents() >= lowerBound) {
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByPerFemale(List<University> universities, float lowerBound, float upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
+		for (University school: universities) {
 			if (school.getPerFemale() <= upperBound && school.getPerFemale() >= lowerBound){
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterBySatM(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -183,42 +197,52 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterBySatV(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
+		for (University school: universities) {
 			if (school.getSatVerbal() <= upperBound && school.getSatVerbal() >= lowerBound){
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByExp(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
+		for (University school: universities) {
 			if (school.getExpenses() <= upperBound && school.getExpenses() >= lowerBound){
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByPerFinAid(List<University> universities, float lowerBound, float upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
-			if (school.getPerFinAid() <= upperBound && school.getPerFinAid() >= lowerBound){
+		for (University school: universities) {
+			if (school.getPerFinAid() <= upperBound && school.getPerFinAid() >= lowerBound) {
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByNumApps(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
-			if (school.getNumOfApps() <= upperBound && school.getNumOfApps() >= lowerBound){
+			if (school.getNumOfApps() <= upperBound && school.getNumOfApps() >= lowerBound) {
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByPerAdmitted(List<University> universities, float lowerBound, float upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -228,6 +252,8 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByPerEnrolled(List<University> universities, float lowerBound, float upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -237,15 +263,19 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByAcademicScale(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
+		for (University school: universities) {
 			if (school.getAcademicScale() <= upperBound && school.getAcademicScale() >= lowerBound){
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterBySocialScale(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -255,6 +285,8 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByQualLife(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -264,13 +296,13 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
+	
+	// works
 	private static List<University> filterByEmphases(List<University> universities, List<String> listOfEmphases){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
 			for (String major: listOfEmphases) {
-				if (fittingUniversities.contains(school)) {
-					continue;
-				}
+				if (fittingUniversities.contains(school)) continue;
 				if(school.getEmphases().contains(major)){
 					fittingUniversities.add(school);
 				}
