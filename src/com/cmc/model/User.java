@@ -1,7 +1,7 @@
 /**
  * 
  */
-package model;
+package com.cmc.model;
 
 /**
  * @author Channa Kalsow and Kristiana Anderson
@@ -19,7 +19,7 @@ public class User extends Account{
 			recoveryQuestion, String recoveryAnswer, String username,
 			String password, List<UserSchool> savedSchools) {
 		super(firstName, lastName, enabled, recoveryQuestion,
-				recoveryAnswer, username, password);
+				recoveryAnswer, username, password, AccountType.BASIC_USER);
 		this.savedSchools = savedSchools;
 		
 	}
@@ -32,7 +32,7 @@ public class User extends Account{
 		//TODO
 	}
 	
-	public List getSavedSchools() {
+	public List<UserSchool> getSavedSchools() {
 		return savedSchools;
 	}
 } 
