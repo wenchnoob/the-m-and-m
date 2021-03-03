@@ -105,6 +105,13 @@ public class PsuedoDatabase {
 		return universities;
 	}
 	
+	public boolean remove(Account toRemove) {
+		return users.remove(toRemove);
+	}
+	
+	public boolean remove(University toRemove) {
+		return universities.remove(toRemove);
+	}
 	
 	public boolean save(Account toAdd) {
 		return users.add(toAdd);
