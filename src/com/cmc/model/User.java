@@ -26,9 +26,9 @@ public class User extends Account{
 	public boolean saveSchool(String schoolName) {
 		if (schoolName == null) return false;
 		University university = PsuedoDatabase.getInstance().findUniversityByName(schoolName);
-		UserSchool userSchool = new UserSchool(university, this);
 		if (university == null) return false;
-		getSavedSchools().put(schoolName, userSchool);
+		UserSchool userSchool = new UserSchool(university, this);
+		savedSchools.put(schoolName, userSchool);
 		return true;
 	}
 	

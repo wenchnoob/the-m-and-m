@@ -26,6 +26,7 @@ public class University {
 			int numStudents, int satMath, int satVerbal, int expenses,
 			int numOfApps, int academicScale, int socialScale, List<String> emphases, float perFemale,
 			float perFinAid, float perAdmitted, float perEnrolled, int qualityLife) {
+		
 		this.name = name;
 		this.address = address;
 		this.location = location;
@@ -43,7 +44,6 @@ public class University {
 		this.perFinAid = perFinAid;
 		this.perEnrolled = perEnrolled;
 		this.qualityLife = qualityLife;
-		
 		
 	}
 	
