@@ -60,7 +60,10 @@ public class AccountController {
 				case RECOVERY_ANSWER:
 					targ.setRecoveryAnswer(value);
 			}
-		} catch (Exception ex) { /* If anything fails just give up and return false */}
+		} catch (Exception ex) {
+			/* If anything fails just give up and return false */
+			return false;
+		}
 		
 		return true;
 	}
