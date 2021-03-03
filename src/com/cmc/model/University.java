@@ -13,7 +13,7 @@ public class University {
 	
 	private String name;
 	private Address address;
-	private String location, control, state;
+	private String location, control;
 	private int numStudents, satMath, satVerbal, expenses, numOfApps, academicScale, socialScale, qualityLife;
 	private List<String> emphases;
 	private float perFemale, perFinAid, perAdmitted, perEnrolled;
@@ -45,6 +45,10 @@ public class University {
 		this.qualityLife = qualityLife;
 		
 		
+	}
+	
+	public String toString() {
+		return name;
 	}
 
 

@@ -35,32 +35,35 @@ public class AccountController {
 	}
 	
 	public String viewAccount(Account user) {
-		String name = ("User Information : " + user.getFirstName() + " " + user.getLastName() + "\n" +
-				"UserName : " + user.getUsername() + "\n" + "Password : " + user.getPassword() + "\n" +
-				"Recovery Question: " + user.getRecoveryQuestion() + "\n" + "User Type : " + user.getType());
+		String name = ("User Information : \n\tName: " + user.getFirstName() + " " + user.getLastName() + "\n\t" +
+				"UserName : " + user.getUsername() + "\n\t" + "Password : " + user.getPassword() + "\n\t" +
+				"Recovery Question: " + user.getRecoveryQuestion() + "\n\t" + "User Type : " + user.getType()) + "\n\t" + "Enabled: " + user.isEnabled()
+				+ "\n\t" + "LoggedOn: " + user.isLoggedOn();
 		return name;
 	}
 	
-	public boolean editBasicUserInfor(Account src, Account targ, ManagedField field, Object value) {
-		if (src.getType() != Account.AccountType.ADMIN || src != targ) return false;
+	public boolean editBasicUserInfor(Account src, Account targ, ManagedField field, String value) {
+		if (src.getType() != Account.AccountType.ADMIN && src != targ) return false;
 		
 		try {
 			switch (field) {
 				case FIRSTNAME:
-					targ.setFirstName((String)value);
+					targ.setFirstName(value);
 					break;
 				case LASTNAME:
-					targ.setLastName((String)value);
+					targ.setLastName(value);
 					break;
 				case PASSWORD:
-					targ.setPassword((String)value);
+					targ.setPassword(value);
 				case RECOVERY_QUESTION:
-					targ.setRecoveryQuestion((String)value);
+					targ.setRecoveryQuestion(value);
 				case RECOVERY_ANSWER:
-					targ.setRecoveryAnswer((String)value);
-				default:
+					targ.setRecoveryAnswer(value);
 			}
-		} catch (Exception ex) { /* If anything fails just give up and return false */}
+		} catch (Exception ex) {
+			/* If anything fails just give up and return false */
+			return false;
+		}
 		
 		return true;
 	}
