@@ -9,6 +9,7 @@ import com.cmc.controller.SearchController;
 import com.cmc.controller.UniversityController;
 import com.cmc.model.Account;
 import com.cmc.model.University;
+import com.cmc.model.User;
 
 public class DriverTest {
 
@@ -56,6 +57,10 @@ public class DriverTest {
 		
 		System.out.println("Testing adding new User: ");
 		testAddUser();
+		System.out.println();
+		
+		System.out.println("Testing saving schools: ");
+		testSaveSchool();
 		System.out.println();
 	}
 
@@ -172,6 +177,12 @@ public class DriverTest {
 		System.out.println("Newly added account: ");
 		System.out.println(AccountController.getInstance().viewAccount("kkiskool"));
 		
+	}
+	
+	public static void testSaveSchool() {
+		Account user = AccountController.getInstance().logon("ckalsow", "Channaiskool");
+		User.saveSchool("Uni A", (User) user);
+		System.out.println(User.getSavedSchools());
 	}
 
 }
