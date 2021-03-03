@@ -21,7 +21,8 @@ public class University {
 	/**
 	 * 
 	 */
-	public University(String name, Address address, String location, String control, int numStudents, int satMath, int satVerbal, int expenses,
+	public University(String name, Address address, String location, String control,
+			int numStudents, int satMath, int satVerbal, int expenses,
 			int numOfApps, int academicScale, int socialScale, List<String> emphases) {
 		this.name = name;
 		this.address = address;

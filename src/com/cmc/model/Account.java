@@ -11,6 +11,7 @@ public abstract class Account {
 	protected String firstName, lastName, recoveryQuestion,
 	recoveryAnswer, username, password;
 	protected boolean enabled;
+	protected boolean loggedOn = false;
 	
 	protected AccountType type;
 	
@@ -27,9 +28,10 @@ public abstract class Account {
 	}
 	
 	public boolean logon(String password) {
-		//TODO
-		return true;
+		if (this.password.equals(password)) loggedOn = true;
+		return loggedOn;
 	}
+	
 	public String recover(String answer) {
 		//TODO
 		return " ";
@@ -37,6 +39,14 @@ public abstract class Account {
 	public boolean logout() {
 		//TODO
 		return true;
+	}
+	
+	/**
+	 * 
+	 * @return loggedOn variable
+	 * */
+	public boolean isLoggedOn() {
+		return loggedOn;
 	}
 
 	/**

@@ -6,10 +6,11 @@ package com.cmc;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Account;
-import model.University;
-import model.User;
-import model.UserSchool;
+import com.cmc.model.Account;
+import com.cmc.model.Address;
+import com.cmc.model.University;
+import com.cmc.model.User;
+import com.cmc.model.UserSchool;
 
 
 /**
@@ -17,6 +18,7 @@ import model.UserSchool;
  *
  */
 public class PsuedoDatabase {
+	private static PsuedoDatabase db;
 	
 	private List<Account> users;
 	private List<University> universities;
@@ -24,8 +26,14 @@ public class PsuedoDatabase {
 	/**
 	 * 
 	 */
-	public PsuedoDatabase() {
-		// TODO Auto-generated constructor stub
+	private PsuedoDatabase() {
+		initUsers();
+		initUniversities();
+	}
+	
+	public static PsuedoDatabase getInstance() {
+		if (db == null) db = new PsuedoDatabase();
+		return db;
 	}
 	
 	private void initUsers() {
@@ -41,13 +49,15 @@ public class PsuedoDatabase {
 	}
 	
 	private void initUniversities() {
-		List<String> emphases = new List<String>();
+		List<String> emphases = new ArrayList<String>();
 		emphases.add("Space Studies");
 		emphases.add("Puppetry");
 		emphases.add("Galaxy Business");
 		emphases.add("Mars Gardening");
-		University studentsRUs = new University("123 ABC Street", "Mars", "private", 
-				6, 100.0f, 200, 200, 1000000, 0, 500, 1.2f, 1, 5, emphases);
+		University studentsRUs = new University("Uni A", new Address("Street", "City", "State", "Country", 12345)
+				, "Mars", "private", 
+				6, 200, 200, 1000000, 0, 1, 5, emphases);
+		universities.add(studentsRUs);
 	}
 	
 	public Account getUserbyUsername(String username) {
