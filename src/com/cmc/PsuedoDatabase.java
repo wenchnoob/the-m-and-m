@@ -40,11 +40,13 @@ public class PsuedoDatabase {
 	private void initUsers() {
 		List<UserSchool> list1 = new ArrayList<UserSchool>();
 		List<UserSchool> list2 = new ArrayList<UserSchool>();
-		User testUser = new User("Channa", "Kalsow", true, "What's your name?",
-				"Channa", "ckalsow", "Channaiskool", list1);
-		User testUser2 = new User("Kristiana", "Anderson", true, "What's Heather's cat's name?",
-				"Ned", "kanderson", "Kristianaiskool", list2);
-		Admin admin = new Admin("Wench", "Dutreuil", true, "What?", "Do you want?", "admin", "admin");
+		User testUser = new User("Channa", "Kalsow", "ckalsow", "Channaiskool",
+				"What's your name?", "Channa", true,  list1);
+		User testUser2 = new User("Kristiana", "Anderson", "kanderson", "Kristianaiskool",
+				"What's Heather's cat's name?",
+				"Ned", true, list2);
+		Admin admin = new Admin("Wenchy", "Dutreuil", "admin", "admin",
+				"What?", "Do you want?", true);
 		
 		
 		users = new ArrayList<>();
@@ -103,7 +105,7 @@ public class PsuedoDatabase {
 	}
 	
 	
-	public boolean save(User toAdd) {
+	public boolean save(Account toAdd) {
 		return users.add(toAdd);
 	}
 	
