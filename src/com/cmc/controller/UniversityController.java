@@ -20,17 +20,37 @@ public class UniversityController {
 	
 	private UniversityController() {}
 	
+	/**
+	 * singleton
+	 * @author Channa, Kristiana, Wenchy
+	 * @return an instance of itself
+	 * */
 	public static UniversityController getInstance() {
 		if (self == null) self = new UniversityController();
 		return self;
 	}
 	
+	/**
+	 * allows a user to view a university
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universityName
+	 * @return String
+	 * */
 	public String viewUniversity(String universityName) {
 		University university = PsuedoDatabase.getInstance().findUniversityByName(universityName);
 		if (university == null) return "University not found";
 		return "University name: " + university.getName() + "\n\t Address: " + university.getAddress().toString() + "\n\tRead More...";
 	}
 
+	/**
+	 * allows admin to edit a university
+	 * @author Channa, Kristiana, Wenchy
+	 * @param srcUsername
+	 * @param universityName
+	 * @param field
+	 * @param value
+	 * @return boolean
+	 * */
 	public boolean editBasicUniversityInfo(String srcUsername,  String universityName, ManagedField field, Object value) {
 		PsuedoDatabase db = PsuedoDatabase.getInstance();
 		Account src = db.getUserByUsername(srcUsername);
@@ -107,7 +127,8 @@ public class UniversityController {
 
 		return true;
 	}
-
+	
+	//class that holds different types of managed information in UniversityController
 	public enum ManagedField {
 		NAME, ADDRESS, STREET, CITY, STATE, COUNTRY, POSTALCODE,  LOCATION, CONTROL, NUM_STUDENTS, PERCENT_FEMALE, SAT_MATH, SAT_VERBAL, EXPENSES, PERCENT_FINANCIAL_AID,
 		NUM_OF_APPS, PERCENT_ADMITTED, ACADEMIC_SCALE, SOCIAL_SCALE, EMPHASES;

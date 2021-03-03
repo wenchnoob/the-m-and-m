@@ -15,6 +15,18 @@ public abstract class Account {
 	
 	protected AccountType type;
 	
+	/**
+	 * Account constructor
+	 * @author Channa, Kristiana, Wenchy
+	 * @param firstName
+	 * @param lastname
+	 * @param enabled
+	 * @param recoveryQuestion
+	 * @param recoveryAnswer
+	 * @param username
+	 * @param password
+	 * @param type
+	 * */
 	public Account(String firstName, String lastName, boolean enabled, String
 			recoveryQuestion, String recoveryAnswer, String username, String password, AccountType type) {
 		this.firstName = firstName;
@@ -27,21 +39,43 @@ public abstract class Account {
 		this.type = type;
 	}
 	
+	/**
+	 * allows a user to logon
+	 * @author Channa, Kristiana, Wenchy
+	 * @param passwordd
+	 * @return boolean
+	 * */
 	public boolean logon(String password) {
 		if (this.password.equals(password)) loggedOn = true;
 		return loggedOn;
 	}
 	
+	/**
+	 * allows a user to recover password
+	 * @author Channa, Kristiana, Wenchy
+	 * @param answer
+	 * @return String
+	 * */
 	public String recover(String answer) {
 		//TODO
 		return " ";
 	}
 	
+	/**
+	 * allows a user to logout
+	 * @author Channa, Kristiana, Wenchy
+	 * @return boolean
+	 * */
 	public boolean logout() {
 		this.loggedOn = false;
 		return loggedOn;
 	}
 	
+	/**
+	 * toString method
+	 * @author Channa, Kristiana, Wenchy
+	 * @return String
+	 * */
 	public String toString() {
 		return "Name : " + lastName + ", " + firstName;
 	}

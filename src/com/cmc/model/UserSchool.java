@@ -13,8 +13,11 @@ public class UserSchool {
 	private User owner;
 	
 	/**
-	 * 
-	 */
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @param university
+	 * @param owne
+	 * */
 	public UserSchool(University university, User owner) {
 		this.university = university;
 		this.owner = owner;
@@ -48,6 +51,7 @@ public class UserSchool {
 		this.owner = owner;
 	}
 	
+	//toString method
 	public String toString() {
 		return university.toString() + "   " + owner.toString();
 	}

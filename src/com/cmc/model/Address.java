@@ -14,8 +14,14 @@ public class Address {
 	
 	
 	/**
-	 * 
-	 */
+	 * Address constructor
+	 * @author Channa, Kristiana, Wenchy
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param country
+	 * @param postalcode
+	 * */
 	public Address(String street, String city, String state, String country, int postalCode) {
 		this.street = street;
 		this.city = city;
