@@ -45,6 +45,19 @@ public class UniversityController {
 			case ADDRESS:
 				uni.setAddress((Address)value);
 				break;
+			case STREET:
+				uni.getAddress().setStreet((String)value);
+				break;
+			case CITY:
+				uni.getAddress().setCity((String)value);
+				break;
+			case STATE:
+				uni.getAddress().setState((String)value);
+				break;
+			case COUNTRY:
+				uni.getAddress().setCountry((String)value);
+			case POSTALCODE:
+				uni.getAddress().setPostalCode((Integer)value);
 			case LOCATION:
 				uni.setLocation((String)value);
 				break;
@@ -96,7 +109,7 @@ public class UniversityController {
 	}
 
 	public enum ManagedField {
-		NAME, ADDRESS, LOCATION, CONTROL, NUM_STUDENTS, PERCENT_FEMALE, SAT_MATH, SAT_VERBAL, EXPENSES, PERCENT_FINANCIAL_AID,
+		NAME, ADDRESS, STREET, CITY, STATE, COUNTRY, POSTALCODE,  LOCATION, CONTROL, NUM_STUDENTS, PERCENT_FEMALE, SAT_MATH, SAT_VERBAL, EXPENSES, PERCENT_FINANCIAL_AID,
 		NUM_OF_APPS, PERCENT_ADMITTED, ACADEMIC_SCALE, SOCIAL_SCALE, EMPHASES;
 	}
 }
