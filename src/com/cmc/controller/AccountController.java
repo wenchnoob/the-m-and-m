@@ -35,9 +35,9 @@ public class AccountController {
 	}
 	
 	public String viewAccount(Account user) {
-		String name = ("User Information : " + user.getFirstName() + " " + user.getLastName() + "\n" +
-				"UserName : " + user.getUsername() + "\n" + "Password : " + user.getPassword() + "\n" +
-				"Recovery Question: " + user.getRecoveryQuestion() + "\n" + "User Type : " + user.getAccountType());
+		String name = ("User Information : \n\tName: " + user.getFirstName() + " " + user.getLastName() + "\n\t" +
+				"UserName : " + user.getUsername() + "\n\t" + "Password : " + user.getPassword() + "\n\t" +
+				"Recovery Question: " + user.getRecoveryQuestion() + "\n\t" + "User Type : " + user.getType());
 		return name;
 	}
 	
