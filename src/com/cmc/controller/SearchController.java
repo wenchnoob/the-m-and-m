@@ -492,7 +492,4 @@ public class SearchController {
 		return fittingUniversities;
 	}
 
-
-
-
 }

@@ -27,7 +27,7 @@ public class PsuedoDatabase {
 	/**
 	 * 
 	 */
-	public PsuedoDatabase() {
+	private PsuedoDatabase() {
 		initUsers();
 		initUniversities();
 	}

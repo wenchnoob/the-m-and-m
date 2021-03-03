@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cmc.controller.AccountController;
+import com.cmc.controller.AdminFunctionalityController;
 import com.cmc.controller.SearchController;
 import com.cmc.model.Account;
 import com.cmc.model.University;
@@ -26,6 +27,14 @@ public class DriverTest {
 		
 		System.out.println("Testing editing basic user information: ");
 		testEditBasicUserInfo();
+		System.out.println();
+		
+		System.out.println("Testing view all universities: ");
+		testViewAllUniversities();
+		System.out.println();
+		
+		System.out.println("Testing view all accounts: ");
+		testViewAllAccounts();
 		System.out.println();
 	}
 	
@@ -94,6 +103,16 @@ public class DriverTest {
 		Account admin = controller.logon("admin", "admin");
 		controller.editBasicUserInfor(admin, channa, AccountController.ManagedField.RECOVERY_QUESTION, "Three digits of pie?");
 		System.out.println(controller.viewAccount(channa));
+	}
+	public static void testViewAllUniversities() {
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		List<University> allUniversities = controller.viewAllUniversities();
+		System.out.println(allUniversities);
+	}
+	public static void testViewAllAccounts() {
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		List<Account> allAccounts = controller.viewAllAccounts();
+		System.out.println(allAccounts);
 	}
 
 }
