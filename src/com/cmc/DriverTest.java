@@ -15,50 +15,67 @@ public class DriverTest {
 
 
 	public static void main(String[] args) {
+		// 1
 		System.out.println("Testing login: ");
 		testLogin();
-
 		System.out.println();
 
+		// 2
 		System.out.println("Testing view account: ");
 		testViewAccount();
 		System.out.println();
 
+		// 3
 		System.out.println("Testing search Universities: ");
 		testSearchUniversities();
 		System.out.println();
 
+		// 4
 		System.out.println("Testing editing basic user information: ");
 		testEditBasicUserInfo();
 		System.out.println();
 
+		// 5
 		System.out.println("Testing view all universities: ");
 		testViewAllUniversities();
 		System.out.println();
 
+		// 6
 		System.out.println("Testing view all accounts: ");
 		testViewAllAccounts();
 		System.out.println();
 
+		// 7
 		System.out.println("Testing view University: ");
 		testViewUniversity();
 		System.out.println();
 
+		// 8
 		System.out.println("Testing editing basic university info: ");
 		testEditBasicUniversityInfo();
 		System.out.println();
 		
+		// 9
 		System.out.println("Testing activate/deactivate user: ");
 		testChangeStatus();
+		System.out.println();
 
+		// 10
 		System.out.println("Testing Logout: ");
 		testLogout();
 		System.out.println();
 		
+		// 11
 		System.out.println("Testing adding new User: ");
 		testAddUser();
 		System.out.println();
 		
+		// 12
+		System.out.println("Testing changer user type: ");
+		testChangeUserType();
+		System.out.println();
+		
+		// 13
 		System.out.println("Testing saving schools: ");
 		testSaveSchool();
 		System.out.println();
@@ -179,10 +196,25 @@ public class DriverTest {
 		
 	}
 	
+	public static void testChangeUserType() {
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		Account admin = AccountController.getInstance().logon("kkiskool", "koool");
+		controller.ChangeStatus(admin, PsuedoDatabase.getInstance().getUserByUsername("ckalsow"), true);
+		Account user = AccountController.getInstance().logon("ckalsow", "Channaiskool");	
+		controller.changeUserType(admin, user, Account.AccountType.ADMIN);
+		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
+	}
+	
 	public static void testSaveSchool() {
-		Account user = AccountController.getInstance().logon("ckalsow", "Channaiskool");
-		User.saveSchool("Uni A", (User) user);
-		System.out.println(User.getSavedSchools());
+		User user = (User)AccountController.getInstance().logon("kanderson", "Kristianaiskool");
+		System.out.println("Testing save: ");
+		user.saveSchool("Uni A");
+		user.saveSchool("Uni B");
+		System.out.println("Saved Universities: " + user.getSavedSchools());
+		
+		System.out.println("Testing unsave: ");
+		user.unsaveSchool("Uni A");
+		System.out.println("Saved Universities: " + user.getSavedSchools());
 	}
 
 }

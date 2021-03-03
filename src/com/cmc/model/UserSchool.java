@@ -48,5 +48,8 @@ public class UserSchool {
 		this.owner = owner;
 	}
 	
+	public String toString() {
+		return university.toString() + "   " + owner.toString();
+	}
 
 }

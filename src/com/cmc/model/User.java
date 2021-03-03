@@ -3,11 +3,6 @@
  */
 package com.cmc.model;
 
-/**
- * @author Channa Kalsow and Kristiana Anderson
- *
- */
-import java.util.List;
 import java.util.Map;
 
 import com.cmc.PsuedoDatabase;
@@ -28,14 +23,17 @@ public class User extends Account{
 		
 	}
 
-	public void saveSchool(String schoolName, User owner) {
+	public boolean saveSchool(String schoolName) {
+		if (schoolName == null) return false;
 		University university = PsuedoDatabase.getInstance().findUniversityByName(schoolName);
-		UserSchool userSchool = new UserSchool(university, owner);
-		//if (schoolName == null) "University not found";
+		UserSchool userSchool = new UserSchool(university, this);
+		if (university == null) return false;
 		getSavedSchools().put(schoolName, userSchool);
+		return true;
 	}
-	public void unsaveSchool(String schoolName) {
-		//TODO
+	
+	public boolean unsaveSchool(String schoolName) {
+		return savedSchools.remove(schoolName) != null;
 	}
 	
 	public Map<String, UserSchool> getSavedSchools() {
