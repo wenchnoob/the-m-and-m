@@ -24,6 +24,9 @@ public class Address {
 		this.postalCode = postalCode;
 	}
 
+	public String toString() {
+		return "\n\t\t" + street + "\n\t\t" + city + ", " + state + "\n\t\t" + country + ", " + postalCode;
+	}
 
 	/**
 	 * @return the street

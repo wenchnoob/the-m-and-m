@@ -1,9 +1,12 @@
 package com.cmc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cmc.controller.AccountController;
 import com.cmc.controller.AdminFunctionalityController;
+import com.cmc.controller.SearchController;
+import com.cmc.controller.UniversityController;
 import com.cmc.model.Account;
 import com.cmc.model.University;
 
@@ -11,58 +14,130 @@ public class DriverTest {
 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		testTesting();
+		System.out.println("Testing login: ");
 		testLogin();
-<<<<<<< HEAD
+
+		System.out.println();
+
+		System.out.println("Testing view account: ");
+		testViewAccount();
+		System.out.println();
+
+		System.out.println("Testing search Universities: ");
+		testSearchUniversities();
+		System.out.println();
+
+		System.out.println("Testing editing basic user information: ");
+		testEditBasicUserInfo();
+		System.out.println();
+
+		System.out.println("Testing view all universities: ");
 		testViewAllUniversities();
-		testViewAllUsers();
-=======
-		testViewProfile();
->>>>>>> b8f0cbceafa49b73f11d251830940de5dca04430
+		System.out.println();
+
+		System.out.println("Testing view all accounts: ");
+		testViewAllAccounts();
+		System.out.println();
+
+		System.out.println("Testing view University: ");
+		testViewUniversity();
+		System.out.println();
+
+		System.out.println("Testing editing basic university info: ");
+		testEditBasicUniversityInfo();
+		System.out.println();
 	}
-	
-	public static void testTesting() {
-		assert true;
-		System.out.println("The test of the testing passed. Yay!!!");
-	}
-	
+
 	public static void testLogin() {
 		// Successful Login
+		System.out.println("Testing a successful login: ");
 		Account loggedIn = AccountController.getInstance().logon("ckalsow", "Channaiskool");
 		if (loggedIn != null) {
 			System.out.println(loggedIn);
 		} else {
-			System.out.println("Invalid Crdentials Logon Failed!");
+			System.out.println("Invalid Credentials Logon Failed!");
 		}
-		
+
 		// Failed login
+		System.out.println("Testing a failed login: ");
 		Account loggedIn2 = AccountController.getInstance().logon("a", "bingo");
 		if (loggedIn2 != null) {
 			System.out.println(loggedIn2);
 		} else {
-			System.out.println("Invalid Crdentials Logon Failed!");
+			System.out.println("Invalid Credentials Logon Failed!");
 		}
 	}
-	public static void testViewProfile () {
-		 testView = AccountController.getInstance().toString();
-		if (testView != null) {
-			System.out.println(testView);
-		}
-		else {
-			System.out.println("Account not found!");
+
+	public static void testViewAccount() {
+		AccountController controller = AccountController.getInstance();
+		String view = controller.viewAccount("ckalsow");
+		if (view != null) {
+			System.out.println(view);
+		} else {
+			System.out.println("Account not Found!");
 		}
 	}
-	
+
+	public static void testSearchUniversities() {
+		SearchController controller = new SearchController();
+		System.out.println("Successful search: ");
+		List<University> results = controller.searchUniversity("", "", "", "", 
+				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+				new ArrayList<String>()
+				);
+		System.out.println(results);
+		System.out.println();
+
+		System.out.println("Failed search: ");
+		results = controller.searchUniversity("Uni B", "", "", "", 
+				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+				new ArrayList<String>()
+				);
+		System.out.println(results);
+	}
+
+	public static void testEditBasicUserInfo() {
+		AccountController controller = AccountController.getInstance();
+
+		// User editing own information
+		System.out.println("User editing their own information: ");
+		Account channa = controller.logon("ckalsow", "Channaiskool");
+		controller.editBasicUserInfor(channa, channa , AccountController.ManagedField.LASTNAME, "Anderson");
+		System.out.println(controller.viewAccount("ckalsow"));
+		System.out.println();
+
+		// Admin editing user information
+		System.out.println("Admin editing user information");
+		Account admin = controller.logon("admin", "admin");
+		controller.editBasicUserInfor(admin, channa, AccountController.ManagedField.RECOVERY_QUESTION, "Three digits of pie?");
+		System.out.println(controller.viewAccount("ckalsow"));
+	}
+
 	public static void testViewAllUniversities() {
-		List<University> uniList = AdminFunctionalityController.getInstance().ViewAllUniversities();
-		System.out.println(uniList);
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		List<University> allUniversities = controller.viewAllUniversities();
+		System.out.println(allUniversities);
 	}
-	
-	public static void testViewAllUsers() {
-		List<Account> userList = AdminFunctionalityController.getInstance().ViewAllUsers();
-		System.out.println(userList);
+
+	public static void testViewAllAccounts() {
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		List<Account> allAccounts = controller.viewAllAccounts();
+		System.out.println(allAccounts);
 	}
-	
+
+	public static void testViewUniversity() {
+		System.out.println(UniversityController.getInstance().viewUniversity("Uni A"));
+	}
+
+	public static void testEditBasicUniversityInfo() {
+		UniversityController controller = UniversityController.getInstance();
+		controller.editBasicUniversityInfo("admin", "Uni J", UniversityController.ManagedField.NAME, "Uni B");
+		System.out.println(UniversityController.getInstance().viewUniversity("Uni B"));
+		System.out.println();
+		System.out.println("Current list of all universities: ");
+		testViewAllUniversities();
+	}
 
 }

@@ -14,8 +14,9 @@ public class University {
 	private String name;
 	private Address address;
 	private String location, control;
-	private int numStudents, satMath, satVerbal, expenses, numOfApps, academicScale, socialScale;
+	private int numStudents, satMath, satVerbal, expenses, numOfApps, academicScale, socialScale, qualityLife;
 	private List<String> emphases;
+	private float perFemale, perFinAid, perAdmitted, perEnrolled;
 	
 
 	/**
@@ -23,7 +24,8 @@ public class University {
 	 */
 	public University(String name, Address address, String location, String control,
 			int numStudents, int satMath, int satVerbal, int expenses,
-			int numOfApps, int academicScale, int socialScale, List<String> emphases) {
+			int numOfApps, int academicScale, int socialScale, List<String> emphases, float perFemale,
+			float perFinAid, float perAdmitted, float perEnrolled, int qualityLife) {
 		this.name = name;
 		this.address = address;
 		this.location = location;
@@ -36,6 +38,17 @@ public class University {
 		this.academicScale = academicScale;
 		this.socialScale = socialScale;
 		this.emphases = emphases;
+		this.perFemale = perFemale;
+		this.perAdmitted = perAdmitted;
+		this.perFinAid = perFinAid;
+		this.perEnrolled = perEnrolled;
+		this.qualityLife = qualityLife;
+		
+		
+	}
+	
+	public String toString() {
+		return name;
 	}
 
 
@@ -228,6 +241,86 @@ public class University {
 	 */
 	public void setEmphases(List<String> emphases) {
 		this.emphases = emphases;
+	}
+
+
+	/**
+	 * @return the qualityLife
+	 */
+	public int getQualityLife() {
+		return qualityLife;
+	}
+
+
+	/**
+	 * @param qualityLife the qualityLife to set
+	 */
+	public void setQualityLife(int qualityLife) {
+		this.qualityLife = qualityLife;
+	}
+
+
+	/**
+	 * @return the perFemale
+	 */
+	public float getPerFemale() {
+		return perFemale;
+	}
+
+
+	/**
+	 * @param perFemale the perFemale to set
+	 */
+	public void setPerFemale(float perFemale) {
+		this.perFemale = perFemale;
+	}
+
+
+	/**
+	 * @return the perFinAid
+	 */
+	public float getPerFinAid() {
+		return perFinAid;
+	}
+
+
+	/**
+	 * @param perFinAid the perFinAid to set
+	 */
+	public void setPerFinAid(float perFinAid) {
+		this.perFinAid = perFinAid;
+	}
+
+
+	/**
+	 * @return the perAdmitted
+	 */
+	public float getPerAdmitted() {
+		return perAdmitted;
+	}
+
+
+	/**
+	 * @param perAdmitted the perAdmitted to set
+	 */
+	public void setPerAdmitted(float perAdmitted) {
+		this.perAdmitted = perAdmitted;
+	}
+
+
+	/**
+	 * @return the perEnrolled
+	 */
+	public float getPerEnrolled() {
+		return perEnrolled;
+	}
+
+
+	/**
+	 * @param perEnrolled the perEnrolled to set
+	 */
+	public void setPerEnrolled(float perEnrolled) {
+		this.perEnrolled = perEnrolled;
 	}
 	
 	

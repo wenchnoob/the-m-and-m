@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.cmc.model.Account;
 import com.cmc.model.Address;
+import com.cmc.model.Admin;
 import com.cmc.model.University;
 import com.cmc.model.User;
 import com.cmc.model.UserSchool;
@@ -26,7 +27,7 @@ public class PsuedoDatabase {
 	/**
 	 * 
 	 */
-	public PsuedoDatabase() {
+	private PsuedoDatabase() {
 		initUsers();
 		initUniversities();
 	}
@@ -43,9 +44,13 @@ public class PsuedoDatabase {
 				"Channa", "ckalsow", "Channaiskool", list1);
 		User testUser2 = new User("Kristiana", "Anderson", true, "What's Heather's cat's name?",
 				"Ned", "kanderson", "Kristianaiskool", list2);
+		Admin admin = new Admin("Wench", "Dutreuil", true, "What?", "Do you want?", "admin", "admin");
+		
+		
 		users = new ArrayList<>();
 		users.add(testUser2);
 		users.add(testUser);
+		users.add(admin);
 	}
 	
 	private void initUniversities() {
@@ -56,9 +61,22 @@ public class PsuedoDatabase {
 		emphases.add("Mars Gardening");
 		University studentsRUs = new University("Uni A", new Address("Street", "City", "State", "Country", 12345)
 				, "Mars", "private", 
-				6, 200, 200, 1000000, 0, 1, 5, emphases);
+				6, 200, 200, 1000000, 0, 1, 5, emphases,100.0f, 1.2f, 1.2f, 100.0f,5);
+		
+		University studentsRUs2 = new University("Uni C", new Address("Street", "City", "State", "Country", 12345)
+				, "Mars", "private", 
+				6, 200, 200, 1000000, 0, 1, 5, emphases,100.0f, 1.2f, 1.2f, 100.0f,5);
+		
+		University studentsRUs3 = new University("Uni J", new Address("Street", "City", "State", "Country", 12345)
+				, "Mars", "private", 
+				6, 200, 200, 1000000, 0, 1, 5, emphases,100.0f, 1.2f, 1.2f, 100.0f,5);
+		
+		
+		
 		universities = new ArrayList<>();
 		universities.add(studentsRUs);
+		universities.add(studentsRUs2);
+		universities.add(studentsRUs3);
 	}
 	
 	public Account getUserbyUsername(String username) {
