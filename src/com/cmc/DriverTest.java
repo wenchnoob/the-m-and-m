@@ -46,6 +46,10 @@ public class DriverTest {
 		System.out.println("Testing editing basic university info: ");
 		testEditBasicUniversityInfo();
 		System.out.println();
+		
+		System.out.println("Testing activate/deactivate user: ");
+		testChangeStatus();
+		System.out.println();
 	}
 
 	public static void testLogin() {
@@ -79,7 +83,7 @@ public class DriverTest {
 	}
 
 	public static void testSearchUniversities() {
-		SearchController controller = new SearchController();
+		SearchController controller = SearchController.getInstance();
 		System.out.println("Successful search: ");
 		List<University> results = controller.searchUniversity("Uni A", "", "", "", 
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -138,6 +142,13 @@ public class DriverTest {
 		System.out.println();
 		System.out.println("Current list of all universities: ");
 		testViewAllUniversities();
+	}
+	
+	public static void testChangeStatus() {
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		Account admin = AccountController.getInstance().logon("admin", "admin");
+		controller.ChangeStatus(admin, PsuedoDatabase.getInstance().getUserByUsername("ckalsow"), false);
+		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
 	}
 
 }

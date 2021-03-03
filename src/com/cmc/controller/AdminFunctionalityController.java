@@ -16,22 +16,31 @@ public class AdminFunctionalityController {
 
 
 	private static AdminFunctionalityController db;
-	
+
 	private AdminFunctionalityController() {
 	}
-	
+
 	public static AdminFunctionalityController getInstance() {
 		if (db == null) db = new AdminFunctionalityController();
 		return db;
 	}
-	
+
 	public List<University> viewAllUniversities() {
 		List<University> universities = PsuedoDatabase.getInstance().getAllUniversities();
 		return universities;
 	}
-	
+
 	public List<Account> viewAllAccounts(){
 		List<Account> accounts = PsuedoDatabase.getInstance().getAllUsers();
 		return accounts;
 	}
+
+	public boolean ChangeStatus(Account src, Account targ, boolean status) {
+		if (src.getType() != Account.AccountType.ADMIN) return false;
+		
+		targ.setEnabled(status);
+		
+		return true;
+	}
+
 }

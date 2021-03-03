@@ -12,12 +12,24 @@ import com.cmc.model.University;
  *
  */
 public class SearchController {
+	
+	private static SearchController self;
+	
+	private SearchController() {
+		
+	}
+	
+	public static SearchController getInstance() {
+		if (self == null) self = new SearchController();
+		return self;
+	}
+	
 	public List<University> searchUniversity(String schoolName, String state, String location, String control,
 			int numStudents1, int numStudents2, float pFemale1, float pFemale2, int satv1, int satv2, int satm1,int satm2, int exp1,
 			int exp2,float pFinAid1, float pFinAid2, int numApps1, int numApps2, float pAdmitted1, float pAdmitted2,
 			float pEnrolled1, float pEnrolled2,int academicScale1, int academicScale2, int socialScale1, int socialScale2,
 			int qualLife1, int qualLife2, List<String> emphases) {
-
+		
 		// numStrudents guard
 		if (numStudents1 == -1) numStudents1 = 0;
 		if (numStudents2 == -1) numStudents2 = Integer.MAX_VALUE;
@@ -25,6 +37,10 @@ public class SearchController {
 		// pFemale guard
 		if (pFemale1 == -1) pFemale1 = 0;
 		if (pFemale2 == -1) pFemale2 = Integer.MAX_VALUE;
+
+		// satm guard
+		if (satm1 == -1) satm1 = 0;
+		if (satm2 == -1) satm2 = Integer.MAX_VALUE;
 
 		// satv guard
 		if (satv1 == -1) satv1 = 0;
@@ -41,6 +57,10 @@ public class SearchController {
 		// numApps guard
 		if (numApps1 == -1) numApps1 = 0;
 		if (numApps2 == -1) numApps2 = Integer.MAX_VALUE;
+
+		// pAdmitted guard
+		if (pAdmitted1 == -1) pAdmitted1 = 0;
+		if (pAdmitted2 == -1) pAdmitted2 = Integer.MAX_VALUE;
 
 		// pEnrolled guard
 		if (pEnrolled1 == -1) pEnrolled1 = 0;
@@ -121,7 +141,13 @@ public class SearchController {
 		return universities;
 	}
 
-	// works
+	/**
+	 * filters all universities out of list that do not match name
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param schoolName
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByName(List<University> universities, String schoolName){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -132,7 +158,13 @@ public class SearchController {
 		return fittingUniversities;
 	}
 
-	// works
+	/**
+	 * filters all universities out of list that do not match state
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param state
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByState(List<University> universities, String state){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -143,7 +175,13 @@ public class SearchController {
 		return fittingUniversities;
 	}
 
-	// works
+	/**
+	 * filters all universities out of list that do not match location
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param location
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByLocation(List<University> universities, String location){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -154,7 +192,13 @@ public class SearchController {
 		return fittingUniversities;
 	}
 
-	// works
+	/**
+	 * filters all universities out of list that do not match control
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param control
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByControl(List<University> universities, String control){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -165,7 +209,14 @@ public class SearchController {
 		return fittingUniversities;
 	}
 
-	// works
+	/**
+	 * filters all universities out of list that do not match numStudents
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param upperBound
+	 * @param lowerBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByNumStudents(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -175,8 +226,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match perFemale
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param upperBound
+	 * @param lowerBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByPerFemale(List<University> universities, float lowerBound, float upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -186,19 +244,33 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match satm
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param upperBound
+	 * @param lowerBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterBySatM(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
+		for (University school : universities) {
 			if (school.getSatMath() <= upperBound && school.getSatMath() >= lowerBound){
 				fittingUniversities.add(school);
 			}
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match satv
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param upperBound
+	 * @param lowerBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterBySatV(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -208,8 +280,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match expenses
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param lowerBound
+	 * @param upperBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByExp(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -219,8 +298,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match perFinAid
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param lowerBound
+	 * @param upperBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByPerFinAid(List<University> universities, float lowerBound, float upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -230,8 +316,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match numApps
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param lowerBound
+	 * @param upperBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByNumApps(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -241,8 +334,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match perAdmitted
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param lowerBound
+	 * @param upperBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByPerAdmitted(List<University> universities, float lowerBound, float upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -252,8 +352,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match perEnrolled
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param lowerBound
+	 * @param upperBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByPerEnrolled(List<University> universities, float lowerBound, float upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -263,8 +370,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match academiScale
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param lowerBound
+	 * @param upperBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByAcademicScale(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
@@ -274,8 +388,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match socialScale
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param lowerBound
+	 * @param upperBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterBySocialScale(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -285,8 +406,15 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match qualLife
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param lowerBound
+	 * @param upperBound
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByQualLife(List<University> universities, int lowerBound, int upperBound){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
@@ -296,12 +424,22 @@ public class SearchController {
 		}
 		return fittingUniversities;
 	}
-	
-	// works
+
+	/**
+	 * filters all universities out of list that do not match emphases
+	 * @author Channa, Kristiana, Wenchy
+	 * @param universities
+	 * @param listOfEmphases
+	 * @return list of universities that pass filter
+	 * */
 	private static List<University> filterByEmphases(List<University> universities, List<String> listOfEmphases){
+		if (listOfEmphases == null || listOfEmphases.size() == 0)
+		{
+			return universities;
+		}
 		List<University> fittingUniversities = new ArrayList<>();
-		for (University school:universities) {
-			for (String major: listOfEmphases) {
+		for (University school : universities) {
+			for (String major : listOfEmphases) {
 				if (fittingUniversities.contains(school)) continue;
 				if(school.getEmphases().contains(major)){
 					fittingUniversities.add(school);

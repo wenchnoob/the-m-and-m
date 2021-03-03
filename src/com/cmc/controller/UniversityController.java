@@ -33,7 +33,7 @@ public class UniversityController {
 
 	public boolean editBasicUniversityInfo(String srcUsername,  String universityName, ManagedField field, Object value) {
 		PsuedoDatabase db = PsuedoDatabase.getInstance();
-		Account src = db.getUserbyUsername(srcUsername);
+		Account src = db.getUserByUsername(srcUsername);
 		University uni = db.findUniversityByName(universityName);
 		if (src.getType() != Account.AccountType.ADMIN ) return false;
 

@@ -79,7 +79,7 @@ public class PsuedoDatabase {
 		universities.add(studentsRUs3);
 	}
 	
-	public Account getUserbyUsername(String username) {
+	public Account getUserByUsername(String username) {
 		for (Account acc: users) {
 			if (acc.getUsername().equals(username)) return acc;
 		}

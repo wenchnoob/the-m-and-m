@@ -18,7 +18,7 @@ public class AccountController {
 	 * 
 	 */
 	private AccountController() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public static AccountController getInstance() {
@@ -28,14 +28,14 @@ public class AccountController {
 	
 	public Account logon(String username, String password) {
 		PsuedoDatabase db = PsuedoDatabase.getInstance();
-		Account user = db.getUserbyUsername(username);
+		Account user = db.getUserByUsername(username);
 		if (user == null) return null;
 		if (user.isEnabled() && user.logon(password)) return user;
 		return null;
 	}
 	
 	public String viewAccount(String username) {
-		Account user = PsuedoDatabase.getInstance().getUserbyUsername(username);
+		Account user = PsuedoDatabase.getInstance().getUserByUsername(username);
 		String name = ("User Information : \n\tName: " + user.getFirstName() + " " + user.getLastName() + "\n\t" +
 				"UserName : " + user.getUsername() + "\n\t" + "Password : " + user.getPassword() + "\n\t" +
 				"Recovery Question: " + user.getRecoveryQuestion() + "\n\t" + "User Type : " + user.getType()) + "\n\t" + "Enabled: " + user.isEnabled()
