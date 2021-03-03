@@ -7,10 +7,9 @@ public class DriverTest {
 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		testTesting();
 		testLogin();
-		testViewProfile();
+		testViewAccount();
 	}
 	
 	public static void testTesting() {
@@ -35,13 +34,14 @@ public class DriverTest {
 			System.out.println("Invalid Crdentials Logon Failed!");
 		}
 	}
-	public static void testViewProfile () {
-		 testView = AccountController.getInstance().toString();
-		if (testView != null) {
-			System.out.println(testView);
-		}
-		else {
-			System.out.println("Account not found!");
+	
+	public static void testViewAccount() {
+		AccountController controller = AccountController.getInstance();
+		String view = controller.viewAccount(controller.logon("ckalsow", "Channaiskool"));
+		if (view != null) {
+			System.out.println(view);
+		} else {
+			System.out.println("Account not Found!");
 		}
 	}
 	

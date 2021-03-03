@@ -46,6 +46,22 @@ public abstract class Account {
 		return "Name : " + lastName + ", " + firstName;
 	}
 	
+	
+	
+	/**
+	 * @return the type
+	 */
+	public AccountType getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(AccountType type) {
+		this.type = type;
+	}
+
 	/**
 	 * 
 	 * @return loggedOn variable
