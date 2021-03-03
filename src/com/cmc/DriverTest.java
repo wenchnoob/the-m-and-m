@@ -80,7 +80,7 @@ public class DriverTest {
 	public static void testSearchUniversities() {
 		SearchController controller = new SearchController();
 		System.out.println("Successful search: ");
-		List<University> results = controller.searchUniversity("", "", "", "", 
+		List<University> results = controller.searchUniversity("Uni A", "", "", "", 
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 				new ArrayList<String>()

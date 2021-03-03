@@ -22,23 +22,23 @@ public class SearchController {
 		//by school name
 		if (!schoolName.equals("")) {
 			universities  = filterByName(universities, schoolName);
-
 		}
+		
 		//by state
 		if (!state.equals("")) {
 			universities  = filterByState(universities, state);
-			
 		}
+		
 		//by location
 		if (!location.equals("")) {
 			universities  = filterByLocation(universities, location);
-
 		}
+		
 		//by control
 		if (!control.equals("")) {
 			universities  = filterByControl(universities, control);
-
 		}
+		
 		//by number of students
 		if (numStudents1 != -1) {
 			if (numStudents2 != -1) {
