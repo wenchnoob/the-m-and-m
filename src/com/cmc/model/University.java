@@ -16,6 +16,7 @@ public class University {
 	private String location, control;
 	private int numStudents, satMath, satVerbal, expenses, numOfApps, academicScale, socialScale;
 	private List<String> emphases;
+	private float perFemale;
 	
 
 	/**
@@ -23,7 +24,8 @@ public class University {
 	 */
 	public University(String name, Address address, String location, String control,
 			int numStudents, int satMath, int satVerbal, int expenses,
-			int numOfApps, int academicScale, int socialScale, List<String> emphases) {
+			int numOfApps, int academicScale, int socialScale, List<String> emphases, float perFemale
+			) {
 		this.name = name;
 		this.address = address;
 		this.location = location;
@@ -36,6 +38,8 @@ public class University {
 		this.academicScale = academicScale;
 		this.socialScale = socialScale;
 		this.emphases = emphases;
+		this.perFemale = perFemale;
+		
 	}
 
 

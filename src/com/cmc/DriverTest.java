@@ -23,7 +23,7 @@ public class DriverTest {
 		if (loggedIn != null) {
 			System.out.println(loggedIn);
 		} else {
-			System.out.println("Invalid Crdentials Logon Failed!");
+			System.out.println("Invalid Credentials Logon Failed!");
 		}
 		
 		// Failed login
@@ -31,7 +31,7 @@ public class DriverTest {
 		if (loggedIn2 != null) {
 			System.out.println(loggedIn2);
 		} else {
-			System.out.println("Invalid Crdentials Logon Failed!");
+			System.out.println("Invalid Credentials Logon Failed!");
 		}
 	}
 	
