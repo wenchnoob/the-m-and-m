@@ -8,7 +8,7 @@ import com.cmc.PsuedoDatabase;
 import com.cmc.model.University;
 
 /**
- * @author Channa Kalsow and Kristiana Anderson
+ * @author Channa Kalsow and Kristiana Anderson and Wenchy
  *
  */
 public class SearchController {
@@ -24,21 +24,22 @@ public class SearchController {
 			universities  = filterByName(universities, schoolName);
 
 		}
-
+		//by state
 		if (!state.equals("")) {
 			universities  = filterByState(universities, state);
-
 			
 		}
+		//by location
 		if (!location.equals("")) {
 			universities  = filterByLocation(universities, location);
 
 		}
+		//by control
 		if (!control.equals("")) {
 			universities  = filterByControl(universities, control);
 
 		}
-		
+		//by number of students
 		if (numStudents1 != -1) {
 			if (numStudents2 != -1) {
 				universities  = filterByNumStudents(universities, numStudents1, numStudents2);
@@ -256,74 +257,77 @@ public class SearchController {
 			}
 		}
 		//Academic Scale
-		if (exp1 != -1) {
-			if (exp2 != -1) {
-				universities  = filterByExp(universities, exp1, exp2);
+		if (academicScale1 != -1) {
+			if (academicScale2 != -1) {
+				universities  = filterByAcademicScale(universities, academicScale1, academicScale2);
 
 			}
 			else{
-				exp2 = Integer.MAX_VALUE;
-				universities  = filterByExp(universities, exp1, exp2);
+				academicScale2 = Integer.MAX_VALUE;
+				universities  = filterByAcademicScale(universities, academicScale1, academicScale2);
 
 			}
 		}
 		else {
-			exp1 = 0;
-			if (exp2 != -1) {
-				universities  = filterByExp(universities, exp1, exp2);
+			academicScale1 = 0;
+			if (academicScale2 != -1) {
+				universities  = filterByAcademicScale(universities, academicScale1, academicScale2);
 
 			}
 			else{
-				exp2 = Integer.MAX_VALUE;
-				universities  = filterByExp(universities, exp1, exp2);
+				academicScale2 = Integer.MAX_VALUE;
+				universities  = filterByAcademicScale(universities, academicScale1, academicScale2);
 			}
 		}
 		//Social Scale
-		if (exp1 != -1) {
-			if (exp2 != -1) {
-				universities  = filterByExp(universities, exp1, exp2);
+		if (socialScale1 != -1) {
+			if (socialScale2 != -1) {
+				universities  = filterBySocialScale(universities, socialScale1, socialScale2);
 
 			}
 			else{
-				exp2 = Integer.MAX_VALUE;
-				universities  = filterByExp(universities, exp1, exp2);
+				socialScale2 = Integer.MAX_VALUE;
+				universities  = filterBySocialScale(universities, socialScale1, socialScale2);
 
 			}
 		}
 		else {
-			exp1 = 0;
-			if (exp2 != -1) {
-				universities  = filterByExp(universities, exp1, exp2);
+			socialScale1 = 0;
+			if (socialScale2 != -1) {
+				universities  = filterBySocialScale(universities, socialScale1, socialScale2);
 
 			}
 			else{
-				exp2 = Integer.MAX_VALUE;
-				universities  = filterByExp(universities, exp1, exp2);
+				socialScale2 = Integer.MAX_VALUE;
+				universities  = filterBySocialScale(universities, socialScale1, socialScale2);
 			}
 		}
 		//Quality of Life
-		if (exp1 != -1) {
-			if (exp2 != -1) {
-				universities  = filterByExp(universities, exp1, exp2);
+		if (qualLife1 != -1) {
+			if (qualLife2 != -1) {
+				universities  = filterByQualLife(universities, qualLife1, qualLife2);
 
 			}
 			else{
-				exp2 = Integer.MAX_VALUE;
-				universities  = filterByExp(universities, exp1, exp2);
+				qualLife2 = Integer.MAX_VALUE;
+				universities  = filterByQualLife(universities, qualLife1, qualLife2);
 
 			}
 		}
 		else {
-			exp1 = 0;
-			if (exp2 != -1) {
-				universities  = filterByExp(universities, exp1, exp2);
+			qualLife1 = 0;
+			if (qualLife2 != -1) {
+				universities  = filterByQualLife(universities, qualLife1, qualLife2);
 
 			}
 			else{
-				exp2 = Integer.MAX_VALUE;
-				universities  = filterByExp(universities, exp1, exp2);
+				qualLife2 = Integer.MAX_VALUE;
+				universities  = filterByQualLife(universities, qualLife1, qualLife2);
 			}
 		}
+		//Emphases
+		universities = filterByEmphases(universities, emphases);
+		
 		return universities;
 	}
 	private static List<University> filterByName(List<University> universities, String schoolName){
