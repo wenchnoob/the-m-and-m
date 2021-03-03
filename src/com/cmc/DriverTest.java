@@ -206,9 +206,15 @@ public class DriverTest {
 	}
 	
 	public static void testSaveSchool() {
-		Account user = AccountController.getInstance().logon("ckalsow", "Channaiskool");
-		User.saveSchool("Uni A", (User) user);
-		System.out.println(User.getSavedSchools());
+		User user = (User)AccountController.getInstance().logon("kanderson", "Kristianaiskool");
+		System.out.println("Testing save: ");
+		user.saveSchool("Uni A");
+		user.saveSchool("Uni B");
+		System.out.println("Saved Universities: " + user.getSavedSchools());
+		
+		System.out.println("Testing unsave: ");
+		user.unsaveSchool("Uni A");
+		System.out.println("Saved Universities: " + user.getSavedSchools());
 	}
 
 }
