@@ -57,6 +57,7 @@ public class PsuedoDatabase {
 		University studentsRUs = new University("Uni A", new Address("Street", "City", "State", "Country", 12345)
 				, "Mars", "private", 
 				6, 200, 200, 1000000, 0, 1, 5, emphases);
+		universities = new ArrayList<>();
 		universities.add(studentsRUs);
 	}
 	

@@ -36,9 +36,14 @@ public abstract class Account {
 		//TODO
 		return " ";
 	}
+	
 	public boolean logout() {
 		//TODO
 		return true;
+	}
+	
+	public String toString() {
+		return "Name : " + lastName + ", " + firstName;
 	}
 	
 	/**

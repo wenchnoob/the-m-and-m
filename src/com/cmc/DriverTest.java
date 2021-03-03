@@ -9,7 +9,7 @@ public class DriverTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		testTesting();
-		
+		testLogin();
 	}
 	
 	public static void testTesting() {
@@ -18,9 +18,18 @@ public class DriverTest {
 	}
 	
 	public static void testLogin() {
-		Account loggedIn = AccountController.getInstance().logon("a", "b");
+		// Successful Login
+		Account loggedIn = AccountController.getInstance().logon("ckalsow", "Channaiskool");
 		if (loggedIn != null) {
 			System.out.println(loggedIn);
+		} else {
+			System.out.println("Invalid Crdentials Logon Failed!");
+		}
+		
+		// Failed login
+		Account loggedIn2 = AccountController.getInstance().logon("a", "bingo");
+		if (loggedIn2 != null) {
+			System.out.println(loggedIn2);
 		} else {
 			System.out.println("Invalid Crdentials Logon Failed!");
 		}
