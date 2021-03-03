@@ -1,7 +1,12 @@
 package com.cmc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.cmc.controller.AccountController;
+import com.cmc.controller.SearchController;
 import com.cmc.model.Account;
+import com.cmc.model.University;
 
 public class DriverTest {
 
@@ -10,6 +15,7 @@ public class DriverTest {
 		testTesting();
 		testLogin();
 		testViewAccount();
+		testSearchUniversities();
 	}
 	
 	public static void testTesting() {
@@ -43,6 +49,15 @@ public class DriverTest {
 		} else {
 			System.out.println("Account not Found!");
 		}
+	}
+	public static void testSearchUniversities() {
+		SearchController controller = new SearchController();
+		List<University> results = controller.searchUniversity("Uni B", "", "", "", 
+				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+				-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+				new ArrayList<String>()
+				);
+		System.out.println(results);
 	}
 	
 
