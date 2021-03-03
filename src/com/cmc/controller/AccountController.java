@@ -34,6 +34,14 @@ public class AccountController {
 		return null;
 	}
 	
+	public boolean logout(String username) {
+		PsuedoDatabase db = PsuedoDatabase.getInstance();
+		Account user = db.getUserbyUsername(username);
+		if (user == null) return false;
+		if (user.isEnabled() && user.logout()) return true;
+		return false;
+	}
+	
 	public String viewAccount(String username) {
 		Account user = PsuedoDatabase.getInstance().getUserbyUsername(username);
 		String name = ("User Information : \n\tName: " + user.getFirstName() + " " + user.getLastName() + "\n\t" +

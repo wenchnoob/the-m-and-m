@@ -46,6 +46,10 @@ public class DriverTest {
 		System.out.println("Testing editing basic university info: ");
 		testEditBasicUniversityInfo();
 		System.out.println();
+		
+		System.out.println("Testing Logout: ");
+		testLogout();
+		System.out.println();
 	}
 
 	public static void testLogin() {
@@ -66,6 +70,13 @@ public class DriverTest {
 		} else {
 			System.out.println("Invalid Credentials Logon Failed!");
 		}
+	}
+	
+	public static void testLogout() {
+		// Successful Logout
+		AccountController.getInstance().logout("ckalsow");
+		System.out.println("Logged out Account: ");
+		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
 	}
 
 	public static void testViewAccount() {
