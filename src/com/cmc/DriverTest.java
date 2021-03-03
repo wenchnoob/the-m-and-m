@@ -1,7 +1,11 @@
 package com.cmc;
 
+import java.util.List;
+
 import com.cmc.controller.AccountController;
+import com.cmc.controller.AdminFunctionalityController;
 import com.cmc.model.Account;
+import com.cmc.model.University;
 
 public class DriverTest {
 
@@ -10,6 +14,8 @@ public class DriverTest {
 		// TODO Auto-generated method stub
 		testTesting();
 		testLogin();
+		testViewAllUniversities();
+		testViewAllUsers();
 	}
 	
 	public static void testTesting() {
@@ -33,6 +39,16 @@ public class DriverTest {
 		} else {
 			System.out.println("Invalid Crdentials Logon Failed!");
 		}
+	}
+	
+	public static void testViewAllUniversities() {
+		List<University> uniList = AdminFunctionalityController.getInstance().ViewAllUniversities();
+		System.out.println(uniList);
+	}
+	
+	public static void testViewAllUsers() {
+		List<Account> userList = AdminFunctionalityController.getInstance().ViewAllUsers();
+		System.out.println(userList);
 	}
 	
 
