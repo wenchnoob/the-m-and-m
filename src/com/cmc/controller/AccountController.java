@@ -27,11 +27,10 @@ public class AccountController {
 	}
 	
 	public Account logon(String username, String password) {
-		PsuedoDatabase db = PsuedoDatabase.getInstance();
+		PsuedoDatabase db = new PsuedoDatabase();
 		Account user = db.getUserbyUsername(username);
-		if (user == null) return null;
-		if (user.isEnabled() && user.logon(password)) return user;
+		if (user.logon(password)) return user;
 		return null;
 	}
-
+	
 }

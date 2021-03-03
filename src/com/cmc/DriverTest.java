@@ -10,6 +10,7 @@ public class DriverTest {
 		// TODO Auto-generated method stub
 		testTesting();
 		testLogin();
+		testViewProfile();
 	}
 	
 	public static void testTesting() {
@@ -32,6 +33,15 @@ public class DriverTest {
 			System.out.println(loggedIn2);
 		} else {
 			System.out.println("Invalid Crdentials Logon Failed!");
+		}
+	}
+	public static void testViewProfile () {
+		 testView = AccountController.getInstance().toString();
+		if (testView != null) {
+			System.out.println(testView);
+		}
+		else {
+			System.out.println("Account not found!");
 		}
 	}
 	
