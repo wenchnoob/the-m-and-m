@@ -38,8 +38,8 @@ public abstract class Account {
 	}
 	
 	public boolean logout() {
-		//TODO
-		return true;
+		this.loggedOn = false;
+		return loggedOn;
 	}
 	
 	public String toString() {
