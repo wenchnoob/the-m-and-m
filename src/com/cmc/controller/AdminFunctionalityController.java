@@ -26,12 +26,30 @@ public class AdminFunctionalityController {
 
 	private AdminFunctionalityController() {
 	}
-
+	
+	/**
+	 * singleton
+	 * @author Channa, Kristiana, Wenchy
+	 * @return an instance of itself
+	 * */
 	public static AdminFunctionalityController getInstance() {
 		if (db == null) db = new AdminFunctionalityController();
 		return db;
 	}
 	
+	/**
+	 * allows an admin to create a new user
+	 * @author Channa, Kristiana, Wenchy
+	 * @param firstName
+	 * @param lastName
+	 * @param username
+	 * @param password
+	 * @param rQuestion
+	 * @param rAnswer
+	 * @param enabled
+	 * @param type
+	 * @return boolean
+	 * */
 	public boolean addUser(String firstName, String lastName, String username, String password, String rQuestion, String rAnswer,
 			boolean  enabled, Account.AccountType type) {
 		Account user;
@@ -44,6 +62,14 @@ public class AdminFunctionalityController {
 		return PsuedoDatabase.getInstance().save(user);
 	}
 	
+	/**
+	 * allows an admin to change a user's type
+	 * @author Channa, Kristiana, Wenchy
+	 * @param src
+	 * @param targ
+	 * @param type
+	 * @return boolean
+	 * */
 	public boolean changeUserType(Account src, Account targ, Account.AccountType type) {
 		if (src.getType() != Account.AccountType.ADMIN) return false;
 		
@@ -71,21 +97,34 @@ public class AdminFunctionalityController {
 		}
 	}
 	
-	
-	public boolean changeType() {
-		return true;
-	}
-
+	/**
+	 * lists all universities in database
+	 * @author Channa, Kristiana, Wenchy
+	 * @return universities list
+	 * */
 	public List<University> viewAllUniversities() {
 		List<University> universities = PsuedoDatabase.getInstance().getAllUniversities();
 		return universities;
 	}
-
+	
+	/**
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @return accounts list
+	 * */
 	public List<Account> viewAllAccounts(){
 		List<Account> accounts = PsuedoDatabase.getInstance().getAllUsers();
 		return accounts;
 	}
-
+	
+	/**
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @param src
+	 * @param targ
+	 * @param status
+	 * @return boolean
+	 * */
 	public boolean ChangeStatus(Account src, Account targ, boolean status) {
 		if (src.getType() != Account.AccountType.ADMIN) return false;
 		

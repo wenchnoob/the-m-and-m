@@ -19,11 +19,49 @@ public class SearchController {
 		
 	}
 	
+	/**
+	 * singleton
+	 * @author Channa, Kristiana, Wenchy
+	 * @return an instance of itself
+	 * */
 	public static SearchController getInstance() {
 		if (self == null) self = new SearchController();
 		return self;
 	}
 	
+	/**
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @param schoolName
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param numStudents1
+	 * @param numStudents2
+	 * @param pFemale1
+	 * @param pFemale2
+	 * @param satv1
+	 * @param satv2
+	 * @param satm1
+	 * @param satm2
+	 * @param exp1
+	 * @param exp2
+	 * @param pFinAid1
+	 * @param pFinAid2
+	 * @param numApps1
+	 * @param numApps2
+	 * @param pAdmitted1
+	 * @param pAdmitted 2
+	 * @param pEnrolled1
+	 * @param pEnrolled2
+	 * @param academicScale1
+	 * @param academicScale2
+	 * @param socialScale1
+	 * @param socialScale2
+	 * @param qualLife1
+	 * @param qualLife2
+	 * @param emphases
+	 * */
 	public List<University> searchUniversity(String schoolName, String state, String location, String control,
 			int numStudents1, int numStudents2, float pFemale1, float pFemale2, int satv1, int satv2, int satm1,int satm2, int exp1,
 			int exp2,float pFinAid1, float pFinAid2, int numApps1, int numApps2, float pAdmitted1, float pAdmitted2,

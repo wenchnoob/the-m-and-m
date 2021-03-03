@@ -21,11 +21,23 @@ public class AccountController {
 		
 	}
 	
+	/**
+	 * singleton
+	 * @author Channa, Kristiana, Wenchy
+	 * @return an instance of itself
+	 * */
 	public static AccountController getInstance() {
 		if (self == null) self = new AccountController();
 		return self;
 	}
 	
+	/**
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @param username
+	 * @param password
+	 * @return Account
+	 * */
 	public Account logon(String username, String password) {
 		PsuedoDatabase db = PsuedoDatabase.getInstance();
 		Account user = db.getUserByUsername(username);
@@ -34,6 +46,12 @@ public class AccountController {
 		return null;
 	}
 	
+	/**
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @param username
+	 * @return boolean
+	 * */
 	public boolean logout(String username) {
 		PsuedoDatabase db = PsuedoDatabase.getInstance();
 		Account user = db.getUserByUsername(username);
@@ -42,6 +60,12 @@ public class AccountController {
 		return false;
 	}
 	
+	/**
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @param username
+	 * @return String
+	 * */
 	public String viewAccount(String username) {
 		Account user = PsuedoDatabase.getInstance().getUserByUsername(username);
 		String name = ("User Information : \n\tName: " + user.getFirstName() + " " + user.getLastName() + "\n\t" +
@@ -51,6 +75,15 @@ public class AccountController {
 		return name;
 	}
 	
+	/**
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @param src
+	 * @param targ
+	 * @param field
+	 * @param value
+	 * @return boolean
+	 * */
 	public boolean editBasicUserInfor(Account src, Account targ, ManagedField field, String value) {
 		if (src.getType() != Account.AccountType.ADMIN && src != targ) return false;
 		
@@ -76,7 +109,7 @@ public class AccountController {
 		
 		return true;
 	}
-	
+	//class that holds different types of managed information in AccountController
 	public enum ManagedField {
 		FIRSTNAME, LASTNAME, PASSWORD, RECOVERY_QUESTION, RECOVERY_ANSWER;
 	}

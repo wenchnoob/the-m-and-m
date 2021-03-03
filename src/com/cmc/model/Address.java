@@ -14,8 +14,14 @@ public class Address {
 	
 	
 	/**
-	 * 
-	 */
+	 * Address constructor
+	 * @author Channa, Kristiana, Wenchy
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param country
+	 * @param postalcode
+	 * */
 	public Address(String street, String city, String state, String country, int postalCode) {
 		this.street = street;
 		this.city = city;
@@ -23,7 +29,12 @@ public class Address {
 		this.country = country;
 		this.postalCode = postalCode;
 	}
-
+	
+	/**
+	 * toString method
+	 * @author Channa, Kristiana, Wenchy
+	 * @return String
+	 * */
 	public String toString() {
 		return "\n\t\t" + street + "\n\t\t" + city + ", " + state + "\n\t\t" + country + ", " + postalCode;
 	}

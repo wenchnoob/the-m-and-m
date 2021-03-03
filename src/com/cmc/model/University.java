@@ -20,8 +20,26 @@ public class University {
 	
 
 	/**
-	 * 
-	 */
+	 * University constructor
+	 * @author Channa, Kristiana, Wenchy
+	 * @param name
+	 * @param address
+	 * @param location
+	 * @param control
+	 * @param numStudents
+	 * @param satMath
+	 * @param satVerbal
+	 * @param expenses
+	 * @param numOfApps
+	 * @param academicScale
+	 * @param socialScale
+	 * @param emphases
+	 * @param perFemale
+	 * @param perFinAid
+	 * @param perAdmitted
+	 * @param perEnrolled
+	 * @param qualityLife
+	 * */
 	public University(String name, Address address, String location, String control,
 			int numStudents, int satMath, int satVerbal, int expenses,
 			int numOfApps, int academicScale, int socialScale, List<String> emphases, float perFemale,
@@ -47,6 +65,11 @@ public class University {
 		
 	}
 	
+	/**
+	 * toString method
+	 * @author Channa, Kristiana, Wenchy
+	 * @returns String
+	 * */
 	public String toString() {
 		return name;
 	}
