@@ -16,7 +16,7 @@ import com.cmc.model.UserSchool;
 import com.cmc.model.Admin;
 
 /**
- * @author ckalsow001
+ * @author Channa Kalsow
  *
  */
 public class AdminFunctionalityController {
@@ -32,7 +32,8 @@ public class AdminFunctionalityController {
 		return db;
 	}
 	
-	public boolean addUser(String firstName, String lastName, String username, String password, String rQuestion, String rAnswer, boolean  enabled, Account.AccountType type) {
+	public boolean addUser(String firstName, String lastName, String username, String password, String rQuestion, String rAnswer,
+			boolean  enabled, Account.AccountType type) {
 		Account user;
 		if(type == Account.AccountType.ADMIN) {
 			user = new Admin(firstName, lastName, username, password, rQuestion, rAnswer, enabled);
