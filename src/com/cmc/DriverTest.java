@@ -103,6 +103,9 @@ public class DriverTest {
 	
 	public static void testLogout() {
 		// Successful Logout
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		Account admin = AccountController.getInstance().logon("admin", "admin");
+		controller.ChangeStatus(admin, PsuedoDatabase.getInstance().getUserByUsername("ckalsow"), true);
 		AccountController.getInstance().logout("ckalsow");
 		System.out.println("Logged out Account: ");
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));

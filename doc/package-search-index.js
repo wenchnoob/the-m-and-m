@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.cmc"},{"l":"com.cmc.controller"},{"l":"com.cmc.model"}];updateSearchResults();
