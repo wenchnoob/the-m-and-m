@@ -2,6 +2,8 @@ README.md
 Instructions
 
 Step 1) Open VMWare Horizon Client
+
+
 Step 2) Sign into a Linux machine
 Step 3) Open a terminal
 Step 4) Type “eclipse” and press enter
