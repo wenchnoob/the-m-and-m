@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.cmc.model.Account;
 import com.cmc.model.Admin;
+import com.cmc.model.University;
 import com.cmc.model.User;
 
 
@@ -95,8 +96,40 @@ public class DatabaseInteractionClass {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return accounts;
-	} 
+	}
+	
+	public List<University> getAllUniversities() {
+		ResultSet results;
+		try {
+			results = Database.getInstance(Database.DBType.WENCHY).execute("SELECT * FROM  university ORDER BY School");
+		} catch (Exception e) {
+			results = Database.getInstance(Database.DBType.ALL).execute("SELECT * FROM  university ORDER BY School");
+		}
+		
+		List<University> universities = new ArrayList<University>();
+		
+		try {
+			while (results.next()) {
+				String name = results.getString("School");
+				String state = results.getString("State");
+				String location = results.getString("Location");
+				String control = results.getString("Control");
+				int numOfStudents = results.getInt("NumberOfStudents");
+				float perFemales = (float)results.getDouble("PercentFemales");
+				float satVerbal = (float)results.getDouble("SATVerbal");
+				float satMath = (float)results.getDouble("SATMath");
+				float expenses = (float) results.getDouble("Expenses");
+				
+				universities.add(null);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return universities;
+	}
 
 }

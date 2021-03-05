@@ -23,7 +23,7 @@ public class Database {
 			if (forWenchy == null) forWenchy = new Database("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!", DBType.WENCHY);
 			return forWenchy;
 		}
-		if (forAll == null) forAll = new Database(""+"megatherium", "megatherium", "csci230", DBType.ALL);
+		if (forAll == null) forAll = new Database("jdbc:mysql://devsrv.cs.csbsju.edu/megatherium", "megatherium", "csci230", DBType.ALL);
 		return forAll;
 	}
 	

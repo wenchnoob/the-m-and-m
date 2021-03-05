@@ -1,6 +1,7 @@
 package com.cmc;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.cmc.controller.AccountController;
@@ -12,6 +13,8 @@ import com.cmc.model.University;
 import com.cmc.model.User;
 
 import database.DatabaseInteractionClass;
+import database.UniversityDBLibrary;
+import database.Database.DBType;
 
 public class DriverTest {
 
@@ -93,6 +96,12 @@ public class DriverTest {
 		System.out.println(actualDb.getUserByUserName("luser"));
 		System.out.println("Failure: \n\t");
 		System.out.println(actualDb.getUserByUserName("ckalsow"));
+		
+		
+		// Newest test
+		UniversityDBLibrary lib = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		System.out.println(Arrays.toString(lib.university_getUniversities()));
+		
 	}
 
 	public static void testLogin() {
