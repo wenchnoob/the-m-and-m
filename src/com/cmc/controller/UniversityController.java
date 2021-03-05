@@ -51,6 +51,7 @@ public class UniversityController {
 	 * @param value
 	 * @return boolean
 	 * */
+	@SuppressWarnings("unchecked")
 	public boolean editBasicUniversityInfo(String srcUsername,  String universityName, ManagedField field, Object value) {
 		PsuedoDatabase db = PsuedoDatabase.getInstance();
 		Account src = db.getUserByUsername(srcUsername);

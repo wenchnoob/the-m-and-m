@@ -11,6 +11,8 @@ import com.cmc.model.Account;
 import com.cmc.model.University;
 import com.cmc.model.User;
 
+import database.DatabaseInteractionClass;
+
 public class DriverTest {
 
 
@@ -79,6 +81,18 @@ public class DriverTest {
 		System.out.println("Testing saving schools: ");
 		testSaveSchool();
 		System.out.println();
+		
+		DatabaseInteractionClass actualDb = DatabaseInteractionClass.getInstance();
+		// Additional Stuff 1
+		System.out.println("Testing retrieving users from the actual database: ");
+		actualDb.getAllUsers().forEach(System.out::println);
+		
+		// Additional Stuff 2
+		System.out.println("Testing retrieving one user from the actual database: ");
+		System.out.println("Success: \n\t");
+		System.out.println(actualDb.getUserByUserName("luser"));
+		System.out.println("Failure: \n\t");
+		System.out.println(actualDb.getUserByUserName("ckalsow"));
 	}
 
 	public static void testLogin() {

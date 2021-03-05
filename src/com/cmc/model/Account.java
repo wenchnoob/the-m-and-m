@@ -77,7 +77,7 @@ public abstract class Account {
 	 * @return String
 	 * */
 	public String toString() {
-		return "Name : " + lastName + ", " + firstName;
+		return "Name : " + lastName + ", " + firstName + "\n\tUsername: " + username + "\n\tType: " + type + "\n\tStatus: " + enabled;
 	}
 	
 	
