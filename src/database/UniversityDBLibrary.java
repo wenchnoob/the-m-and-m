@@ -21,6 +21,12 @@ private String username;
 // a valid MySQL password needed to access the specified MySQL database
 private String password;
 
+private DBType type;
+
+public enum DBType {
+	WENCHY, ALL;
+}
+
 /**
  * Constructor takes a username and password as parameters and sets the 
  * values for all three instance fields in order to enable access to 
@@ -58,10 +64,11 @@ public UniversityDBLibrary(String username, String password){
  * specified MySQL database
  * @throws IllegalStateException if JDBC drivers can't be loaded properly
  */
-public UniversityDBLibrary(String database, String username, String password){
+public UniversityDBLibrary(String database, String username, String password, DBType type){
   this.database = database;
   this.username = username;
   this.password = password;
+  this.type = type;
   try{
     Class.forName("com.mysql.jdbc.Driver");
   }
@@ -79,14 +86,19 @@ public UniversityDBLibrary(String database, String username, String password){
  * to the database. A null is returned in case a database error occurs
  */
 private Connection openDBConnection(){
-  try {
-    Connection conn = DriverManager.getConnection(this.database, 
-                                                  this.username, this.password);
-    return conn;
-  } 
-  catch (SQLException se) {
-    return null;
-  }    
+    Connection conn;
+    try {
+		if (type == DBType.WENCHY) {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} else {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		conn = DriverManager.getConnection(database, username, password);
+	} catch (SQLException | ClassNotFoundException e) {
+		e.printStackTrace();
+		return null;
+	}
+    return conn;  
 }
 
 /**
@@ -125,6 +137,7 @@ private String[][] wrapper(ResultSet rs) {
     return result;
   }
   catch(SQLException se){
+	se.printStackTrace();
     return null;
   }
 }
@@ -170,9 +183,11 @@ private String[][] issueDBURead(String queryString){
   
   try{
     conn = openDBConnection();
-    stmt = conn.createStatement();
+    // Changed the way the result set was created.
+    stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
     rs = stmt.executeQuery(queryString);
     if (!rs.next()) {
+    	System.out.println("No result");
       return null;
     } 
     else {

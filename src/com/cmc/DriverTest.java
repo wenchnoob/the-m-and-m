@@ -85,22 +85,13 @@ public class DriverTest {
 		testSaveSchool();
 		System.out.println();
 		
-		DatabaseInteractionClass actualDb = DatabaseInteractionClass.getInstance();
-		// Additional Stuff 1
-		System.out.println("Testing retrieving users from the actual database: ");
-		actualDb.getAllUsers().forEach(System.out::println);
-		
-		// Additional Stuff 2
-		System.out.println("Testing retrieving one user from the actual database: ");
-		System.out.println("Success: \n\t");
-		System.out.println(actualDb.getUserByUserName("luser"));
-		System.out.println("Failure: \n\t");
-		System.out.println(actualDb.getUserByUserName("ckalsow"));
 		
 		
 		// Newest test
-		UniversityDBLibrary lib = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
-		System.out.println(Arrays.toString(lib.university_getUniversities()));
+		System.out.println("Testing getting all university information!: ");
+		UniversityDBLibrary lib = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!",
+				UniversityDBLibrary.DBType.WENCHY);
+		Arrays.stream(lib.university_getUniversities()).forEach(arr -> System.out.println(Arrays.toString(arr)));;
 		
 	}
 
