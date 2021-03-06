@@ -100,7 +100,7 @@ public class DBInteractions {
 			success = db.user_editUser(username, firstName, lastName, password, type, enabled) > 0;
 		}
 		
-		if (type == 'a') saveUserSchools((User)toSave);
+		if (type == 'u') saveUserSchools((User)toSave);
 		
 		return success;
 	}
@@ -116,6 +116,11 @@ public class DBInteractions {
 	// TODO
 	public Map<String, University> getAllUniversities() {
 		return null;
+	}
+	
+	// TODO
+	private void loadEmphases() {
+		
 	}
 	
 	// TODO
