@@ -23,8 +23,8 @@ public class User extends Account{
 	 * @param savedSchools
 	 * */
 	public User(String firstName, String lastName, String username,
-			String password, String
-			recoveryQuestion, String recoveryAnswer, boolean enabled, Map<String, UserSchool> savedSchools) {
+			String password, String recoveryQuestion, String recoveryAnswer,
+			boolean enabled, Map<String, UserSchool> savedSchools) {
 		super(firstName, lastName, enabled, recoveryQuestion,
 				recoveryAnswer, username, password, AccountType.BASIC_USER);
 		this.savedSchools = savedSchools;

@@ -2,8 +2,6 @@ package database;
 
 //library needed to connect to, retrieve data from, and modify data in the database
 import java.sql.*;
-import java.io.*;
-import java.util.*;
 
 /**
 * Class UniversityDBLibrary allows data operations on the MySQL database used in 
@@ -21,37 +19,6 @@ private String username;
 // a valid MySQL password needed to access the specified MySQL database
 private String password;
 
-private DBType type;
-
-public enum DBType {
-	WENCHY, ALL;
-}
-
-/**
- * Constructor takes a username and password as parameters and sets the 
- * values for all three instance fields in order to enable access to 
- * the specified MySQL database. Please provide your team username and 
- * password in order to create an instance of this class. Assumes username 
- * and database name are the same.
- * 
- * @param username String representing a valid username needed to access the 
- * specified MySQL database. Assumes username and database name are the same.
- * @param password String representing a valid password needed to access the 
- * specified MySQL database
- * @throws IllegalStateException if JDBC drivers can't be loaded properly
- */
-public UniversityDBLibrary(String username, String password){
-  this.database = username;
-  this.username = username;
-  this.password = password;
-  try{
-    Class.forName("com.mysql.jdbc.Driver");
-  }
-  catch (ClassNotFoundException cnfe) {
-    throw new IllegalStateException("failed to load JDBC drivers");
-  }
-}
-
 /**
  * Constructor takes a database name, username and password as parameters 
  * and sets the values for all three instance fields in order to enable access to 
@@ -64,11 +31,10 @@ public UniversityDBLibrary(String username, String password){
  * specified MySQL database
  * @throws IllegalStateException if JDBC drivers can't be loaded properly
  */
-public UniversityDBLibrary(String database, String username, String password, DBType type){
+public UniversityDBLibrary(String database, String username, String password){
   this.database = database;
   this.username = username;
   this.password = password;
-  this.type = type;
   try{
     Class.forName("com.mysql.jdbc.Driver");
   }
@@ -88,13 +54,16 @@ public UniversityDBLibrary(String database, String username, String password, DB
 private Connection openDBConnection(){
     Connection conn;
     try {
-		if (type == DBType.WENCHY) {
+		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-		} else {
+		} catch(ClassNotFoundException ex) {/* Ignore */}
+		
+		try {
 			Class.forName("com.mysql.jdbc.Driver");
-		}
+		} catch(ClassNotFoundException ex) { /* Ignore */}
+		
 		conn = DriverManager.getConnection(database, username, password);
-	} catch (SQLException | ClassNotFoundException e) {
+	} catch (SQLException e) {
 		e.printStackTrace();
 		return null;
 	}
@@ -139,27 +108,6 @@ private String[][] wrapper(ResultSet rs) {
   catch(SQLException se){
 	se.printStackTrace();
     return null;
-  }
-}
-
-/**
- * A private helper method used by other methods in this class to display 
- * data returned from the database for display purposes.
- * This method SHOULD NOT be used outside this class.
- * 
- * @param table a 2-D array of Strings containing data from the database
- */
-private void display(String[][] table, PrintWriter pw) {
-  if(table!=null){
-    for (int row = 0; row < table.length; row++) {         
-      for (int col = 0; col < table[0].length; col++) {
-        pw.print(table[row][col] + "     ");
-      }
-      pw.println();
-    }     
-  }
-  else{
-    pw.println("Nothing to display");
   }
 }
 

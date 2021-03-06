@@ -12,9 +12,8 @@ import com.cmc.model.Account;
 import com.cmc.model.University;
 import com.cmc.model.User;
 
-import database.DatabaseInteractionClass;
+import database.DBInteractions;
 import database.UniversityDBLibrary;
-import database.Database.DBType;
 
 public class DriverTest {
 
@@ -89,9 +88,17 @@ public class DriverTest {
 		
 		// Newest test
 		System.out.println("Testing getting all university information!: ");
-		UniversityDBLibrary lib = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!",
-				UniversityDBLibrary.DBType.WENCHY);
-		Arrays.stream(lib.university_getUniversities()).forEach(arr -> System.out.println(Arrays.toString(arr)));;
+		UniversityDBLibrary lib = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		Arrays.stream(lib.university_getUniversities()).forEach(arr -> System.out.println(Arrays.toString(arr)));
+		
+		System.out.println("Users: ");
+		Arrays.stream(lib.user_getUsers()).forEach(arr -> System.out.println(Arrays.toString(arr)));
+		
+		// Test of saving current dummy users
+		PsuedoDatabase.getInstance().getAllUsers().forEach(user -> DBInteractions.getInstance().save(user));
+		
+		// Test of removing a user
+		DBInteractions.getInstance().remove(PsuedoDatabase.getInstance().getUserByUsername("ckalsow"));
 		
 	}
 
