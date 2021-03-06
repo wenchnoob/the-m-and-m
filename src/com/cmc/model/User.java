@@ -41,7 +41,7 @@ public class User extends Account{
 		if (schoolName == null) return false;
 		University university = PsuedoDatabase.getInstance().findUniversityByName(schoolName);
 		if (university == null) return false;
-		UserSchool userSchool = new UserSchool(university, this);
+		UserSchool userSchool = new UserSchool(university, username);
 		savedSchools.put(schoolName, userSchool);
 		return true;
 	}
@@ -63,6 +63,15 @@ public class User extends Account{
 	 * */
 	public Map<String, UserSchool> getSavedSchools() {
 		return savedSchools;
+	}
+	
+	
+	/**
+	 * sets the saved schools for this user
+	 * @author wench
+	 * */
+	public void setSavedSchools(Map<String, UserSchool> savedSchools) {
+		this.savedSchools = savedSchools;
 	}
 	
 } 

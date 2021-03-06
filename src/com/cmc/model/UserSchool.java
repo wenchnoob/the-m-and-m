@@ -10,7 +10,7 @@ package com.cmc.model;
 public class UserSchool {
 
 	private University university;
-	private User owner;
+	private String owner;
 	
 	/**
 	 * lists all accounts
@@ -18,7 +18,7 @@ public class UserSchool {
 	 * @param university
 	 * @param owne
 	 * */
-	public UserSchool(University university, User owner) {
+	public UserSchool(University university, String owner) {
 		this.university = university;
 		this.owner = owner;
 	}
@@ -40,14 +40,14 @@ public class UserSchool {
 	/**
 	 * @return the owner
 	 */
-	public User getOwner() {
+	public String getOwner() {
 		return owner;
 	}
 
 	/**
 	 * @param owner the owner to set
 	 */
-	public void setOwner(User owner) {
+	public void setOwner(String owner) {
 		this.owner = owner;
 	}
 	

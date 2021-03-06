@@ -1,4 +1,4 @@
-package database;
+package com.cmc.database;
 
 //library needed to connect to, retrieve data from, and modify data in the database
 import java.sql.*;

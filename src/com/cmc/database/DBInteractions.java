@@ -1,4 +1,4 @@
-package database;
+package com.cmc.database;
 
 import java.util.*;
 import com.cmc.model.*;
@@ -11,7 +11,7 @@ public class DBInteractions {
 	private DBInteractions() {
 		// Initializer for All
 		db = new UniversityDBLibrary("jdbc:mysql://devsrv.cs.csbsju.edu/megatherium", "megatherium", "csci230");
-		// Initializer for Wenchy
+		// Initializer for Wenchy (Comment out if you are not wenchy)
 		db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
 	
@@ -30,14 +30,14 @@ public class DBInteractions {
 			String username = userData[2];
 			String password = userData[3];
 			String type = userData[4];
-			String status = userData[5];
+			boolean status = userData[5].equals("Y")? true : false;
 			
 			if (type.equals("u")) {
 				allUsers.add(new User(firstName, lastName, username, password, "", "", 
-						status.equals("Y")? true : false, null));
+						status, null));
 			} else {
 				allUsers.add(new Admin(firstName, lastName, username, password, "", "", 
-						status.equals("Y")? true : false));
+						status));
 			}
 		}
 		
@@ -45,9 +45,38 @@ public class DBInteractions {
 		return allUsers;
 	}
 	
-	// Need the load of university data to be implemented before implementing this functionality
 	private void loadUserSchools(List<Account> users) {
 		String[][] usersAndSchools = db.user_getUsernamesWithSavedSchools();
+		Map<String, Map<String, UserSchool>> mapping = mapify(usersAndSchools);
+		
+		users.forEach(user -> {
+			String username = user.getUsername();
+			if (mapping.containsKey(username)) ((User)user).setSavedSchools(mapping.get(username));
+		});
+	}
+	
+	private Map<String, Map<String, UserSchool>> mapify(String[][] userAndSchools) {
+		Map<String, Map<String, UserSchool>> userToSchools = new HashMap<String,  Map<String, UserSchool>>();
+		Map<String, University> universities = getAllUniversities();
+		
+		for (int i = 0; i < userAndSchools.length; i++) {
+			String user = userAndSchools[i][0];
+			String universityName = userAndSchools[i][1];
+			UserSchool school = new UserSchool(universities.get(universityName), user);
+			
+			if (userToSchools.containsKey(user)) {
+				userToSchools.get(user).put(universityName, school);
+			} else {
+				userToSchools.put(user, new HashMap<String, UserSchool>() {
+					private static final long serialVersionUID = 1L;
+					{
+						put(universityName, school);
+					}	
+				});
+			}
+		}
+		
+		return userToSchools;
 	}
 	
 	public Account getUserByUserName(String username) {
@@ -65,18 +94,19 @@ public class DBInteractions {
 		char type = toSave.getClass() == User.class ? 'u': 'a';
 		char enabled = toSave.isEnabled() ? 'Y' : 'N';
 		
-		if (db.user_addUser(firstName, lastName, username, password, type) == -1) {
-			db.user_editUser(username, firstName, lastName, password, type, enabled);
+		boolean success = true;
+		
+		if (db.user_addUser(firstName, lastName, username, password, type) <= 0) {
+			success = db.user_editUser(username, firstName, lastName, password, type, enabled) > 0;
 		}
 		
 		if (type == 'a') saveUserSchools((User)toSave);
 		
-		return true;
+		return success;
 	}
 	
 	private void saveUserSchools(User user) {
-		String userName = user.getUsername();
-		user.getSavedSchools().forEach((k, v) -> db.user_saveSchool(userName, k));
+		user.getSavedSchools().forEach((k, v) -> db.user_saveSchool(user.getUsername(), k));
 	}
 	
 	public boolean remove(Account toRemove) {
@@ -84,7 +114,7 @@ public class DBInteractions {
 	}
 	
 	// TODO
-	public List<University> getAllUniversities() {
+	public Map<String, University> getAllUniversities() {
 		return null;
 	}
 	
