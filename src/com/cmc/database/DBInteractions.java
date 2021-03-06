@@ -41,7 +41,7 @@ public class DBInteractions {
 			}
 		}
 		
-		loadUserSchools(allUsers);
+		// loadUserSchools(allUsers);
 		return allUsers;
 	}
 	
@@ -106,6 +106,7 @@ public class DBInteractions {
 	}
 	
 	private void saveUserSchools(User user) {
+		if (user.getSavedSchools() == null) return;
 		user.getSavedSchools().forEach((k, v) -> db.user_saveSchool(user.getUsername(), k));
 	}
 	
@@ -115,11 +116,13 @@ public class DBInteractions {
 	
 	// TODO
 	public Map<String, University> getAllUniversities() {
+		Map<String, University> universities = new HashMap<>();
+		loadEmphases(universities);
 		return null;
 	}
 	
 	// TODO
-	private void loadEmphases() {
+	private void loadEmphases(Map<String, University> universities) {
 		
 	}
 	

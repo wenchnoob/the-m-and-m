@@ -10,6 +10,7 @@ import com.cmc.controller.SearchController;
 import com.cmc.controller.UniversityController;
 import com.cmc.database.DBInteractions;
 import com.cmc.database.UniversityDBLibrary;
+import com.cmc.database.tests.DatabaseTest;
 import com.cmc.model.Account;
 import com.cmc.model.University;
 import com.cmc.model.User;
@@ -18,6 +19,9 @@ public class DriverTest {
 
 
 	public static void main(String[] args) {
+		
+		DatabaseTest.suite().run(null);
+		
 		// 1
 		System.out.println("Testing login: ");
 		testLogin();
