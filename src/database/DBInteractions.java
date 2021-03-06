@@ -1,11 +1,7 @@
 package database;
 
-import java.util.ArrayList;
-import java.util.List;
-import com.cmc.model.Account;
-import com.cmc.model.Admin;
-import com.cmc.model.University;
-import com.cmc.model.User;
+import java.util.*;
+import com.cmc.model.*;
 
 public class DBInteractions {
 	
@@ -45,7 +41,13 @@ public class DBInteractions {
 			}
 		}
 		
+		loadUserSchools(allUsers);
 		return allUsers;
+	}
+	
+	// Need the load of university data to be implemented before implementing this functionality
+	private void loadUserSchools(List<Account> users) {
+		String[][] usersAndSchools = db.user_getUsernamesWithSavedSchools();
 	}
 	
 	public Account getUserByUserName(String username) {
@@ -67,7 +69,14 @@ public class DBInteractions {
 			db.user_editUser(username, firstName, lastName, password, type, enabled);
 		}
 		
+		if (type == 'a') saveUserSchools((User)toSave);
+		
 		return true;
+	}
+	
+	private void saveUserSchools(User user) {
+		String userName = user.getUsername();
+		user.getSavedSchools().forEach((k, v) -> db.user_saveSchool(userName, k));
 	}
 	
 	public boolean remove(Account toRemove) {
@@ -86,6 +95,11 @@ public class DBInteractions {
 	
 	// TODO
 	public boolean save(University toSave) {
+		return true;
+	}
+	
+	// TODO
+	public boolean remove(University toRemove) {
 		return true;
 	}
 	
