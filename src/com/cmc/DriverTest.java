@@ -7,14 +7,10 @@ import com.cmc.controller.AccountController;
 import com.cmc.controller.AdminFunctionalityController;
 import com.cmc.controller.SearchController;
 import com.cmc.controller.UniversityController;
-import com.cmc.database.tests.DatabaseTest;
 import com.cmc.model.Account;
 import com.cmc.model.University;
 import com.cmc.model.User;
-import com.cmc.model.tests.EntityTest;
 
-import junit.framework.TestResult;
-import junit.framework.TestSuite;
 
 public class DriverTest {
 
@@ -33,16 +29,6 @@ public class DriverTest {
 		AccountController.getInstance().logout("ckalsow");
 		System.out.println("Logged out Account: ");
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
-	}
-
-	public static void testViewAccount() {
-		AccountController controller = AccountController.getInstance();
-		String view = controller.viewAccount("ckalsow");
-		if (view != null) {
-			System.out.println(view);
-		} else {
-			System.out.println("Account not Found!");
-		}
 	}
 
 	public static void testSearchUniversities() {
@@ -82,18 +68,6 @@ public class DriverTest {
 		System.out.println(controller.viewAccount("ckalsow"));
 	}
 
-	public static void testViewAllUniversities() {
-		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
-		List<University> allUniversities = controller.viewAllUniversities();
-		System.out.println(allUniversities);
-	}
-
-	public static void testViewAllAccounts() {
-		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
-		List<Account> allAccounts = controller.viewAllAccounts();
-		System.out.println(allAccounts);
-	}
-
 	public static void testViewUniversity() {
 		System.out.println(UniversityController.getInstance().viewUniversity("Uni A"));
 	}
@@ -104,7 +78,6 @@ public class DriverTest {
 		System.out.println(UniversityController.getInstance().viewUniversity("Uni B"));
 		System.out.println();
 		System.out.println("Current list of all universities: ");
-		testViewAllUniversities();
 	}
 	
 	public static void testChangeStatus() {

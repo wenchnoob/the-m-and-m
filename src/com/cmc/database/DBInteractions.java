@@ -1,7 +1,10 @@
 package com.cmc.database;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import com.cmc.model.*;
+import csb.sju.csci.*;
 
 public class DBInteractions {
 	
@@ -41,7 +44,7 @@ public class DBInteractions {
 			}
 		}
 		
-		// loadUserSchools(allUsers);
+		loadUserSchools(allUsers);
 		return allUsers;
 	}
 	
@@ -57,7 +60,11 @@ public class DBInteractions {
 	
 	private Map<String, Map<String, UserSchool>> mapify(String[][] userAndSchools) {
 		Map<String, Map<String, UserSchool>> userToSchools = new HashMap<String,  Map<String, UserSchool>>();
-		Map<String, University> universities = getAllUniversities();
+		Map<String, University> universities = getAllUniversities()
+				.stream()
+				.collect(Collectors.toConcurrentMap(uni -> uni.getName(), uni -> uni));
+		
+		if (userAndSchools == null) return userToSchools;
 		
 		for (int i = 0; i < userAndSchools.length; i++) {
 			String user = userAndSchools[i][0];
@@ -115,14 +122,14 @@ public class DBInteractions {
 	}
 	
 	// TODO
-	public Map<String, University> getAllUniversities() {
-		Map<String, University> universities = new HashMap<>();
+	public List<University> getAllUniversities() {
+		List<University> universities = new ArrayList<>();
 		loadEmphases(universities);
-		return null;
+		return universities;
 	}
 	
 	// TODO
-	private void loadEmphases(Map<String, University> universities) {
+	private void loadEmphases(List<University> universities) {
 		
 	}
 	

@@ -6,6 +6,7 @@ package com.cmc.controller;
 import java.util.List;
 
 import com.cmc.PsuedoDatabase;
+import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 import com.cmc.model.Address;
 import com.cmc.model.University;
@@ -36,10 +37,8 @@ public class UniversityController {
 	 * @param universityName
 	 * @return String
 	 * */
-	public String viewUniversity(String universityName) {
-		University university = PsuedoDatabase.getInstance().findUniversityByName(universityName);
-		if (university == null) return "University not found";
-		return "University name: " + university.getName() + "\n\t Address: " + university.getAddress().toString() + "\n\tRead More...";
+	public University viewUniversity(String universityName) {
+		return  DBInteractions.getInstance().getUniversityByName(universityName);
 	}
 
 	/**
@@ -53,9 +52,9 @@ public class UniversityController {
 	 * */
 	@SuppressWarnings("unchecked")
 	public boolean editBasicUniversityInfo(String srcUsername,  String universityName, ManagedField field, Object value) {
-		PsuedoDatabase db = PsuedoDatabase.getInstance();
-		Account src = db.getUserByUsername(srcUsername);
-		University uni = db.findUniversityByName(universityName);
+		DBInteractions db = DBInteractions.getInstance();
+		Account src = db.getUserByUserName(srcUsername);
+		University uni = db.getUniversityByName(universityName);
 		if (src.getType() != Account.AccountType.ADMIN ) return false;
 
 		try {
@@ -125,7 +124,8 @@ public class UniversityController {
 			/* If anything fails just give up and return false */
 			return false;
 		}
-
+		
+		db.save(uni);
 		return true;
 	}
 	

@@ -3,7 +3,7 @@
  */
 package com.cmc.controller;
 
-import com.cmc.PsuedoDatabase;
+import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 
 /**
@@ -39,8 +39,8 @@ public class AccountController {
 	 * @return Account
 	 * */
 	public Account logon(String username, String password) {
-		PsuedoDatabase db = PsuedoDatabase.getInstance();
-		Account user = db.getUserByUsername(username);
+		DBInteractions db = DBInteractions.getInstance();
+		Account user = db.getUserByUserName(username);
 		if (user == null) return null;
 		if (user.isEnabled() && user.logon(password)) return user;
 		return null;
@@ -53,10 +53,11 @@ public class AccountController {
 	 * @return boolean
 	 * */
 	public boolean logout(String username) {
-		PsuedoDatabase db = PsuedoDatabase.getInstance();
-		Account user = db.getUserByUsername(username);
+		DBInteractions db = DBInteractions.getInstance();
+		Account user = db.getUserByUserName(username);
 		if (user == null) return false;
-		if (user.isEnabled() && user.logout()) return true;
+		if (user.isEnabled()) return user.logout();
+		db.save(user);
 		return false;
 	}
 	
@@ -66,13 +67,8 @@ public class AccountController {
 	 * @param username
 	 * @return String
 	 * */
-	public String viewAccount(String username) {
-		Account user = PsuedoDatabase.getInstance().getUserByUsername(username);
-		String name = ("User Information : \n\tName: " + user.getFirstName() + " " + user.getLastName() + "\n\t" +
-				"UserName : " + user.getUsername() + "\n\t" + "Password : " + user.getPassword() + "\n\t" +
-				"Recovery Question: " + user.getRecoveryQuestion() + "\n\t" + "User Type : " + user.getType()) + "\n\t" + "Enabled: " + user.isEnabled()
-				+ "\n\t" + "LoggedOn: " + user.isLoggedOn();
-		return name;
+	public Account viewAccount(String username) {
+		return DBInteractions.getInstance().getUserByUserName(username);
 	}
 	
 	/**

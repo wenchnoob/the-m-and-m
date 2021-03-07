@@ -4,7 +4,7 @@
 package com.cmc.controller;
 
 import java.util.*;
-import com.cmc.PsuedoDatabase;
+import com.cmc.database.DBInteractions;
 import com.cmc.model.University;
 
 /**
@@ -116,7 +116,7 @@ public class SearchController {
 		if (qualLife1 == -1) qualLife1 = 0;
 		if (qualLife2 == -1) qualLife2 = Integer.MAX_VALUE;
 
-		List<University> universities = PsuedoDatabase.getInstance().getAllUniversities();
+		List<University> universities = DBInteractions.getInstance().getAllUniversities();
 		//by school name
 		if (!schoolName.equals("")) {
 			universities  = filterByName(universities, schoolName);
