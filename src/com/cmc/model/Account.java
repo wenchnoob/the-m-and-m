@@ -4,10 +4,13 @@
 package com.cmc.model;
 
 /**
+ *  This class is an abstract class that is supposed to express the basic functionality
+ *  of any account in the system.
+ *  
  * @author Channa Kalsow
- *
  */
 public abstract class Account {
+	
 	protected String firstName, lastName, recoveryQuestion,
 	recoveryAnswer, username, password;
 	protected boolean enabled;
@@ -49,6 +52,15 @@ public abstract class Account {
 		if (this.password.equals(password)) loggedOn = true;
 		return loggedOn;
 	}
+
+	/**
+	 * allows a user to logout
+	 * @author Channa, Kristiana, Wenchy
+	 * @return boolean
+	 * */
+	public boolean logout() {
+		return (this.loggedOn = false) == false;
+	}
 	
 	/**
 	 * allows a user to recover password
@@ -57,19 +69,10 @@ public abstract class Account {
 	 * @return String
 	 * */
 	public String recover(String answer) {
-		//TODO
-		return " ";
+		if (recoveryAnswer.equals(answer)) return password;
+		return "Failed to recover";
 	}
-	
-	/**
-	 * allows a user to logout
-	 * @author Channa, Kristiana, Wenchy
-	 * @return boolean
-	 * */
-	public boolean logout() {
-		this.loggedOn = false;
-		return loggedOn;
-	}
+
 	
 	/**
 	 * toString method
@@ -81,7 +84,6 @@ public abstract class Account {
 	}
 	
 	
-	
 	/**
 	 * @return the type
 	 */
@@ -90,7 +92,7 @@ public abstract class Account {
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param AccountType type the type to set
 	 */
 	public void setType(AccountType type) {
 		this.type = type;
@@ -210,6 +212,12 @@ public abstract class Account {
 		BASIC_USER, ADMIN
 	}
 	
+	/**
+	 * Equals method override to allow for testing of this class
+	 * @author wench
+	 * @param Object to be compared
+	 * @return boolean indicating equality
+	 * */
 	@Override
 	public boolean equals(Object o) {
 		if (o == null || o.getClass() != this.getClass()) return false;

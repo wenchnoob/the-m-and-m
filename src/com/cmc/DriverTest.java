@@ -1,128 +1,28 @@
 package com.cmc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.cmc.controller.AccountController;
 import com.cmc.controller.AdminFunctionalityController;
 import com.cmc.controller.SearchController;
 import com.cmc.controller.UniversityController;
-import com.cmc.database.DBInteractions;
-import com.cmc.database.UniversityDBLibrary;
 import com.cmc.database.tests.DatabaseTest;
 import com.cmc.model.Account;
 import com.cmc.model.University;
 import com.cmc.model.User;
+import com.cmc.model.tests.EntityTest;
+
+import junit.framework.TestResult;
+import junit.framework.TestSuite;
 
 public class DriverTest {
 
 
 	public static void main(String[] args) {
 		
-		DatabaseTest.suite().run(null);
-		
-		// 1
-		System.out.println("Testing login: ");
-		testLogin();
-		System.out.println();
-
-		// 2
-		System.out.println("Testing view account: ");
-		testViewAccount();
-		System.out.println();
-
-		// 3
-		System.out.println("Testing search Universities: ");
-		testSearchUniversities();
-		System.out.println();
-
-		// 4
-		System.out.println("Testing editing basic user information: ");
-		testEditBasicUserInfo();
-		System.out.println();
-
-		// 5
-		System.out.println("Testing view all universities: ");
-		testViewAllUniversities();
-		System.out.println();
-
-		// 6
-		System.out.println("Testing view all accounts: ");
-		testViewAllAccounts();
-		System.out.println();
-
-		// 7
-		System.out.println("Testing view University: ");
-		testViewUniversity();
-		System.out.println();
-
-		// 8
-		System.out.println("Testing editing basic university info: ");
-		testEditBasicUniversityInfo();
-		System.out.println();
-		
-		// 9
-		System.out.println("Testing activate/deactivate user: ");
-		testChangeStatus();
-		System.out.println();
-
-		// 10
-		System.out.println("Testing Logout: ");
-		testLogout();
-		System.out.println();
-		
-		// 11
-		System.out.println("Testing adding new User: ");
-		testAddUser();
-		System.out.println();
-		
-		// 12
-		System.out.println("Testing changer user type: ");
-		testChangeUserType();
-		System.out.println();
-		
-		// 13
-		System.out.println("Testing saving schools: ");
-		testSaveSchool();
-		System.out.println();
 		
 		
-		
-		// Newest test
-		System.out.println("Testing getting all university information!: ");
-		UniversityDBLibrary lib = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
-		Arrays.stream(lib.university_getUniversities()).forEach(arr -> System.out.println(Arrays.toString(arr)));
-		
-		System.out.println("Users: ");
-		Arrays.stream(lib.user_getUsers()).forEach(arr -> System.out.println(Arrays.toString(arr)));
-		
-		// Test of saving current dummy users
-		PsuedoDatabase.getInstance().getAllUsers().forEach(user -> DBInteractions.getInstance().save(user));
-		
-		// Test of removing a user
-		DBInteractions.getInstance().remove(PsuedoDatabase.getInstance().getUserByUsername("ckalsow"));
-		
-	}
-
-	public static void testLogin() {
-		// Successful Login
-		System.out.println("Testing a successful login: ");
-		Account loggedIn = AccountController.getInstance().logon("ckalsow", "Channaiskool");
-		if (loggedIn != null) {
-			System.out.println(loggedIn);
-		} else {
-			System.out.println("Invalid Credentials Logon Failed!");
-		}
-
-		// Failed login
-		System.out.println("Testing a failed login: ");
-		Account loggedIn2 = AccountController.getInstance().logon("a", "bingo");
-		if (loggedIn2 != null) {
-			System.out.println(loggedIn2);
-		} else {
-			System.out.println("Invalid Credentials Logon Failed!");
-		}
 	}
 	
 	public static void testLogout() {
