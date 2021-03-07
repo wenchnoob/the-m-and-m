@@ -1,4 +1,4 @@
-package com.cmc.database.tests;
+package com.cmc.database;
 
 import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;

@@ -1,4 +1,4 @@
-package com.cmc.model.tests;
+package com.cmc.model;
 
 import junit.framework.Assert;
 import junit.framework.Test;

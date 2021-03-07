@@ -1,22 +1,31 @@
-package com.cmc.controller.tests;
+package com.cmc.controller;
 
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 
 import junit.framework.Assert;
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 public class ControllerTest extends TestCase {
 	
 	private DBInteractions db = DBInteractions.getInstance();
 	
-	public ControllerTest(String name) {
-		super (name);
+	@Before
+	public void SetUp() throws Exception {
+		
 	}
 	
+	@After
+	public void tearDown() throws Exception {
+		
+	}
+	
+	@Test
 	public void testLogin() {
 		Account wenchy = db.getUserByUserName("admin");
 		wenchy.logon("admin");
@@ -25,15 +34,9 @@ public class ControllerTest extends TestCase {
 		Assert.assertTrue(!wenchy.isLoggedOn());
 	}
 	
+	@Test
 	public void testLogout() {
 		
-	}
-	
-	public static Test suite() {
-		TestSuite ts = new TestSuite();
-		ts.addTest(new ControllerTest("testLogin"));
-		ts.addTest(new ControllerTest("testLogout"));
-		return ts;
 	}
 
 }
