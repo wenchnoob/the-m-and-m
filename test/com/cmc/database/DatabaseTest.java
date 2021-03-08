@@ -1,6 +1,5 @@
 package com.cmc.database;
 
-import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 import com.cmc.model.Admin;
 import com.cmc.model.User;

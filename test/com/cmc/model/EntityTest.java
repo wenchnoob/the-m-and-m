@@ -7,9 +7,6 @@ import junit.framework.TestSuite;
 
 import java.util.Map;
 
-import com.cmc.model.Account;
-import com.cmc.model.User;
-import com.cmc.model.UserSchool;
 
 public class EntityTest extends TestCase {
 	

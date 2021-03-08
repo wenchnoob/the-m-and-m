@@ -13,7 +13,9 @@ public class DBInteractions {
 	
 	private DBInteractions() {
 		// Initializer for All
-		db = new UniversityDBLibrary("jdbc:mysql://devsrv.cs.csbsju.edu/megatherium", "megatherium", "csci230");
+		// Uncomment the below line if you are in horizon view.
+		// db = new UniversityDBLibrary("megatherium", "csci230");
+		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
 		db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
