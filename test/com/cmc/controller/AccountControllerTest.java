@@ -4,14 +4,14 @@ import java.util.HashMap;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import com.cmc.model.Account;
 import com.cmc.model.User;
 import com.cmc.model.UserSchool;
 
 import junit.framework.TestCase;
+import junit.framework.Assert;
 
 /**
  * 
@@ -30,74 +30,51 @@ public class AccountControllerTest extends TestCase {
 		testAccount = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
 		controller = AccountController.getInstance();
 	}
+	
 	@After
 	public void teardown() throws Exception {
-	
+		testAccount = null;
+		controller = null;
 	}
+	
 	//Tests changing the first name
 	@Test
-	public void editBasicUserInfoFirstNameTest() {
-		try {
-			setup();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Assertions.assertNotEquals("Bob", testAccount.getFirstName());
+	public void testEditBasicUserInfoFirstName() {
+		Assert.assertNotSame("Bob", testAccount.getFirstName());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.FIRSTNAME, "Bob");
-		Assertions.assertEquals("Bob", testAccount.getFirstName());
+		Assert.assertEquals("Bob", testAccount.getFirstName());
 	}
+	
 	//Tests changing the last name
 	@Test
-	public void editBasicUserInfoLastNameTest() {
-		try {
-			setup();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Assertions.assertNotEquals("Kratz", testAccount.getLastName());
+	public void testEditBasicUserInfoLastName() {
+		Assert.assertNotSame("Kratz", testAccount.getLastName());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.LASTNAME, "Kratz");
-		Assertions.assertEquals("Kratz",testAccount.getLastName());
+		Assert.assertEquals("Kratz",testAccount.getLastName());
 	}
+	
 	//Tests changing the password
 	@Test
-	public void editBasicUserInfoPasswordTest() {
-		try {
-			setup();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Assertions.assertNotEquals("newPassword", testAccount.getPassword());
+	public void testEditBasicUserInfoPassword() {
+		Assert.assertEquals("newPassword", testAccount.getPassword());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.PASSWORD, "newPassword");
-		Assertions.assertEquals("newPassword",testAccount.getPassword());
+		Assert.assertEquals("newPassword",testAccount.getPassword());
 	}
+	
 	//Tests changing the Recovery Question
 	@Test
-	public void editBasicUserInfoRecoveryQuestionTest() {
-		try {
-			setup();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Assertions.assertNotEquals("Who are you?", testAccount.getRecoveryQuestion());
+	public void testEditBasicUserInfoRecoveryQuestion() {
+		Assert.assertNotSame("Who are you?", testAccount.getRecoveryQuestion());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.RECOVERY_QUESTION, "Who are you?");
-		Assertions.assertEquals("Who are you?",testAccount.getRecoveryQuestion());
+		Assert.assertEquals("Who are you?",testAccount.getRecoveryQuestion());
 	}
+	
 	//Tests changing the Recovery Answer
 	@Test
-	public void editBasicUserInfoRecoveryAnswerTest() {
-		try {
-			setup();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Assertions.assertNotEquals("you", testAccount.getRecoveryAnswer());
+	public void testEditBasicUserInfoRecoveryAnswer() {
+		Assert.assertNotSame("you", testAccount.getRecoveryAnswer());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.RECOVERY_ANSWER, "you");
-		Assertions.assertEquals("you",testAccount.getRecoveryAnswer());
+		Assert.assertEquals("you",testAccount.getRecoveryAnswer());
 	}
 }
 
