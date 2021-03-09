@@ -26,7 +26,7 @@ public class DriverTest {
 		// Successful Logout
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		Account admin = AccountController.getInstance().logon("admin", "admin");
-		controller.ChangeStatus(admin, PsuedoDatabase.getInstance().getUserByUsername("ckalsow"), true);
+		controller.ChangeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), true);
 		AccountController.getInstance().logout("ckalsow");
 		System.out.println("Logged out Account: ");
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
@@ -58,14 +58,14 @@ public class DriverTest {
 		// User editing own information
 		System.out.println("User editing their own information: ");
 		Account channa = controller.logon("ckalsow", "Channaiskool");
-		controller.editBasicUserInfor(channa, channa , AccountController.ManagedField.LASTNAME, "Anderson");
+		controller.editBasicUserInfo(channa, channa , AccountController.ManagedField.LASTNAME, "Anderson");
 		System.out.println(controller.viewAccount("ckalsow"));
 		System.out.println();
 
 		// Admin editing user information
 		System.out.println("Admin editing user information");
 		Account admin = controller.logon("admin", "admin");
-		controller.editBasicUserInfor(admin, channa, AccountController.ManagedField.RECOVERY_QUESTION, "Three digits of pie?");
+		controller.editBasicUserInfo(admin, channa, AccountController.ManagedField.RECOVERY_QUESTION, "Three digits of pie?");
 		System.out.println(controller.viewAccount("ckalsow"));
 	}
 
@@ -84,7 +84,7 @@ public class DriverTest {
 	public static void testChangeStatus() {
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		Account admin = AccountController.getInstance().logon("admin", "admin");
-		controller.ChangeStatus(admin, PsuedoDatabase.getInstance().getUserByUsername("ckalsow"), false);
+		controller.ChangeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), false);
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
 	}
 	
@@ -100,7 +100,7 @@ public class DriverTest {
 	public static void testChangeUserType() {
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		Account admin = AccountController.getInstance().logon("kkiskool", "koool");
-		controller.ChangeStatus(admin, PsuedoDatabase.getInstance().getUserByUsername("ckalsow"), true);
+		controller.ChangeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), true);
 		Account user = AccountController.getInstance().logon("ckalsow", "Channaiskool");	
 		controller.changeUserType(admin, user, Account.AccountType.ADMIN);
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
