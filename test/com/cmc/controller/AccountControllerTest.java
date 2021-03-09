@@ -43,9 +43,17 @@ public class AccountControllerTest extends TestCase {
 	//Tests changing the first name
 	@Test
 	public void testEditBasicUserInfoFirstName() {
+		// Tests Changing ther first name of a user
+		// Name: BASIC_USER -> BASIC_USER
 		Assert.assertNotSame("Bob", testAccount.getFirstName());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.FIRSTNAME, "Bob");
 		Assert.assertEquals("Bob", testAccount.getFirstName());
+		
+		// Test a basic user attempting to change their own first name
+		
+		// Test an admin changin a basic user's name;
+		
+		// Teat an admin changing another admin's name.
 	}
 	
 	//Tests changing the last name

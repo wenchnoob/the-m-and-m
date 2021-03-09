@@ -136,25 +136,27 @@ public class DBInteractions {
 			String location = universityData[2];
 			String control = universityData[3];
 			int numOfStudents = Integer.parseInt(universityData[4]);
-			double perFemale = Double.parseDouble(universityData[5]);
+			float perFemale = Float.parseFloat(universityData[5]);
 			int satVerbal = (int)Double.parseDouble(universityData[6]);
 			int satMath = (int)Double.parseDouble(universityData[7]);
-			double expenses = Double.parseDouble(universityData[8]);
-			double perFinAid = Double.parseDouble(universityData[9]);
+			int expenses = (int)Float.parseFloat(universityData[8]);
+			float perFinAid = Float.parseFloat(universityData[9]);
 			int numOfApps = Integer.parseInt(universityData[10]);
-			double perAdmitted = Double.parseDouble(universityData[11]);
-			double perEnrolled = Double.parseDouble(universityData[12]);
-			int AcadmeicScale = Integer.parseInt(universityData[13]);
-			int SocialScale = Integer.parseInt(universityData[14]);
-			int QualityOfLifeScale = Integer.parseInt(universityData[15]);
+			float perAdmitted = Float.parseFloat(universityData[11]);
+			float perEnrolled = Float.parseFloat(universityData[12]);
+			int academicScale = Integer.parseInt(universityData[13]);
+			int socialScale = Integer.parseInt(universityData[14]);
+			int qualityOfLife = Integer.parseInt(universityData[15]);
 			
 			List<String> emphases = new ArrayList<>();
 			
-			//universities.add(new University(universityName, state, location, control, numOfStudents,perFemale,
-			//		satVerbal,satMath,expenses));
+			universities.add(new University(universityName, state, location, control, numOfStudents,
+					satMath, satVerbal, expenses, numOfApps, academicScale, socialScale, emphases,
+					perFemale, perFinAid, perAdmitted, perEnrolled, qualityOfLife));
 			
 		}
 		
+		universities.forEach(System.out::println);
 
 		loadEmphases(universities);
 		return universities;
@@ -163,7 +165,7 @@ public class DBInteractions {
 	// TODO
 	private void loadEmphases(List<University> universities) {
 		String[][] allEmphases = db.university_getNamesWithEmphases();
-		for (String[] emphases:allEmphases) {
+		for (String[] emphases : allEmphases) {
 			
 		}
 		

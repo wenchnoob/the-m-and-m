@@ -12,8 +12,8 @@ import java.util.List;
 public class University {
 	
 	private String name;
-	private Address address;
-	private String location, control;
+	// private Address address;
+	private String state, location, control;
 	private int numStudents, satMath, satVerbal, expenses, numOfApps, academicScale, socialScale, qualityLife;
 	private List<String> emphases;
 	private float perFemale, perFinAid, perAdmitted, perEnrolled;
@@ -40,13 +40,14 @@ public class University {
 	 * @param perEnrolled
 	 * @param qualityLife
 	 * */
-	public University(String name, Address address, String location, String control,
+	public University(String name, String state, String location, String control,
 			int numStudents, int satMath, int satVerbal, int expenses,
 			int numOfApps, int academicScale, int socialScale, List<String> emphases, float perFemale,
 			float perFinAid, float perAdmitted, float perEnrolled, int qualityLife) {
 		
 		this.name = name;
-		this.address = address;
+		// this.address = address;
+		this.state = state;
 		this.location = location;
 		this.control = control;
 		this.numStudents = numStudents;
@@ -94,16 +95,16 @@ public class University {
 	/**
 	 * @return the address
 	 */
-	public Address getAddress() {
-		return address;
+	public String getState() {
+		return state;
 	}
 
 
 	/**
 	 * @param address the address to set
 	 */
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 

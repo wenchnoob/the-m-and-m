@@ -206,7 +206,7 @@ public class SearchController {
 	private static List<University> filterByState(List<University> universities, String state){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school:universities) {
-			if (school.getAddress().getState().equalsIgnoreCase(state)) {
+			if (school.getState().equalsIgnoreCase(state)) {
 				fittingUniversities.add(school);
 			}
 		}

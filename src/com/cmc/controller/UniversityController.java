@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
-import com.cmc.model.Address;
 import com.cmc.model.University;
 
 /**
@@ -61,22 +60,9 @@ public class UniversityController {
 			case NAME:
 				uni.setName((String) value);
 				break;
-			case ADDRESS:
-				uni.setAddress((Address)value);
-				break;
-			case STREET:
-				uni.getAddress().setStreet((String)value);
-				break;
-			case CITY:
-				uni.getAddress().setCity((String)value);
-				break;
 			case STATE:
-				uni.getAddress().setState((String)value);
+				uni.setState((String)value);
 				break;
-			case COUNTRY:
-				uni.getAddress().setCountry((String)value);
-			case POSTALCODE:
-				uni.getAddress().setPostalCode((Integer)value);
 			case LOCATION:
 				uni.setLocation((String)value);
 				break;
@@ -130,7 +116,7 @@ public class UniversityController {
 	
 	//class that holds different types of managed information in UniversityController
 	public enum ManagedField {
-		NAME, ADDRESS, STREET, CITY, STATE, COUNTRY, POSTALCODE,  LOCATION, CONTROL, NUM_STUDENTS, PERCENT_FEMALE, SAT_MATH, SAT_VERBAL, EXPENSES, PERCENT_FINANCIAL_AID,
+		NAME, STATE, COUNTRY, POSTALCODE,  LOCATION, CONTROL, NUM_STUDENTS, PERCENT_FEMALE, SAT_MATH, SAT_VERBAL, EXPENSES, PERCENT_FINANCIAL_AID,
 		NUM_OF_APPS, PERCENT_ADMITTED, ACADEMIC_SCALE, SOCIAL_SCALE, EMPHASES;
 	}
 }
