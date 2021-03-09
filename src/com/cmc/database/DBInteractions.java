@@ -4,21 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
-<<<<<<< HEAD
-//<<<<<< HEAD
-//import csb.sju.csci.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
-//=======
-//import csb.sju.csci.*;
-//import dblibrary.project.csci230.UniversityDBLibrary;
-//>>>>>>> a3200332cc7e37c66ddb4a664e4324bd3c5ddd51
-=======
-
 
 //import dblibrary.project.csci230.UniversityDBLibrary;
 import csb.sju.csci.*;
 
->>>>>>> 9eec8bfe6ef962bba391ab336ece27219323f6d0
 
 public class DBInteractions {
 	
@@ -111,6 +100,7 @@ public class DBInteractions {
 	}
 	
 	public boolean save(Account toSave) {
+		if (toSave == null) return false;
 		String firstName = toSave.getFirstName();
 		String lastName = toSave.getLastName();
 		String username = toSave.getUsername();
@@ -135,6 +125,7 @@ public class DBInteractions {
 	}
 	
 	public boolean remove(Account toRemove) {
+		if (toRemove == null) return true;
 		return db.user_deleteUser(toRemove.getUsername()) > 0;
 	}
 	
@@ -195,6 +186,7 @@ public class DBInteractions {
 	
 
 	public boolean save(University toSave) {
+		if (toSave == null) return false;
 		String universityName = toSave.getName();
 		String state = toSave.getState();
 		String location = toSave.getLocation();
@@ -228,6 +220,7 @@ public class DBInteractions {
 	
 
 	public boolean remove(University toRemove) {
+		if (toRemove == null) return false;
 		return db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
 	

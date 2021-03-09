@@ -3,6 +3,7 @@ package com.cmc.controller;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 import com.cmc.model.Admin;
 import com.cmc.model.User;
@@ -18,10 +19,13 @@ import junit.framework.TestCase;
 public class AdminFunctionalityControllerTest extends TestCase {
 	
 	private AdminFunctionalityController controller;
+	private DBInteractions db = DBInteractions.getInstance();
 	
 	private Account testUser;
 	private Account testAdmin;
 	private Account testAdmin2;
+	
+	private String usernameToBeAdded = "kkiskool";
 	
 	@Override
 	@Before
@@ -37,9 +41,31 @@ public class AdminFunctionalityControllerTest extends TestCase {
 	@After
 	protected void tearDown() throws Exception {
 		super.tearDown();
+		
+		db.remove(testUser);
+		db.remove(testAdmin);
+		db.remove(testAdmin2);
+		db.remove(db.getUserByUserName(usernameToBeAdded));
+		
+		db = null;
 		controller = null;
 		testAdmin = null;
 		testUser = null;
+	}
+	
+	@Test
+	public void testAddUser() {
+		// Failed add
+		// User attempting to add a user
+		controller.addUser(testUser, "Kristian", "Kalsow", usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertSame("The user should have failed to add another user.", null, db.getUserByUserName(usernameToBeAdded)); 
+		
+		// Successful add
+		// Admin attempting to add a user
+		controller.addUser(testAdmin, "Kristian", "Kalsow", usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertNotEquals("The admin should have succeeded in adding another user.", null, db.getUserByUserName(usernameToBeAdded));
 	}
 	
 	@Test
@@ -107,12 +133,31 @@ public class AdminFunctionalityControllerTest extends TestCase {
 	public void testChangeType() {
 		// Failed type change
 		
-		// User tries to modify any other person's information
-		// Name: USER -> USER
+		// User tries to modify his own type
+		// Name: USER -> SELF
 		Account.AccountType initialType = testUser.getType();
 		boolean typeChanged = controller.changeUserType(testUser, testUser, Account.AccountType.ADMIN);
-		Assert.assertFalse("Whether the user's type has changed. USER -> OTHERS", typeChanged);
-		Assert.assertEquals("Test to see that the user's type has not change after the operation.", initialType, testUser.getType());
+		Assert.assertFalse("Whether the user's type has changed. USER -> SELF", typeChanged);
+		Assert.assertEquals("Test to see that the user's type has not change after the operation. USER -> SELF", initialType, testUser.getType());
+		
+		// Admin tries to modify his own type
+		// Name: ADMIN -> SELF
+		initialType = testAdmin.getType();
+		typeChanged = controller.changeUserType(testAdmin, testAdmin, Account.AccountType.BASIC_USER);
+		Assert.assertFalse("Whether the user's type has changed. ADMIN -> SELF", typeChanged);
+		Assert.assertEquals("Test to see that the user's type has not change after the operation. ADMIN -> SELF", initialType, testAdmin.getType());
+		
+		// Admin modifies another user's type
+		// Name: ADMIN -> OTHER
+		initialType = testUser.getType();
+		typeChanged = controller.changeUserType(testAdmin, testUser, Account.AccountType.ADMIN);
+		Assert.assertTrue("Whether the user's type has changed. ADMIN -> SELF", typeChanged);
+		Assert.assertNotSame("Test to see that the user's type has not change after the operation. ADMIN -> SELF", initialType, testUser.getType());
+		
+		initialType = testAdmin.getType();
+		typeChanged = controller.changeUserType(testAdmin2, testAdmin, Account.AccountType.BASIC_USER);
+		Assert.assertTrue("Whether the user's type has changed. ADMIN -> SELF", typeChanged);
+		Assert.assertNotSame("Test to see that the user's type has not change after the operation. ADMIN -> SELF", initialType, testAdmin.getType());
 	}
 
 }
