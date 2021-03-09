@@ -41,6 +41,7 @@ public class DBInteractions {
 			String type = userData[4];
 			boolean status = userData[5].equals("Y")? true : false;
 			
+			
 			if (type.equals("u")) {
 				allUsers.add(new User(firstName, lastName, username, password, "", "", 
 						status, null));
@@ -113,6 +114,8 @@ public class DBInteractions {
 		if (db.user_addUser(firstName, lastName, username, password, type) <= 0) {
 			success = db.user_editUser(username, firstName, lastName, password, type, enabled) > 0;
 		}
+		
+		if (!toSave.isEnabled()) success = db.user_editUser(username, firstName, lastName, password, type, enabled) > 0;
 		
 		if (type == 'u') saveUserSchools((User)toSave);
 		

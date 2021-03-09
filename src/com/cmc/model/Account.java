@@ -49,6 +49,7 @@ public abstract class Account {
 	 * @return boolean
 	 * */
 	public boolean logon(String password) {
+		if (!enabled) return false;
 		if (this.password.equals(password)) loggedOn = true;
 		return loggedOn;
 	}
