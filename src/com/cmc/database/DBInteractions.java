@@ -4,7 +4,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
-import csb.sju.csci.*;
+
+import dblibrary.project.csci230.UniversityDBLibrary;
+//import csb.sju.csci.*;
 //import dblibrary.project.csci230.UniversityDBLibrary;
 
 public class DBInteractions {
@@ -16,10 +18,10 @@ public class DBInteractions {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
 
-		//db = new UniversityDBLibrary("megatherium", "csci230");
+		db = new UniversityDBLibrary("megatherium", "csci230");
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
-		db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
 	
 	public static DBInteractions getInstance() {
@@ -171,18 +173,26 @@ public class DBInteractions {
 		
 	}
 	
-	// TODO
+
 	public University getUniversityByName(String name) {
+		List<University> allUniversities = getAllUniversities();
+		for (University school:allUniversities) {
+			if (name.equals(school.getName())){
+				return school;
+			}
+		}
 		return null;
 	}
 	
 	// TODO
 	public boolean save(University toSave) {
+
 		return true;
 	}
 	
 	// TODO
 	public boolean remove(University toRemove) {
+
 		return true;
 	}
 	
