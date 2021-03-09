@@ -7,6 +7,7 @@ import com.cmc.controller.AccountController;
 import com.cmc.controller.AdminFunctionalityController;
 import com.cmc.controller.SearchController;
 import com.cmc.controller.UniversityController;
+import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 import com.cmc.model.University;
 import com.cmc.model.User;
@@ -17,7 +18,7 @@ public class DriverTest {
 
 	public static void main(String[] args) {
 		
-		
+		DBInteractions.getInstance().getAllUsers().forEach(System.out::println);
 		
 	}
 	
