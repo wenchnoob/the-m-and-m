@@ -128,12 +128,16 @@ public class DBInteractions {
 	// TODO
 	public List<University> getAllUniversities() {
 		List<University> universities = new ArrayList<>();
+		ArrayList<String>[][] = db.university_getUniversities();
 		loadEmphases(universities);
 		return universities;
 	}
 	
 	// TODO
 	private void loadEmphases(List<University> universities) {
+		
+		db.university_getNamesWithEmphases();
+		
 		
 	}
 	
