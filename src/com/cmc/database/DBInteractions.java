@@ -4,21 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
-<<<<<<< HEAD
-//<<<<<< HEAD
-//import csb.sju.csci.*;
+
 import dblibrary.project.csci230.UniversityDBLibrary;
-//=======
+
+
+
+//import dblibrary.project.csci230.UniversityDBLibrary;
 //import csb.sju.csci.*;
-//import dblibrary.project.csci230.UniversityDBLibrary;
-//>>>>>>> a3200332cc7e37c66ddb4a664e4324bd3c5ddd51
-=======
 
-
-//import dblibrary.project.csci230.UniversityDBLibrary;
-import csb.sju.csci.*;
-
->>>>>>> 9eec8bfe6ef962bba391ab336ece27219323f6d0
 
 public class DBInteractions {
 	
@@ -29,10 +22,10 @@ public class DBInteractions {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
 
-		// db = new UniversityDBLibrary("megatherium", "csci230");
+		 db = new UniversityDBLibrary("megatherium", "csci230");
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
-		db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
 	
 	public static DBInteractions getInstance() {
