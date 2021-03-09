@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cmc.model.Account;
+import com.cmc.model.Admin;
 import com.cmc.model.User;
 import com.cmc.model.UserSchool;
 
@@ -24,13 +25,15 @@ public class AccountControllerTest extends TestCase {
 	
 
 	private AccountController controller;
-	private Account testAccount;
+	private Account testAccount, testAdmin1, testAdmin2;
 	
 	@Override
 	@Before
 	protected void setUp() throws Exception {
 		controller = AccountController.getInstance();
 		testAccount = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
+		testAdmin1 = new Admin("Brady","Bobington", "Who am i?","You","Bbob","Password",true);
+		testAdmin2 = new Admin("Zach","Kratz","Who are you?","I am me","ZKratz","Password",true);
 	}
 	
 	@Override
@@ -43,17 +46,35 @@ public class AccountControllerTest extends TestCase {
 	//Tests changing the first name
 	@Test
 	public void testEditBasicUserInfoFirstName() {
-		// Tests Changing ther first name of a user
-		// Name: BASIC_USER -> BASIC_USER
-		Assert.assertNotSame("Bob", testAccount.getFirstName());
-		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.FIRSTNAME, "Bob");
-		Assert.assertEquals("Bob", testAccount.getFirstName());
-		
 		// Test a basic user attempting to change their own first name
-		
-		// Test an admin changin a basic user's name;
-		
-		// Teat an admin changing another admin's name.
+		// Name: BASIC_USER -> BASIC_USER
+		Assert.assertNotSame("Bobby", testAccount.getFirstName());
+		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.FIRSTNAME, "Bobby");
+		Assert.assertEquals("Bobby", testAccount.getFirstName());
+	}
+		// Test a basic user attempting to change their own first name
+		// Name: ADMIN -> BASIC_USER
+	@Test
+	public void testAdminEditBasicUserInfoFirstName() {
+		// Test an admin changing a basic user's name;
+		Assert.assertNotSame("Bobby", testAccount.getFirstName());
+		controller.editBasicUserInfo(testAdmin1, testAccount, AccountController.ManagedField.FIRSTNAME, "Bobby");
+		Assert.assertEquals("Bobby", testAccount.getFirstName());
+	}
+	// Test an admin changing another admin's first name.
+	@Test 
+	public void testAdminEditAdminFirstName() {
+		Assert.assertNotSame("Bobby", testAdmin1.getFirstName());
+		controller.editBasicUserInfo(testAdmin2, testAdmin1, AccountController.ManagedField.FIRSTNAME, "Bobby");
+		Assert.assertEquals("Bobby", testAdmin1.getFirstName());
+	}
+	//Tests a basic user attempting to change an admins name
+	//Makes sure that it fails
+	@Test
+	public void testBasicUserEditsAdminFirstName() {
+		Assert.assertEquals("Brady", testAdmin1.getFirstName());
+		controller.editBasicUserInfo(testAccount, testAdmin1, AccountController.ManagedField.FIRSTNAME, "Bob");
+		Assert.assertEquals("Brady", testAdmin1.getFirstName());
 	}
 	
 	//Tests changing the last name
