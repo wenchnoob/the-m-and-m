@@ -88,15 +88,6 @@ public class DriverTest {
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
 	}
 	
-	public static void testAddUser() {
-		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
-		controller.addUser("Kristian", "Kalsow", "kkiskool" , 
-				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
-		System.out.println("Newly added account: ");
-		System.out.println(AccountController.getInstance().viewAccount("kkiskool"));
-		
-	}
-	
 	public static void testChangeUserType() {
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		Account admin = AccountController.getInstance().logon("kkiskool", "koool");

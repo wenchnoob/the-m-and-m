@@ -9,6 +9,7 @@ import dblibrary.project.csci230.UniversityDBLibrary;
 
 
 
+
 //import dblibrary.project.csci230.UniversityDBLibrary;
 //import csb.sju.csci.*;
 
@@ -104,6 +105,7 @@ public class DBInteractions {
 	}
 	
 	public boolean save(Account toSave) {
+		if (toSave == null) return false;
 		String firstName = toSave.getFirstName();
 		String lastName = toSave.getLastName();
 		String username = toSave.getUsername();
@@ -128,6 +130,7 @@ public class DBInteractions {
 	}
 	
 	public boolean remove(Account toRemove) {
+		if (toRemove == null) return true;
 		return db.user_deleteUser(toRemove.getUsername()) > 0;
 	}
 	
@@ -188,6 +191,7 @@ public class DBInteractions {
 	
 
 	public boolean save(University toSave) {
+		if (toSave == null) return false;
 		String universityName = toSave.getName();
 		String state = toSave.getState();
 		String location = toSave.getLocation();
@@ -221,6 +225,7 @@ public class DBInteractions {
 	
 
 	public boolean remove(University toRemove) {
+		if (toRemove == null) return false;
 		return db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
 	
