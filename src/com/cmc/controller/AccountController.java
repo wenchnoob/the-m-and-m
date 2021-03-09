@@ -80,7 +80,7 @@ public class AccountController {
 	 * @param value
 	 * @return boolean
 	 * */
-	public boolean editBasicUserInfor(Account src, Account targ, ManagedField field, String value) {
+	public boolean editBasicUserInfo(Account src, Account targ, ManagedField field, String value) {
 		if (src.getType() != Account.AccountType.ADMIN && src != targ) return false;
 		
 		try {

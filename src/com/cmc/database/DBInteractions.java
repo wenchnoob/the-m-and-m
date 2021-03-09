@@ -15,6 +15,7 @@ public class DBInteractions {
 	private DBInteractions() {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
+
 		db = new UniversityDBLibrary("megatherium", "csci230");
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
@@ -127,12 +128,16 @@ public class DBInteractions {
 	// TODO
 	public List<University> getAllUniversities() {
 		List<University> universities = new ArrayList<>();
+		ArrayList<String>[][] = db.university_getUniversities();
 		loadEmphases(universities);
 		return universities;
 	}
 	
 	// TODO
 	private void loadEmphases(List<University> universities) {
+		
+		db.university_getNamesWithEmphases();
+		
 		
 	}
 	

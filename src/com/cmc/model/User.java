@@ -5,7 +5,7 @@ package com.cmc.model;
 
 import java.util.Map;
 
-import com.cmc.PsuedoDatabase;
+import com.cmc.database.DBInteractions;
 
 public class User extends Account{
 	private Map<String, UserSchool> savedSchools;
@@ -39,7 +39,7 @@ public class User extends Account{
 	 * */
 	public boolean saveSchool(String schoolName) {
 		if (schoolName == null) return false;
-		University university = PsuedoDatabase.getInstance().findUniversityByName(schoolName);
+		University university = DBInteractions.getInstance().getUniversityByName(schoolName);
 		if (university == null) return false;
 		UserSchool userSchool = new UserSchool(university, username);
 		savedSchools.put(schoolName, userSchool);
