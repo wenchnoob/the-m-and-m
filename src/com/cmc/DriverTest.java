@@ -18,8 +18,8 @@ public class DriverTest {
 
 	public static void main(String[] args) {
 		
-		DBInteractions.getInstance().getAllUsers().forEach(System.out::println);
-		
+
+
 	}
 	
 	public static void testLogout() {

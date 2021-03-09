@@ -72,7 +72,9 @@ public class University {
 	 * @returns String
 	 * */
 	public String toString() {
+		
 		return name;
+
 	}
 
 
