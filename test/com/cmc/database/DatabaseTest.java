@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cmc.model.Account;
-import com.cmc.model.Admin;
 import com.cmc.model.User;
 
 import junit.framework.Assert;
