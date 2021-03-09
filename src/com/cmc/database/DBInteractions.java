@@ -4,15 +4,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
-<<<<<<< HEAD
+//<<<<<< HEAD
 //import csb.sju.csci.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
-=======
-
-import dblibrary.project.csci230.UniversityDBLibrary;
+//=======
 //import csb.sju.csci.*;
 //import dblibrary.project.csci230.UniversityDBLibrary;
->>>>>>> a3200332cc7e37c66ddb4a664e4324bd3c5ddd51
+//>>>>>>> a3200332cc7e37c66ddb4a664e4324bd3c5ddd51
 
 public class DBInteractions {
 	
