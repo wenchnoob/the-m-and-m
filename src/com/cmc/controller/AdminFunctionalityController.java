@@ -103,7 +103,7 @@ public class AdminFunctionalityController {
 	 * @param status
 	 * @return boolean
 	 * */
-	public boolean ChangeStatus(Account src, Account targ, boolean status) {
+	public boolean changeStatus(Account src, Account targ, boolean status) {
 		if (src == targ) return false;
 		if (src.getType() != Account.AccountType.ADMIN) return false;
 		targ.setEnabled(status);
