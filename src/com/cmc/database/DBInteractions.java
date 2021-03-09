@@ -4,11 +4,21 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
+<<<<<<< HEAD
+//<<<<<< HEAD
+//import csb.sju.csci.*;
+import dblibrary.project.csci230.UniversityDBLibrary;
+//=======
+//import csb.sju.csci.*;
+//import dblibrary.project.csci230.UniversityDBLibrary;
+//>>>>>>> a3200332cc7e37c66ddb4a664e4324bd3c5ddd51
+=======
 
 
 //import dblibrary.project.csci230.UniversityDBLibrary;
 import csb.sju.csci.*;
 
+>>>>>>> 9eec8bfe6ef962bba391ab336ece27219323f6d0
 
 public class DBInteractions {
 	
@@ -159,19 +169,17 @@ public class DBInteractions {
 			
 		}
 		
-		universities.forEach(System.out::println);
-
-		loadEmphases(universities);
-		return universities;
-	}
-	
-	// TODO
-	private void loadEmphases(List<University> universities) {
 		String[][] allEmphases = db.university_getNamesWithEmphases();
-		for (String[] emphases : allEmphases) {
+		for (University school: universities) {
+			for (String[] emphasis:allEmphases) {
+				if (school.getName().equals(emphasis[0])){
+					school.getEmphases().add(emphasis[1]);					
+				}
+			}
 			
 		}
 		
+		return universities;
 	}
 	
 
@@ -185,7 +193,7 @@ public class DBInteractions {
 		return null;
 	}
 	
-	// TODO
+
 	public boolean save(University toSave) {
 		String universityName = toSave.getName();
 		String state = toSave.getState();
@@ -218,7 +226,7 @@ public class DBInteractions {
 		return success;
 	}
 	
-	// TODO
+
 	public boolean remove(University toRemove) {
 		return db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
