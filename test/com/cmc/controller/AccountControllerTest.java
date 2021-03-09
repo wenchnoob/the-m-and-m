@@ -22,17 +22,20 @@ import junit.framework.Assert;
 
 public class AccountControllerTest extends TestCase {
 	
-	private Account testAccount;
-	private AccountController controller;
 
+	private AccountController controller;
+	private Account testAccount;
+	
+	@Override
 	@Before
-	public void setup() throws Exception {
-		testAccount = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
+	protected void setUp() throws Exception {
 		controller = AccountController.getInstance();
+		testAccount = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
 	}
 	
+	@Override
 	@After
-	public void teardown() throws Exception {
+	protected void tearDown() throws Exception {
 		testAccount = null;
 		controller = null;
 	}
@@ -56,9 +59,9 @@ public class AccountControllerTest extends TestCase {
 	//Tests changing the password
 	@Test
 	public void testEditBasicUserInfoPassword() {
-		Assert.assertEquals("newPassword", testAccount.getPassword());
+		Assert.assertNotSame("newPassword", testAccount.getPassword());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.PASSWORD, "newPassword");
-		Assert.assertEquals("newPassword",testAccount.getPassword());
+		Assert.assertEquals("newPassword", testAccount.getPassword());
 	}
 	
 	//Tests changing the Recovery Question
@@ -76,5 +79,6 @@ public class AccountControllerTest extends TestCase {
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.RECOVERY_ANSWER, "you");
 		Assert.assertEquals("you",testAccount.getRecoveryAnswer());
 	}
+	
 }
 

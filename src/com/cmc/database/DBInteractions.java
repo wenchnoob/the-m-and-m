@@ -128,15 +128,44 @@ public class DBInteractions {
 	// TODO
 	public List<University> getAllUniversities() {
 		List<University> universities = new ArrayList<>();
+		String[][] allUniversities = db.university_getUniversities();
+		
+		for (String[] universityData: allUniversities) {
+			String universityName = universityData[0];
+			String state = universityData[1];
+			String location = universityData[2];
+			String control = universityData[3];
+			int numOfStudents = Integer.parseInt(universityData[4]);
+			double perFemale = Double.parseDouble(universityData[5]);
+			int satVerbal = (int)Double.parseDouble(universityData[6]);
+			int satMath = (int)Double.parseDouble(universityData[7]);
+			double expenses = Double.parseDouble(universityData[8]);
+			double perFinAid = Double.parseDouble(universityData[9]);
+			int numOfApps = Integer.parseInt(universityData[10]);
+			double perAdmitted = Double.parseDouble(universityData[11]);
+			double perEnrolled = Double.parseDouble(universityData[12]);
+			int AcadmeicScale = Integer.parseInt(universityData[13]);
+			int SocialScale = Integer.parseInt(universityData[14]);
+			int QualityOfLifeScale = Integer.parseInt(universityData[15]);
+			
+			List<String> emphases = new ArrayList<>();
+			
+			//universities.add(new University(universityName, state, location, control, numOfStudents,perFemale,
+			//		satVerbal,satMath,expenses));
+			
+		}
+		
+
 		loadEmphases(universities);
 		return universities;
 	}
 	
 	// TODO
 	private void loadEmphases(List<University> universities) {
-		
-		db.university_getNamesWithEmphases();
-		
+		String[][] allEmphases = db.university_getNamesWithEmphases();
+		for (String[] emphases:allEmphases) {
+			
+		}
 		
 	}
 	

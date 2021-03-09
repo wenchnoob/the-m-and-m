@@ -104,6 +104,7 @@ public class AdminFunctionalityController {
 	 * @return boolean
 	 * */
 	public boolean ChangeStatus(Account src, Account targ, boolean status) {
+		if (src == targ) return false;
 		if (src.getType() != Account.AccountType.ADMIN) return false;
 		targ.setEnabled(status);
 		return DBInteractions.getInstance().save(targ);

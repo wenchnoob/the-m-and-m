@@ -4,15 +4,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.cmc.controller.ControllerTest;
 import com.cmc.database.DatabaseTest;
-import com.cmc.model.EntityTest;
+import com.cmc.model.AccountTest;
 import com.cmc.controller.AccountControllerTest;
+import com.cmc.controller.AdminFunctionalityControllerTest;
 
 import junit.framework.TestSuite;
 
 @RunWith(Suite.class)
-@SuiteClasses({ControllerTest.class, DatabaseTest.class, EntityTest.class, AccountControllerTest.class})
+@SuiteClasses({DatabaseTest.class, AccountTest.class, AccountControllerTest.class,
+	AdminFunctionalityControllerTest.class})
 public class AllTests extends TestSuite {
 
 }
