@@ -4,15 +4,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
-<<<<<<< HEAD
-//import csb.sju.csci.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
-=======
+
 
 import dblibrary.project.csci230.UniversityDBLibrary;
 //import csb.sju.csci.*;
 //import dblibrary.project.csci230.UniversityDBLibrary;
->>>>>>> a3200332cc7e37c66ddb4a664e4324bd3c5ddd51
+
 
 public class DBInteractions {
 	
@@ -191,14 +188,40 @@ public class DBInteractions {
 	
 	// TODO
 	public boolean save(University toSave) {
-
-		return true;
+		String universityName = toSave.getName();
+		String state = toSave.getState();
+		String location = toSave.getLocation();
+		String control = toSave.getControl();
+		int numOfStudents = toSave.getNumStudents();
+		float perFemale = toSave.getPerFemale();
+		int satVerbal = toSave.getSatMath();
+		int satMath = toSave.getSatVerbal();
+		int expenses = toSave.getExpenses();
+		float perFinAid = toSave.getPerFinAid();
+		int numOfApps = toSave.getNumOfApps();
+		float perAdmitted = toSave.getPerAdmitted();
+		float perEnrolled = toSave.getPerEnrolled();
+		int academicScale = toSave.getAcademicScale();
+		int socialScale = toSave.getSocialScale();
+		int qualityOfLife = toSave.getQualityLife();
+		
+		boolean success = true;
+		
+		if (db.university_addUniversity(universityName,state,location,control,numOfStudents,perFemale,
+				satVerbal,satMath,expenses,perFinAid,numOfApps,perAdmitted,perEnrolled,
+				academicScale,socialScale,qualityOfLife) <= 0) {
+			
+			success = db.university_editUniversity(universityName,state,location,control,numOfStudents,perFemale,
+					satVerbal,satMath,expenses,perFinAid,numOfApps,perAdmitted,perEnrolled,
+					academicScale,socialScale,qualityOfLife) > 0;
+		}
+		
+		return success;
 	}
 	
 	// TODO
 	public boolean remove(University toRemove) {
-
-		return true;
+		return db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
 	
 
