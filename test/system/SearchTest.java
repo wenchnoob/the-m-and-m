@@ -1,5 +1,6 @@
 /**
- * 
+ * SearchTest System Test
+ * JUNIT test ensures that the Search method works correctly
  */
 package system;
 
@@ -13,11 +14,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cmc.controller.SearchController;
-import com.cmc.database.DBInteractions;
+import src.com.cmc.database.DBInteractions;
 import com.cmc.model.University;
 
 /**
- * @author ckalsow001
+ * @author Channa K and Kristina A
  *
  */
 public class SearchTest {
@@ -73,89 +74,23 @@ public class SearchTest {
 	public void tearDown() throws Exception {
 	}
 	
-	//searches all schools in Florida
+	//searches all schools in Florida with 34000 to 36000 students
 	@Test
 	public void testMainSearchScenario() {
 		List <University> searchResults = controller.searchUniversity("", "FLORIDA", "", "",
-				-1, -1, (float) -1, (float) -1, -1, -1, -1,-1, -1,
+				34000, 36000, (float) -1, (float) -1, -1, -1, -1,-1, -1,
 				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>());
+		System.out.println(searchResults);
+		System.out.println(uniBySizeandState);
 		for (int I = 0; I < searchResults.size(); I++) {
 
 			//Assert.assertEquals("Ensure that search finds correct Universities", flUnis, searchResults);
-			Assert.assertEquals(flUnis.get(I), searchResults.get(I));
-			
-		}
-
-	}
-
-	//searches all schools with a 34000-36000 students
-	@Test
-	public void testMainSearchScenario2() {
-		List <University> searchResults = controller.searchUniversity("", "", "", "",
-				34000, 36000, (float) -1, (float) -1, -1, -1, -1,-1, -1,
-				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
-				(float) -1, (float) -1,-1, -1, -1, -1,
-				-1, -1, new ArrayList<String>());
-		for (int I = 0; I < searchResults.size(); I++) {
-
-			//Assert.assertEquals("Ensure that search finds correct Universities", unisBySize, searchResults);
-			Assert.assertEquals(unisBySize.get(I), searchResults.get(I));
-			
-		}
-
-	}
-
-	//searches all schools in Florida with 34000-36000 students
-	@Test
-	public void testMainSearchScenario3() {
-		List <University> searchResults = controller.searchUniversity("", "FLORIDA", "", "",
-				34000, 36000, (float) -1, (float) -1, -1, -1, -1,-1, -1,
-				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
-				(float) -1, (float) -1,-1, -1, -1, -1,
-				-1, -1, new ArrayList<String>());
-		for (int I = 0; I < searchResults.size(); I++) {
-
-			//Assert.assertEquals("Ensure that search finds correct Universities", uniBySizeandState, searchResults);
 			Assert.assertEquals(uniBySizeandState.get(I), searchResults.get(I));
 			
 		}
-		
 
-	}
-
-	//searches all schools on Mars and returns empty list
-	@Test
-	public void testAlternateSearchScenario() {
-		
-		Assert.assertEquals("Ensure that search finds nothing. Fake State.", emptyList, controller.searchUniversity("", "Mars", "", "",
-				-1, -1, (float) -1, (float) -1, -1, -1, -1,-1, -1,
-				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
-				(float) -1, (float) -1,-1, -1, -1, -1,
-				-1, -1, new ArrayList<String>()));
-	}
-
-	//searches all schools with a ridiculous number of students and returns empty list
-	@Test
-	public void testAlternateSearchScenario2() {
-
-		Assert.assertEquals("Ensure that search finds nothing. Fake numStudents.", emptyList, controller.searchUniversity("", "", "", "",
-				500000, 80000000, (float) -1, (float) -1, -1, -1, -1,-1, -1,
-				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
-				(float) -1, (float) -1,-1, -1, -1, -1,
-				-1, -1, new ArrayList<String>()));
-	}
-
-	//searches for schools in Alaska and returns an empty list
-	@Test
-	public void testAlternateScenario3() {
-
-		Assert.assertEquals("Ensure that search finds nothing. Fake numStudents.", emptyList, controller.searchUniversity("", "ALASKA", "", "",
-				34000, 36000, (float) -1, (float) -1, -1, -1, -1,-1, -1,
-				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
-				(float) -1, (float) -1,-1, -1, -1, -1,
-				-1, -1, new ArrayList<String>()));
 	}
 
 }

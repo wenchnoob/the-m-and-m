@@ -44,35 +44,36 @@ public class LoginTest extends TestCase {
 		disabledTestUser = null;
 	}
 
+
 	@Test
-	public void testLogin() {
-		
+	public void testLoginMain() {
 		// Successful Logins
 		// Enabled user logins in using valid credentials
 		// VALID LOGON
 		Account loggedInUser = controller.logon(testUser.getUsername(), testUser.getPassword());
+		// System Test, Main Scenario: successful login
 		Assert.assertEquals("The User should have successfully logged on. VALID LOGON.", testUser,  loggedInUser);
-		
+
+	}
+	
+	@Test
+	public void testLoginAlternate1() {
+		// System Test, Alternate Scenario #1: wrong password
+		// Enabled user attempts to login using invalid credentials
+		// ENABLED BUT INVALID
+		Account loggedInUser = controller.logon(testUser.getUsername(), testUser.getPassword() + "wrong");
+		Assert.assertEquals("There should be no logged on user. ENABLED BUT INVALID.", null, loggedInUser);
+
+	}
+	
+	@Test
+	public void testLoginAlternate2() {
+		// System Test, Alternate Scenario #2: disabled user
 		// Unsuccessful Logins
 		// Disabled user attempts to login using valid credentials
 		// DISABLED BUT VALID
-		loggedInUser = controller.logon(disabledTestUser.getUsername(), disabledTestUser.getPassword());
+		Account loggedInUser = controller.logon(disabledTestUser.getUsername(), disabledTestUser.getPassword());
 		Assert.assertEquals("There should be no logged on user. DISABLED BUT VALID.", null, loggedInUser);
-		
-		// Disabled user attempts to login using invalid credentials
-		// DISABLED AND INVALID
-		loggedInUser = controller.logon(disabledTestUser.getUsername(), disabledTestUser.getPassword() + "wrong");
-		Assert.assertEquals("There should be no logged on user. DISABLED AND VALID.", null, loggedInUser);
-		
-		// Enabled user attempts to login using invalid credentials
-		// ENABLED BUT INVALID
-		loggedInUser = controller.logon(testUser.getUsername(), testUser.getPassword() + "wrong");
-		Assert.assertEquals("There should be no logged on user. ENABLED BUT INVALID.", null, loggedInUser);
-		
-		//username doesn't exist
-		loggedInUser = controller.logon("unicorn", "puppetry");
-		Assert.assertEquals("There should be no logged on user. FAKE ACCOUNT.", null, loggedInUser);
-		
 	}
 	
 }

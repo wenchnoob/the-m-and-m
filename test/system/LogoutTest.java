@@ -63,21 +63,11 @@ public class LogoutTest extends TestCase{
 	@Test
 	public void testLogout() {
 		
-		// Successful Logins
-				// Enabled user logins in using valid credentials
-				// VALID LOGOUT
-				boolean logStatus = controller.logout(testUser.getUsername());
-				Assert.assertEquals("The User should have successfully logged out. VALID LOGOUT.", true,  logStatus);
-				
-				// Unsuccessful Logouts
-				// Disabled user attempts to logout using valid credentials
-				// DISABLED BUT VALID
-				logStatus = controller.logout(disabledTestUser.getUsername());
-				Assert.assertEquals("There should be no logged on user. DISABLED BUT VALID.", false, logStatus);
-				
-				//username doesn't exist
-				logStatus = controller.logout("unicorn");
-				Assert.assertEquals("There should be no logged off user. FAKE ACCOUNT.", false, logStatus);
+		// Successful Logout
+		// Enabled user logout in using valid credentials
+		// VALID LOGOUT
+		boolean logStatus = controller.logout(testUser.getUsername());
+		Assert.assertEquals("The User should have successfully logged out. VALID LOGOUT.", true,  logStatus);
 		
 	}
 
