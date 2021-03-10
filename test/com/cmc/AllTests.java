@@ -6,6 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import com.cmc.database.DatabaseTest;
 import com.cmc.model.AccountTest;
+import com.cmc.model.SaveSchoolTest;
 import com.cmc.controller.AccountControllerTest;
 import com.cmc.controller.AdminFunctionalityControllerTest;
 import com.cmc.controller.ChangeStatusTest;
@@ -21,7 +22,7 @@ import junit.framework.TestSuite;
 @SuiteClasses({DatabaseTest.class, AccountTest.class, AccountControllerTest.class,
 	AdminFunctionalityControllerTest.class, UniversityControllerTest.class, LoginTest.class,
 	SearchControllerTest.class,ChangeStatusTest.class,ChangeTypeTest.class,EditUserInfoTest.class,
-	SearchTest.class})
+	SearchTest.class, SaveSchoolTest.class, LogoutTest.class})
 public class AllTests extends TestSuite {
 
 }
