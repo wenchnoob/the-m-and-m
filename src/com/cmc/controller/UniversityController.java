@@ -10,19 +10,25 @@ import com.cmc.model.Account;
 import com.cmc.model.University;
 
 /**
+ * Class intended for the handling of all university functionalities in the system.
  * @author Channa Kalsow and Kristiana Anderson
- *
  */
 public class UniversityController {
 
 	private static UniversityController self;
 
+	/**
+	 * Private constructor to prevent construction of objects
+	 * of this class from outside of this class.
+	 */
 	private UniversityController() {}
 
 	/**
-	 * singleton
+	 * Static method to return a reference to a singleton instance of this class.
+	 * 
 	 * @author Channa, Kristiana, Wenchy
-	 * @return an instance of itself
+	 * 
+	 * @return AccountController - An singleton instance of this class.
 	 * */
 	public static UniversityController getInstance() {
 		if (self == null) self = new UniversityController();
@@ -30,23 +36,30 @@ public class UniversityController {
 	}
 
 	/**
-	 * allows a user to view a university
+	 * Returns a university object that represents the university name that was passed in.
+	 * If the university name does not exist in the database, then a null reference is returned.
+	 * 
 	 * @author Channa, Kristiana, Wenchy
-	 * @param universityName
-	 * @return String
+	 * 
+	 * @param universityName - The name of the university to be viewed.
+	 * 
+	 * @return University - The university object that will be displayed.
 	 * */
 	public University viewUniversity(String universityName) {
 		return  DBInteractions.getInstance().getUniversityByName(universityName);
 	}
 
 	/**
-	 * allows admin to edit a university
+	 * Allows admin's to modify a targeted field in a university object.
+	 * 
 	 * @author Channa, Kristiana, Wenchy
-	 * @param srcUsername
-	 * @param universityName
-	 * @param field
-	 * @param value
-	 * @return boolean
+	 * 
+	 * @param srcUsername - The username of the object trying to modify the university information.
+	 * @param universityName - The name of the university that is to be modified.
+	 * @param field - The attribute that is being targeted for modification.
+	 * @param value - The desired value for the targeted field to be changed to.
+	 * 
+	 * @return boolean - Whether the operation was successful.
 	 * */
 	@SuppressWarnings("unchecked")
 	public boolean editBasicUniversityInfo(String srcUsername,  String universityName, ManagedField field, Object value) {
@@ -114,7 +127,9 @@ public class UniversityController {
 		return true;
 	}
 
-	//class that holds different types of managed information in UniversityController
+	/**
+	 * Enum class that holds an identifier for the different types of managed information in UniversityController.
+	 * */
 	public enum ManagedField {
 		NAME, STATE, COUNTRY, POSTALCODE,  LOCATION, CONTROL, NUM_STUDENTS, PERCENT_FEMALE, SAT_MATH, SAT_VERBAL, EXPENSES, PERCENT_FINANCIAL_AID,
 		NUM_OF_APPS, PERCENT_ADMITTED, ACADEMIC_SCALE, SOCIAL_SCALE, EMPHASES;
