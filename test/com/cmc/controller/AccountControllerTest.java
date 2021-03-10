@@ -43,5 +43,10 @@ public class AccountControllerTest extends TestCase {
 		controller = null;
 
 	}
+	
+	@Test
+	public void testSomething() {
+		
+	}
 }
 
