@@ -73,7 +73,8 @@ public class SearchTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
+	//searches all schools in Florida
 	@Test
 	public void testMainSearchScenario() {
 		List <University> searchResults = controller.searchUniversity("", "FLORIDA", "", "",
@@ -90,6 +91,7 @@ public class SearchTest {
 
 	}
 
+	//searches all schools with a 34000-36000 students
 	@Test
 	public void testMainSearchScenario2() {
 		List <University> searchResults = controller.searchUniversity("", "", "", "",
@@ -106,6 +108,7 @@ public class SearchTest {
 
 	}
 
+	//searches all schools in Florida with 34000-36000 students
 	@Test
 	public void testMainSearchScenario3() {
 		List <University> searchResults = controller.searchUniversity("", "FLORIDA", "", "",
@@ -123,6 +126,7 @@ public class SearchTest {
 
 	}
 
+	//searches all schools on Mars and returns empty list
 	@Test
 	public void testAlternateSearchScenario() {
 		
@@ -133,6 +137,7 @@ public class SearchTest {
 				-1, -1, new ArrayList<String>()));
 	}
 
+	//searches all schools with a ridiculous number of students and returns empty list
 	@Test
 	public void testAlternateSearchScenario2() {
 
@@ -143,11 +148,12 @@ public class SearchTest {
 				-1, -1, new ArrayList<String>()));
 	}
 
+	//searches for schools in Alaska and returns an empty list
 	@Test
 	public void testAlternateScenario3() {
 
 		Assert.assertEquals("Ensure that search finds nothing. Fake numStudents.", emptyList, controller.searchUniversity("", "ALASKA", "", "",
-				500000, 80000000, (float) -1, (float) -1, -1, -1, -1,-1, -1,
+				34000, 36000, (float) -1, (float) -1, -1, -1, -1,-1, -1,
 				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>()));
