@@ -53,6 +53,7 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		testUser = null;
 	}
 	
+	
 	@Test
 	public void testAddUser() {
 		// Failed add
