@@ -39,10 +39,12 @@ public class User extends Account{
 	 * */
 	public boolean saveSchool(String schoolName) {
 		if (schoolName == null) return false;
+		if (savedSchools.containsKey(schoolName)) return false;
 		University university = DBInteractions.getInstance().getUniversityByName(schoolName);
 		if (university == null) return false;
 		UserSchool userSchool = new UserSchool(university, username);
 		savedSchools.put(schoolName, userSchool);
+		DBInteractions.getInstance().save(this);
 		return true;
 	}
 	
