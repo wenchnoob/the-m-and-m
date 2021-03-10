@@ -80,6 +80,21 @@ public class AdminFunctionalityController {
 	}
 	
 	/**
+	 * lists all accounts
+	 * @author Channa, Kristiana, Wenchy
+	 * @param src
+	 * @param targ
+	 * @param status
+	 * @return boolean
+	 * */
+	public boolean changeStatus(Account src, Account targ, boolean status) {
+		if (src == targ) return false;
+		if (src.getType() != Account.AccountType.ADMIN) return false;
+		targ.setEnabled(status);
+		return DBInteractions.getInstance().save(targ);
+	}
+	
+	/**
 	 * lists all universities in database
 	 * @author Channa, Kristiana, Wenchy
 	 * @return universities list
@@ -97,19 +112,5 @@ public class AdminFunctionalityController {
 		return DBInteractions.getInstance().getAllUsers().iterator();
 	}
 	
-	/**
-	 * lists all accounts
-	 * @author Channa, Kristiana, Wenchy
-	 * @param src
-	 * @param targ
-	 * @param status
-	 * @return boolean
-	 * */
-	public boolean changeStatus(Account src, Account targ, boolean status) {
-		if (src == targ) return false;
-		if (src.getType() != Account.AccountType.ADMIN) return false;
-		targ.setEnabled(status);
-		return DBInteractions.getInstance().save(targ);
-	}
 
 }
