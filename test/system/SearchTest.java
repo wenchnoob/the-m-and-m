@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cmc.controller.SearchController;
-import src.com.cmc.database.DBInteractions;
+import com.cmc.database.DBInteractions;
 import com.cmc.model.University;
 
 /**

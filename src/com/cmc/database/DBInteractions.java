@@ -1,4 +1,4 @@
-package src.com.cmc.database;
+package com.cmc.database;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import com.cmc.model.*;
 
 
-// import dblibrary.project.csci230.UniversityDBLibrary;
+import dblibrary.project.csci230.UniversityDBLibrary;
 //import csb.sju.csci.*;
 
 /**

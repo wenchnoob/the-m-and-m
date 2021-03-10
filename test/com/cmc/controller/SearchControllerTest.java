@@ -12,8 +12,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import src.com.cmc.database.DBInteractions;
-
+import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 import com.cmc.model.University;
 
