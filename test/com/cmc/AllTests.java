@@ -6,17 +6,19 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import com.cmc.database.DatabaseTest;
 import com.cmc.model.AccountTest;
-import com.cmc.model.SaveSchoolTest;
 import com.cmc.controller.AccountControllerTest;
 import com.cmc.controller.AdminFunctionalityControllerTest;
-import com.cmc.controller.ChangeStatusTest;
-import com.cmc.controller.ChangeTypeTest;
-import com.cmc.controller.EditUserInfoTest;
-import com.cmc.controller.LoginTest;
 import com.cmc.controller.SearchControllerTest;
 import com.cmc.controller.UniversityControllerTest;
 
 import junit.framework.TestSuite;
+import system.ChangeStatusTest;
+import system.ChangeTypeTest;
+import system.EditUserInfoTest;
+import system.LoginTest;
+import system.LogoutTest;
+import system.SaveSchoolTest;
+import system.SearchTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({DatabaseTest.class, AccountTest.class, AccountControllerTest.class,

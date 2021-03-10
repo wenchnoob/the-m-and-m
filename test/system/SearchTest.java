@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.cmc;
+package system;
 
 import static org.junit.Assert.*;
 

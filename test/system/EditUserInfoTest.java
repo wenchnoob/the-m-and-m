@@ -1,4 +1,4 @@
-package com.cmc.controller;
+package system;
 
 import java.util.HashMap;
 
@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.cmc.controller.AccountController;
 import com.cmc.model.Account;
 import com.cmc.model.Admin;
 import com.cmc.model.User;

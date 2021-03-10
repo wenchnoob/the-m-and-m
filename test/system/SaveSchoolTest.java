@@ -1,4 +1,4 @@
-package com.cmc.model;
+package system;
 
 import junit.framework.TestCase;
 
@@ -8,6 +8,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.cmc.database.DBInteractions;
+import com.cmc.model.Account;
+import com.cmc.model.User;
+import com.cmc.model.UserSchool;
 
 public class SaveSchoolTest extends TestCase {
 
