@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import com.cmc.model.*;
 
 
-import dblibrary.project.csci230.UniversityDBLibrary;
-//import csb.sju.csci.*;
+// import dblibrary.project.csci230.UniversityDBLibrary;
+import csb.sju.csci.*;
 
 /**
  * Class intended for the handling of all university functionalities in the system.
@@ -208,6 +208,17 @@ public class DBInteractions {
 		return db.user_deleteUser(toRemove.getUsername()) > 0;
 	}
 	
+	/**
+	 * Removes a users saved school from the database.
+	 * 
+	 * @author joseph and kristiana
+	 * 
+	 * @param user - The user whose save school should be removed.
+	 * @param school - The saved School that should be removed.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * 
+	 * */
 	public boolean removeIndividualSchool(User user, UserSchool school) {
 		if (user == null || school == null|| school.getUniversity() == null) return false;
 		String username = user.getUsername();
@@ -215,6 +226,15 @@ public class DBInteractions {
 		return db.user_removeSchool(username, removedSchool) > 0;
 	}
 	
+	/**
+	 * Removes all the saved schools of a user from the database.
+	 * 
+	 * @author joseph and krisitana
+	 * 
+	 * @param user - The user whose schools should be removed.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean removeAllUserSchool(User user) {
 		if (user == null) return false;
 		boolean success = true;
@@ -224,7 +244,13 @@ public class DBInteractions {
 		return success;
 	}
 	
-	
+	/**
+	 * Returns a list of all the universities in the database.
+	 * 
+	 * @author kristiana
+	 * 
+	 * @return List<University> - A list of the all the universities in the database.
+	 * */
 	public List<University> getAllUniversities() {
 		List<University> universities = new ArrayList<>();
 		String[][] allUniversities = db.university_getUniversities();
@@ -268,18 +294,32 @@ public class DBInteractions {
 		return universities;
 	}
 	
-
+	/**
+	 * Returns a university object that correlates with the name passed and the information stored in the database.
+	 * 
+	 * @author kristiana
+	 * 
+	 * @param name - The name to search for.
+	 * 
+	 * @return University - The university object that correlates with the name. Null if the name is not in the database.
+	 * */
 	public University getUniversityByName(String name) {
 		List<University> allUniversities = getAllUniversities();
 		for (University school:allUniversities) {
-			if (name.equals(school.getName())){
-				return school;
-			}
+			if (name.equals(school.getName())) return school;
 		}
 		return null;
 	}
 	
-
+	/**
+	 * Saves a university to the database.
+	 * 
+	 * @author kristiana
+	 * 
+	 * @param toSave - The university to save.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean save(University toSave) {
 		if (toSave == null) return false;
 		String universityName = toSave.getName();
@@ -313,12 +353,22 @@ public class DBInteractions {
 		return success;
 	}
 	
-
+	
+	/**
+	 * Removes a university from the database.
+	 * 
+	 * @author kristiana
+	 * 
+	 * @param toRemove - The university to remove.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean remove(University toRemove) {
 		if (toRemove == null) return false;
 		return removeEmphases(toRemove) && db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
 	
+	// TODO
 	public boolean removeEmphases(University toRemove) {
 		// TODO
 		return false;

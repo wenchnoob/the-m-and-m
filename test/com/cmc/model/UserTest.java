@@ -3,12 +3,15 @@
  */
 package com.cmc.model;
 
-import static org.junit.Assert.*;
+
+import java.util.HashMap;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.cmc.database.DBInteractions;
 
 /**
  * @author kanderson003
@@ -16,11 +19,18 @@ import org.junit.Test;
  */
 public class UserTest {
 
+
+	private DBInteractions db;
+	private Account testUser;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		db = DBInteractions.getInstance();
+		testUser = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
+		db.save(testUser);
 	}
 
 	/**
@@ -28,11 +38,12 @@ public class UserTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		db.remove(testUser);
+		testUser = null;
+		db = null;
 	}
 
 	@Test
-	public void test() {
-	}
 	public void testSavetoUserSchools() {
 		// Tries to save a null school
 		boolean saved = ((User)testUser).saveSchool(null);
