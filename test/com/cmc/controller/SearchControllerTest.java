@@ -59,7 +59,7 @@ public class SearchControllerTest {
 
 
 
-	
+	//searches for all universities in Florida
 	@Test
 	public void testfilterByState() {
 		List <University> searchResults = controller.searchUniversity("", "FLORIDA", "", "",
@@ -75,6 +75,7 @@ public class SearchControllerTest {
 				-1, -1, new ArrayList<String>()));
 	}
 	
+	//searches for all universities with 34000-36000 students
 	@Test
 	public void testfilterByNumStudents() {
 		List <University> searchResults = controller.searchUniversity("", "", "", "",

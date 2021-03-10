@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 import com.cmc.model.*;
 
 // import dblibrary.project.csci230.UniversityDBLibrary;
-import csb.sju.csci.*;
+//import csb.sju.csci.*;
+import dblibrary.project.csci230.UniversityDBLibrary;
 
 
 public class DBInteractions {

@@ -68,6 +68,9 @@ public class LoginTest extends TestCase {
 		loggedInUser = controller.logon(testUser.getUsername(), testUser.getPassword() + "wrong");
 		Assert.assertEquals("There should be no logged on user. ENABLED BUT INVALID.", null, loggedInUser);
 		
+		//username doesn't exist
+		loggedInUser = controller.logon("unicorn", "puppetry");
+		Assert.assertEquals("There should be no logged on user. FAKE ACCOUNT.", null, loggedInUser);
 		
 	}
 	
