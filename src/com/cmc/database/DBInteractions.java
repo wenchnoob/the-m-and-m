@@ -5,19 +5,9 @@ import java.util.stream.Collectors;
 
 import com.cmc.model.*;
 
-<<<<<<< HEAD
-// import dblibrary.project.csci230.UniversityDBLibrary;
-//import csb.sju.csci.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
-=======
+// import csb.sju.csci.*;
 
-import dblibrary.project.csci230.UniversityDBLibrary;
-//import csb.sju.csci.*;
-
-
-//import csb.sju.csci.*;
-// import dblibrary.project.csci230.UniversityDBLibrary;
->>>>>>> 0bc9c8bd79831d5a7030074052991f6b12d422bd
 
 
 
@@ -33,7 +23,7 @@ public class DBInteractions {
 		db = new UniversityDBLibrary("megatherium", "csci230");
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
-		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		// db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
 	
 	public static DBInteractions getInstance() {
@@ -141,7 +131,7 @@ public class DBInteractions {
 	
 	public boolean remove(Account toRemove) {
 		if (toRemove == null) return true;
-		if (toRemove.getType()==Account.AccountType.BASIC_USER) {
+		if (toRemove.getClass() == User.class) {
 			removeAllUserSchool((User) toRemove);
 		}
 		return db.user_deleteUser(toRemove.getUsername()) > 0;
