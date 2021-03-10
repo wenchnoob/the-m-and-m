@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import junit.framework.Assert;
+import org.junit.*;
 import junit.framework.TestCase;
 
 public class AccountTest extends TestCase {
@@ -39,17 +39,16 @@ public class AccountTest extends TestCase {
 		// Test that the account object was initialized properly.
 		Assert.assertEquals("Test to ensure firstName was properly initialized.", testAccount.getFirstName(), firstName);
 		Assert.assertEquals("Test to ensure lastName was properly initiialized.", testAccount.getLastName(), lastName);
-		Assert.assertEquals(testAccount.getUsername(), username);
-		Assert.assertEquals(testAccount.getPassword(), password);
-		Assert.assertEquals(testAccount.getRecoveryQuestion(), rQ);
-		Assert.assertEquals(testAccount.getRecoveryAnswer(), rA);
-		Assert.assertEquals(testAccount.isEnabled(), enabled);
+		Assert.assertEquals("Test to ensure that the username was properly initialized.", testAccount.getUsername(), username);
+		Assert.assertEquals("Test to ensure that the password was porperly iniitalized.", testAccount.getPassword(), password);
+		Assert.assertEquals("Test to ensure that the recovery question was prperly initialized.", testAccount.getRecoveryQuestion(), rQ);
+		Assert.assertEquals("Test to ensure that the recovery answer was properly inititialized.", testAccount.getRecoveryAnswer(), rA);
+		Assert.assertEquals("Test to ensure that the status was properly initialized.", testAccount.isEnabled(), enabled);
 	}
 	
 	@Test
 	public void testAccountObjectMutation() {
 		// Test that the account object changes properly when setters and getters are invoked.
-		
 	}
 
 }

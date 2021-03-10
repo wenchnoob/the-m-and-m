@@ -68,5 +68,25 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		Assert.assertNotEquals("The admin should have succeeded in adding another user.", null, db.getUserByUserName(usernameToBeAdded));
 	}
 	
+	@Test
+	public void testChangeUserType() {
+		fail("Not yet implemented.");
+	}
+	
+	@Test
+	public void testChangeStatus() {
+		fail("Not yet implemented.");
+	}
+	
+	@Test
+	public void testViewAllUniversities() {
+		fail("Not yet implemented.");
+	}
+	
+	@Test
+	public void testViewAllAccounts() {
+		fail("Not yet implemented.");
+	}
+	
 
 }

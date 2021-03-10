@@ -82,6 +82,7 @@ public class AccountController {
 	 * */
 	public boolean editBasicUserInfo(Account src, Account targ, ManagedField field, String value) {
 		if (src.getType() != Account.AccountType.ADMIN && src != targ) return false;
+		if (value.length() <= 0) return false;
 		
 		try {
 			switch (field) {
