@@ -12,14 +12,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import src.com.cmc.database.DBInteractions;
-
-import com.cmc.model.Account;
+import com.cmc.database.DBInteractions;
 import com.cmc.model.University;
 
 public class SearchControllerTest {
 	SearchController controller = SearchController.getInstance();
-	DBInteractions controller2 = DBInteractions.getInstance();
+	com.cmc.database.DBInteractions controller2 = DBInteractions.getInstance();
 	List <University> flUnis = new ArrayList<University>();
 	List <University> unisBySize = new ArrayList<University>();
 	List <University> uniBySizeandState = new ArrayList<University>();
