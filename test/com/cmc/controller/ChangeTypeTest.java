@@ -1,6 +1,5 @@
 package com.cmc.controller;
 
-import static org.junit.Assert.*;
 
 import java.util.HashMap;
 
@@ -19,7 +18,7 @@ import junit.framework.TestCase;
 
 public class ChangeTypeTest extends TestCase {
 	private AdminFunctionalityController controller;
-	private DBInteractions db = DBInteractions.getInstance();
+	private DBInteractions db;
 	
 	private Account testUser;
 	private Account testAdmin;
@@ -31,6 +30,7 @@ public class ChangeTypeTest extends TestCase {
 	@Before
 	protected void setUp() throws Exception {
 		super.setUp();
+		db = DBInteractions.getInstance();
 		controller = AdminFunctionalityController.getInstance();
 		testUser = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
 		testAdmin = new Admin("Wenchy", "Dutreuil", "", "", "admin", "admin", true);
