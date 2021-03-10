@@ -32,8 +32,8 @@ public class AccountControllerTest extends TestCase {
 	protected void setUp() throws Exception {
 		controller = AccountController.getInstance();
 		testAccount = new User("Joe","Mathias","Who am i?","You","Jmath","Password",true,new HashMap<String,UserSchool>());
-		testAdmin1 = new Admin("Brady","Bobington", "Who am i?","You","Bbob","Password",true);
-		testAdmin2 = new Admin("Zach","Kratz","Who am i?","You","ZKratz","Password",true);
+		testAdmin1 = new Admin("Brady","Bobington", "Bbob","Password", "Who am i?","You",true);
+		testAdmin2 = new Admin("Zach","Kratz","ZKratz","Password", "Who am i?","You",true);
 	}
 	
 	@Override
@@ -44,18 +44,16 @@ public class AccountControllerTest extends TestCase {
 	}
 	
 	//Tests changing the first name
+	// Test a basic user attempting to change their own first name
 	@Test
 	public void testEditBasicUserInfoFirstName() {
-		// Test a basic user attempting to change their own first name
-		// Name: BASIC_USER -> BASIC_USER
 		Assert.assertNotSame("Bobby", testAccount.getFirstName());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.FIRSTNAME, "Bobby");
 		Assert.assertEquals("Bobby", testAccount.getFirstName());
 	}
-
+	// Test an admin changing a basic user's name;
 	@Test
 	public void testAdminEditBasicUserInfoFirstName() {
-		// Test an admin changing a basic user's name;
 		Assert.assertNotSame("Bobby", testAccount.getFirstName());
 		controller.editBasicUserInfo(testAdmin1, testAccount, AccountController.ManagedField.FIRSTNAME, "Bobby");
 		Assert.assertEquals("Bobby", testAccount.getFirstName());
@@ -75,7 +73,7 @@ public class AccountControllerTest extends TestCase {
 		controller.editBasicUserInfo(testAccount, testAdmin1, AccountController.ManagedField.FIRSTNAME, "Bob");
 		Assert.assertEquals("Brady", testAdmin1.getFirstName());
 	}
-	
+	//Tests changing last name 
 	//Tests basic user changing the last name
 	@Test
 	public void testEditBasicUserInfoLastName() {
@@ -105,6 +103,7 @@ public class AccountControllerTest extends TestCase {
 	controller.editBasicUserInfo(testAccount, testAdmin1, AccountController.ManagedField.LASTNAME, "Kratz");	
 	Assert.assertEquals("Bobington",testAdmin1.getLastName());	
 	}
+	//Tests changing the password
 	//Tests basic user changing the password
 	@Test
 	public void testEditBasicUserInfoPassword() {
@@ -126,7 +125,17 @@ public class AccountControllerTest extends TestCase {
 		controller.editBasicUserInfo(testAdmin2, testAdmin1, AccountController.ManagedField.PASSWORD, "newPassword");
 		Assert.assertEquals("newPassword", testAdmin1.getPassword());
 	}
-	//Tests basic user changing the Recovery Question
+	//Tests a basic user changing a admin password
+	//Test should fail
+	@Test
+	public void testBasicUserEditAdminPassword() {
+		Assert.assertEquals("Password", testAdmin1.getPassword());
+		controller.editBasicUserInfo(testAccount, testAdmin1, AccountController.ManagedField.PASSWORD, "NewPassword");
+		Assert.assertEquals("Password", testAdmin1.getPassword());
+
+	}
+	//Tests changing recovery question
+	//Tests basic user changing the recovery question
 	@Test
 	public void testEditBasicUserInfoRecoveryQuestion() {
 		Assert.assertNotSame("Who are you?", testAccount.getRecoveryQuestion());
@@ -140,19 +149,50 @@ public class AccountControllerTest extends TestCase {
 		controller.editBasicUserInfo(testAdmin1, testAccount, AccountController.ManagedField.RECOVERY_QUESTION, "Who are you?");
 		Assert.assertEquals("Who are you?",testAccount.getRecoveryQuestion());
 	}
-	//Tests admin changing admin Recovery Question
+	//Tests admin changing admin recovery question
 	@Test
 	public void testAdminEditingAdminRecoveryQuestion() {
 		Assert.assertNotSame("Who are you?", testAdmin1.getRecoveryQuestion());
 		controller.editBasicUserInfo(testAdmin2, testAdmin1, AccountController.ManagedField.RECOVERY_QUESTION, "Who are you?");
 		Assert.assertEquals("Who are you?",testAdmin1.getRecoveryQuestion());
 	}
-	//Tests changing the Recovery Answer
+	//Tests basic user changing admin recovery question
+	//This test should fail 
+	@Test
+	public void testBasicUserEditingAdminRecoveryQuestion() {
+		Assert.assertEquals("Who am i?", testAdmin1.getRecoveryQuestion());
+		controller.editBasicUserInfo(testAccount, testAdmin1, AccountController.ManagedField.RECOVERY_QUESTION, "Who are you?");
+		Assert.assertEquals("Who am i?",testAdmin1.getRecoveryQuestion());
+	}
+	//Tests changing the recovery answer
+	//Basic user editing own recover answer
 	@Test
 	public void testEditBasicUserInfoRecoveryAnswer() {
 		Assert.assertNotSame("you", testAccount.getRecoveryAnswer());
 		controller.editBasicUserInfo(testAccount, testAccount, AccountController.ManagedField.RECOVERY_ANSWER, "you");
 		Assert.assertEquals("you",testAccount.getRecoveryAnswer());
+	}
+	//Tests admin changing basic user recovery answer
+	@Test
+	public void testAdminEditBasicUserRecoveryAnswer() {
+		Assert.assertNotSame("you", testAccount.getRecoveryAnswer());
+		controller.editBasicUserInfo(testAdmin1, testAccount, AccountController.ManagedField.RECOVERY_ANSWER, "you");
+		Assert.assertEquals("you",testAccount.getRecoveryAnswer());
+	}
+	//Tests admin changing admin recovery answer
+	@Test
+	public void testAdminEditAdminRecoveryAnswer() {
+		Assert.assertNotSame("you", testAdmin1.getRecoveryAnswer());
+		controller.editBasicUserInfo(testAdmin2, testAdmin1, AccountController.ManagedField.RECOVERY_ANSWER, "you");
+		Assert.assertEquals("you",testAdmin1.getRecoveryAnswer());
+	}
+	//Tests basic user changing admin recovery question
+	//Test should fail
+	@Test 
+	public void testBasicUserEditAdminRecoveryAnswer() {
+		Assert.assertEquals("You", testAdmin1.getRecoveryAnswer());
+		controller.editBasicUserInfo(testAccount, testAdmin1, AccountController.ManagedField.RECOVERY_ANSWER, "me");
+		Assert.assertEquals("You", testAdmin1.getRecoveryAnswer());
 	}
 	
 }
