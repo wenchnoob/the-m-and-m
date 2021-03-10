@@ -77,7 +77,7 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		
 		// Failed status change
 		// User tries to change own status while not being a an admin.
-		// Name: BASIC_USER -> SELFV
+		// Name: BASIC_USER -> SELF
 		boolean initialStatus = testUser.isEnabled();
 		boolean statusChanged = controller.changeStatus(testUser, testUser, false);
 		Assert.assertFalse("Whether the user's status has changed after the test. BASIC_USER -> SELF.", statusChanged);
