@@ -23,7 +23,7 @@ import com.cmc.model.University;
  */
 public class SearchTest {
 	SearchController controller = SearchController.getInstance();
-	DBInteractions controller2 = DBInteractions.getInstance();
+	com.cmc.database.DBInteractions controller2 = com.cmc.database.DBInteractions.getInstance();
 	List <University> flUnis = new ArrayList<University>();
 	List <University> unisBySize = new ArrayList<University>();
 	List <University> uniBySizeandState = new ArrayList<University>();
