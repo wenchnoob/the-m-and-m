@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
+
 //import csb.sju.csci.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
@@ -16,7 +17,8 @@ public class DBInteractions {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
 
-		db = new UniversityDBLibrary("megatherium", "csci230");
+
+		 db = new UniversityDBLibrary("megatherium", "csci230");
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
 		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
@@ -38,6 +40,7 @@ public class DBInteractions {
 			String password = userData[3];
 			String type = userData[4];
 			boolean status = userData[5].equals("Y")? true : false;
+			
 			
 			if (type.equals("u")) {
 				allUsers.add(new User(firstName, lastName, username, password, "", "", 
@@ -98,6 +101,7 @@ public class DBInteractions {
 	}
 	
 	public boolean save(Account toSave) {
+		if (toSave == null) return false;
 		String firstName = toSave.getFirstName();
 		String lastName = toSave.getLastName();
 		String username = toSave.getUsername();
@@ -111,6 +115,8 @@ public class DBInteractions {
 			success = db.user_editUser(username, firstName, lastName, password, type, enabled) > 0;
 		}
 		
+		if (!toSave.isEnabled()) success = db.user_editUser(username, firstName, lastName, password, type, enabled) > 0;
+		
 		if (type == 'u') saveUserSchools((User)toSave);
 		
 		return success;
@@ -122,6 +128,7 @@ public class DBInteractions {
 	}
 	
 	public boolean remove(Account toRemove) {
+		if (toRemove == null) return true;
 		return db.user_deleteUser(toRemove.getUsername()) > 0;
 	}
 	
@@ -156,34 +163,68 @@ public class DBInteractions {
 			
 		}
 		
-		universities.forEach(System.out::println);
-
-		loadEmphases(universities);
-		return universities;
-	}
-	
-	// TODO
-	private void loadEmphases(List<University> universities) {
 		String[][] allEmphases = db.university_getNamesWithEmphases();
-		for (String[] emphases : allEmphases) {
+		for (University school: universities) {
+			for (String[] emphasis:allEmphases) {
+				if (school.getName().equals(emphasis[0])){
+					school.getEmphases().add(emphasis[1]);					
+				}
+			}
 			
 		}
 		
+		return universities;
 	}
 	
-	// TODO
+
 	public University getUniversityByName(String name) {
+		List<University> allUniversities = getAllUniversities();
+		for (University school:allUniversities) {
+			if (name.equals(school.getName())){
+				return school;
+			}
+		}
 		return null;
 	}
 	
-	// TODO
+
 	public boolean save(University toSave) {
-		return true;
+		if (toSave == null) return false;
+		String universityName = toSave.getName();
+		String state = toSave.getState();
+		String location = toSave.getLocation();
+		String control = toSave.getControl();
+		int numOfStudents = toSave.getNumStudents();
+		float perFemale = toSave.getPerFemale();
+		int satVerbal = toSave.getSatMath();
+		int satMath = toSave.getSatVerbal();
+		int expenses = toSave.getExpenses();
+		float perFinAid = toSave.getPerFinAid();
+		int numOfApps = toSave.getNumOfApps();
+		float perAdmitted = toSave.getPerAdmitted();
+		float perEnrolled = toSave.getPerEnrolled();
+		int academicScale = toSave.getAcademicScale();
+		int socialScale = toSave.getSocialScale();
+		int qualityOfLife = toSave.getQualityLife();
+		
+		boolean success = true;
+		
+		if (db.university_addUniversity(universityName,state,location,control,numOfStudents,perFemale,
+				satVerbal,satMath,expenses,perFinAid,numOfApps,perAdmitted,perEnrolled,
+				academicScale,socialScale,qualityOfLife) <= 0) {
+			
+			success = db.university_editUniversity(universityName,state,location,control,numOfStudents,perFemale,
+					satVerbal,satMath,expenses,perFinAid,numOfApps,perAdmitted,perEnrolled,
+					academicScale,socialScale,qualityOfLife) > 0;
+		}
+		
+		return success;
 	}
 	
-	// TODO
+
 	public boolean remove(University toRemove) {
-		return true;
+		if (toRemove == null) return false;
+		return db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
 	
 

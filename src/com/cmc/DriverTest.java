@@ -18,15 +18,15 @@ public class DriverTest {
 
 	public static void main(String[] args) {
 		
-		DBInteractions.getInstance().getAllUsers().forEach(System.out::println);
-		
+
+
 	}
 	
 	public static void testLogout() {
 		// Successful Logout
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		Account admin = AccountController.getInstance().logon("admin", "admin");
-		controller.ChangeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), true);
+		controller.changeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), true);
 		AccountController.getInstance().logout("ckalsow");
 		System.out.println("Logged out Account: ");
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
@@ -84,23 +84,14 @@ public class DriverTest {
 	public static void testChangeStatus() {
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		Account admin = AccountController.getInstance().logon("admin", "admin");
-		controller.ChangeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), false);
+		controller.changeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), false);
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));
-	}
-	
-	public static void testAddUser() {
-		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
-		controller.addUser("Kristian", "Kalsow", "kkiskool" , 
-				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
-		System.out.println("Newly added account: ");
-		System.out.println(AccountController.getInstance().viewAccount("kkiskool"));
-		
 	}
 	
 	public static void testChangeUserType() {
 		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
 		Account admin = AccountController.getInstance().logon("kkiskool", "koool");
-		controller.ChangeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), true);
+		controller.changeStatus(admin, DBInteractions.getInstance().getUserByUserName("ckalsow"), true);
 		Account user = AccountController.getInstance().logon("ckalsow", "Channaiskool");	
 		controller.changeUserType(admin, user, Account.AccountType.ADMIN);
 		System.out.println(AccountController.getInstance().viewAccount("ckalsow"));

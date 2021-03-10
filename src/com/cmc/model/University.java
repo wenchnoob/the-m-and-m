@@ -72,7 +72,9 @@ public class University {
 	 * @returns String
 	 * */
 	public String toString() {
+		
 		return name;
+
 	}
 
 
@@ -347,6 +349,9 @@ public class University {
 		this.perEnrolled = perEnrolled;
 	}
 	
-	
+	@Override
+	public boolean equals(Object o) {
+		return this.name == ((University) o).name;
+	}
 
 }

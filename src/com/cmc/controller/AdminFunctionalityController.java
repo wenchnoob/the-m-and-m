@@ -50,8 +50,9 @@ public class AdminFunctionalityController {
 	 * @param type
 	 * @return boolean
 	 * */
-	public boolean addUser(String firstName, String lastName, String username, String password, String rQuestion, String rAnswer,
+	public boolean addUser(Account src, String firstName, String lastName, String username, String password, String rQuestion, String rAnswer,
 			boolean  enabled, Account.AccountType type) {
+		if (src.getType() != Account.AccountType.ADMIN) return false;
 		Account user;
 		if(type == Account.AccountType.ADMIN) {
 			user = new Admin(firstName, lastName, username, password, rQuestion, rAnswer, enabled);
@@ -72,6 +73,7 @@ public class AdminFunctionalityController {
 	 * */
 	public boolean changeUserType(Account src, Account targ, Account.AccountType type) {
 		if (src.getType() != Account.AccountType.ADMIN) return false;
+		if (src == targ) return false;
 		DBInteractions db = DBInteractions.getInstance();
 		targ.setType(type);
 		return db.save(targ);
@@ -103,7 +105,7 @@ public class AdminFunctionalityController {
 	 * @param status
 	 * @return boolean
 	 * */
-	public boolean ChangeStatus(Account src, Account targ, boolean status) {
+	public boolean changeStatus(Account src, Account targ, boolean status) {
 		if (src == targ) return false;
 		if (src.getType() != Account.AccountType.ADMIN) return false;
 		targ.setEnabled(status);

@@ -17,7 +17,7 @@ public class User extends Account{
 	 * @param lastName
 	 * @param username
 	 * @param password
-	 * @param recoveryQuestin
+	 * @param recoveryQuestion
 	 * @param recoveryAnswer
 	 * @param enabled
 	 * @param savedSchools
