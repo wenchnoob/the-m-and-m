@@ -20,7 +20,8 @@ import junit.framework.TestSuite;
 @RunWith(Suite.class)
 @SuiteClasses({DatabaseTest.class, AccountTest.class, AccountControllerTest.class,
 	AdminFunctionalityControllerTest.class, UniversityControllerTest.class, LoginTest.class,
-	SearchControllerTest.class,ChangeStatusTest.class,ChangeTypeTest.class,EditUserInfoTest.class})
+	SearchControllerTest.class,ChangeStatusTest.class,ChangeTypeTest.class,EditUserInfoTest.class,
+	SearchTest.class})
 public class AllTests extends TestSuite {
 
 }
