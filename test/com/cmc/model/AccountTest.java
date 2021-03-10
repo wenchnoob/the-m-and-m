@@ -38,7 +38,7 @@ public class AccountTest extends TestCase {
 	public void testAccountObjectInitialization() {
 		// Test that the account object was initialized properly.
 		Assert.assertEquals("Test to ensure firstName was properly initialized.", testAccount.getFirstName(), firstName);
-		Assert.assertEquals(testAccount.getLastName(), lastName);
+		Assert.assertEquals("Test to ensure lastName was properly initiialized.", testAccount.getLastName(), lastName);
 		Assert.assertEquals(testAccount.getUsername(), username);
 		Assert.assertEquals(testAccount.getPassword(), password);
 		Assert.assertEquals(testAccount.getRecoveryQuestion(), rQ);

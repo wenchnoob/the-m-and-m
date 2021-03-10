@@ -32,18 +32,21 @@ public class DatabaseTest extends TestCase {
 		testUser = null;
 	}
 
+	// Black Box Test
 	@Test
 	public void testGetUser() {
 		Account got = db.getUserByUserName(testUser.getUsername());
 		Assert.assertEquals("Tests that when we request the test user by username, we get a object that is \"equal\" to the testUser object. ",testUser, got);
 	}
 	
+	// Black Box Test
 	@Test
 	public void testGetNullUser() {
 		Account got = db.getUserByUserName("fake");
 		Assert.assertEquals("Tests that requesting a username that is not in the database returns a null user object", null, got);
 	}
 	
+	// Black Box Test
 	@Test
 	public void testSaveUser() {
 		Assert.assertTrue("Asserts that the database can save a valid user object.", db.save(testUser));

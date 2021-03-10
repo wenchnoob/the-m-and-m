@@ -14,11 +14,11 @@ import com.cmc.model.University;
  *
  */
 public class UniversityController {
-	
+
 	private static UniversityController self;
-	
+
 	private UniversityController() {}
-	
+
 	/**
 	 * singleton
 	 * @author Channa, Kristiana, Wenchy
@@ -28,7 +28,7 @@ public class UniversityController {
 		if (self == null) self = new UniversityController();
 		return self;
 	}
-	
+
 	/**
 	 * allows a user to view a university
 	 * @author Channa, Kristiana, Wenchy
@@ -103,17 +103,17 @@ public class UniversityController {
 				if (value instanceof List) uni.setEmphases((List<String>)value);
 				break;
 			default:
-				
+
 			}
 		} catch (Exception ex) {
 			/* If anything fails just give up and return false */
 			return false;
 		}
-		
+
 		db.save(uni);
 		return true;
 	}
-	
+
 	//class that holds different types of managed information in UniversityController
 	public enum ManagedField {
 		NAME, STATE, COUNTRY, POSTALCODE,  LOCATION, CONTROL, NUM_STUDENTS, PERCENT_FEMALE, SAT_MATH, SAT_VERBAL, EXPENSES, PERCENT_FINANCIAL_AID,
