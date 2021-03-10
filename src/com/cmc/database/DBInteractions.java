@@ -5,14 +5,14 @@ import java.util.stream.Collectors;
 
 import com.cmc.model.*;
 
+
 // import dblibrary.project.csci230.UniversityDBLibrary;
-import csb.sju.csci.*;
+//import csb.sju.csci.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
 
 //import csb.sju.csci.*;
 // import dblibrary.project.csci230.UniversityDBLibrary;
-
 
 public class DBInteractions {
 	
@@ -26,7 +26,7 @@ public class DBInteractions {
 		db = new UniversityDBLibrary("megatherium", "csci230");
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
-		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		// db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
 	
 	public static DBInteractions getInstance() {
@@ -134,7 +134,26 @@ public class DBInteractions {
 	
 	public boolean remove(Account toRemove) {
 		if (toRemove == null) return true;
+		if (toRemove.getClass() == User.class) {
+			removeAllUserSchool((User) toRemove);
+		}
 		return db.user_deleteUser(toRemove.getUsername()) > 0;
+	}
+	
+	public boolean removeIndividualSchool(User user, UserSchool school) {
+		if (user == null || school == null|| school.getUniversity() == null) return false;
+		String username = user.getUsername();
+		String removedSchool = school.getUniversity().getName();
+		return db.user_removeSchool(username, removedSchool) > 0;
+	}
+	
+	public boolean removeAllUserSchool(User user) {
+		if (user == null) return false;
+		boolean success = true;
+		for (UserSchool school: user.getSavedSchools().values()) {
+			success &= removeIndividualSchool(user, school);
+		}
+		return success;
 	}
 	
 	// TODO
