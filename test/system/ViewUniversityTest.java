@@ -21,7 +21,7 @@ public class ViewUniversityTest extends TestCase {
 	private DBInteractions db;
 	private University testUniversity;
 
-	
+
 	@Before
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -31,7 +31,7 @@ public class ViewUniversityTest extends TestCase {
 		db.save(testUniversity);
 	}
 
-	
+
 	@After
 	protected void tearDown() throws Exception {
 		super.tearDown();
@@ -40,18 +40,22 @@ public class ViewUniversityTest extends TestCase {
 		db = null;
 		controller = null;
 	}
-	
-	
+
+
 	@Test
 	public void testViewUniversity() {
 		// Test viewing  a university that is actually in the database
 		// Real Uni
 		University got = controller.viewUniversity(testUniversity.getName());
 		Assert.assertNotSame("Ensure that the university being viewed is not null. Real Uni.", null, got);
-	
+
+	}
+
+	@Test
+	public void testViewUniversityAlternate() {
 		// Test viewing a university that is not actually in the database
 		// Fake Uni
-		got = controller.viewUniversity("fake");
+		University got = controller.viewUniversity("fake");
 		Assert.assertEquals("Ensure that the university being viewed is null. Fake Uni.", null, got);
 	}
 
