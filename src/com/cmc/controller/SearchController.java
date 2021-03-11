@@ -72,7 +72,7 @@ public class SearchController {
 			float pEnrolled1, float pEnrolled2,int academicScale1, int academicScale2, int socialScale1, int socialScale2,
 			int qualLife1, int qualLife2, List<String> emphases) {
 		
-		// numStrudents guard
+		// numStudents guard
 		if (numStudents1 == -1) numStudents1 = 0;
 		if (numStudents2 == -1) numStudents2 = Integer.MAX_VALUE;
 
