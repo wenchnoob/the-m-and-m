@@ -68,6 +68,8 @@ public class SearchControllerTest {
 				1.0f, 1.0f, 1.0f, 1.0f, 1);
 		controller2.save(testUniversity5);
 		smallUni.add(testUniversity5);
+		smallUni.add(controller2.getUniversityByName("SCHOOL"));
+		smallUni.add(controller2.getUniversityByName("TEST"));
 		
 		University testUniversity2 = new University("HIGHATTENDS", "", "", "", 100000, 1, 1, 1, 1, 1, 1, null,
 				1.0f, 1.0f, 1.0f, 1.0f, 1);
@@ -145,8 +147,6 @@ public class SearchControllerTest {
 				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>());
-		System.out.println(searchResults);
-		System.out.println(smallUni);
 		for (int I = 0; I < searchResults.size(); I++) {
 			
 			//Assert.assertEquals("Ensure that search finds correct Universities", uniBySizeandState, searchResults);
@@ -165,8 +165,6 @@ public class SearchControllerTest {
 				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>());
-		System.out.println(searchResults);
-		System.out.println(largeUni);
 		for (int I = 0; I < searchResults.size(); I++) {
 
 			//Assert.assertEquals("Ensure that search finds correct Universities", uniBySizeandState, searchResults);
