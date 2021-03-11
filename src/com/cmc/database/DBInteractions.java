@@ -5,11 +5,6 @@ import java.util.stream.Collectors;
 
 import com.cmc.model.*;
 
-<<<<<<< HEAD
-// import dblibrary.project.csci230.UniversityDBLibrary;
-//import csb.sju.csci.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
-=======
 
 import dblibrary.project.csci230.UniversityDBLibrary;
 //import csb.sju.csci.*;
@@ -17,7 +12,7 @@ import dblibrary.project.csci230.UniversityDBLibrary;
 
 //import csb.sju.csci.*;
 // import dblibrary.project.csci230.UniversityDBLibrary;
->>>>>>> 0bc9c8bd79831d5a7030074052991f6b12d422bd
+
 
 
 
