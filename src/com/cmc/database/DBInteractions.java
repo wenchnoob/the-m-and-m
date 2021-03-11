@@ -1,13 +1,14 @@
 package com.cmc.database;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
 
 
-import dblibrary.project.csci230.UniversityDBLibrary;
-//import csb.sju.csci.*;
+//  import dblibrary.project.csci230.UniversityDBLibrary;
+import csb.sju.csci.*;
 
 /**
  * Class intended for the handling of all university functionalities in the system.
@@ -27,10 +28,10 @@ public class DBInteractions {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
 
-		db = new UniversityDBLibrary("megatherium", "csci230");
+		// db = new UniversityDBLibrary("megatherium", "csci230");
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
-		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
 	
 	/**
@@ -370,8 +371,20 @@ public class DBInteractions {
 	
 	// TODO
 	public boolean removeEmphases(University toRemove) {
-		// TODO
-		return false;
+		if (toRemove == null || toRemove.getEmphases() == null) return false;
+		AtomicReference<Boolean> success = new AtomicReference<>(true);
+		
+		toRemove.getEmphases().forEach(emp -> {
+			success.accumulateAndGet(removeEmphasis(toRemove.getName(), emp), (p, q) -> {
+				return p & q;
+			});
+		});
+		
+		return success.get();
+	}
+	
+	public boolean removeEmphasis(String school, String emphasis) {
+		return db.university_removeUniversityEmphasis(school, emphasis) > 0;
 	}
 	
 
