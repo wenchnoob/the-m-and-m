@@ -9,6 +9,8 @@ import com.cmc.model.User;
 import com.cmc.model.UserSchool;
 
 import org.junit.*;
+
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
@@ -114,7 +116,10 @@ public class AccountControllerTest extends TestCase {
 		
 	@Test
 	public void viewAccount() {
-		fail("Not yet implemented");
+		//Test that User can view their own profile
+		Account got = controller.viewAccount("luser");
+		Assert.assertEquals(db.getUserByUserName("luser"), got);
+		
 	}
 
 	//Tests changing the first name

@@ -207,4 +207,5 @@ public class SearchControllerTest {
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>()));
 	}
+	
 }
