@@ -6,8 +6,20 @@ import java.util.stream.Collectors;
 
 import com.cmc.model.*;
 
+<<<<<<< HEAD
 // import csb.sju.csci.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
+=======
+
+//import csb.sju.csci.*;
+import dblibrary.project.csci230.UniversityDBLibrary;
+
+
+
+//import csb.sju.csci.*;
+// import dblibrary.project.csci230.UniversityDBLibrary;
+
+>>>>>>> 3d597c73de78ba4f46e8e0913ece39b358e56dd1
 
 /**
  * Class intended for the handling of all university functionalities in the system.
@@ -27,8 +39,17 @@ public class DBInteractions {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
 
+<<<<<<< HEAD
 		db = new UniversityDBLibrary("megatherium", "csci230");
 
+=======
+
+		db = new UniversityDBLibrary("megatherium", "csci230");
+
+		//db = new UniversityDBLibrary("megatherium", "csci230");
+
+		
+>>>>>>> 3d597c73de78ba4f46e8e0913ece39b358e56dd1
 		// Initializer for Wenchy (Comment out if you are not wenchy)
 		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
