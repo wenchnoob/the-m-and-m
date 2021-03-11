@@ -19,16 +19,16 @@ import com.cmc.model.UserSchool;
 import junit.framework.TestCase;
 
 public class AddUserTest extends TestCase {
-	
+
 	private AdminFunctionalityController controller;
 	private DBInteractions db = DBInteractions.getInstance();
-	
+
 	private Account testUser;
 	private Account testAdmin;
 	private Account testAdmin2;
-	
+
 	private String usernameToBeAdded = "kkiskool";
-	
+
 	@Before
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -39,16 +39,16 @@ public class AddUserTest extends TestCase {
 		db.save(testUser);
 		db.save(testAdmin);
 		db.save(testAdmin2);
-		
+
 	}
-	
+
 	@After
 	protected void tearDown() throws Exception {
 		db.remove(testUser);
 		db.remove(testAdmin);
 		db.remove(testAdmin2);
 		db.remove(db.getUserByUserName(usernameToBeAdded));
-		
+
 		db = null;
 		controller = null;
 		testAdmin = null;
@@ -56,17 +56,22 @@ public class AddUserTest extends TestCase {
 	}
 	@Test
 	public void testAddUser() {
-		// Failed add
-		// User attempting to add a user
-		controller.addUser(testUser, "Kristian", "Kalsow", usernameToBeAdded, 
-				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
-		Assert.assertSame("The user should have failed to add another user.", null, db.getUserByUserName(usernameToBeAdded)); 
-		
+
 		// Successful add
 		// Admin attempting to add a user
 		controller.addUser(testAdmin, "Kristian", "Kalsow", usernameToBeAdded, 
 				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
 		Assert.assertNotEquals("The admin should have succeeded in adding another user.", null, db.getUserByUserName(usernameToBeAdded));
+	}
+
+	@Test
+	public void testAddUserAlternate() {
+		// Failed add
+		// User attempting to add a user
+		controller.addUser(testUser, "Kristian", "Kalsow", usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertSame("The user should have failed to add another user.", null, db.getUserByUserName(usernameToBeAdded)); 
+
 	}
 
 }

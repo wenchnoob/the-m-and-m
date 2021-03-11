@@ -6,7 +6,6 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import com.cmc.database.DatabaseTest;
 import com.cmc.model.AccountTest;
-import com.cmc.model.RemoveSavedSchoolTest;
 import com.cmc.model.UniversityTest;
 import com.cmc.model.UserSchoolTest;
 import com.cmc.model.UserTest;
@@ -23,6 +22,7 @@ import system.ChangeTypeTest;
 import system.EditUserInfoTest;
 import system.LoginTest;
 import system.LogoutTest;
+import system.RemoveSavedSchoolTest;
 import system.SaveSchoolTest;
 import system.SearchTest;
 import system.ViewAllUniversitiesTest;
