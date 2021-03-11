@@ -67,10 +67,12 @@ public class UniversityController {
 		Account src = db.getUserByUserName(srcUsername);
 		University uni = db.getUniversityByName(universityName);
 		if (src.getType() != Account.AccountType.ADMIN ) return false;
+		if (uni == null) return false;
 
 		try {
 			switch (field) {
 			case NAME:
+				db.remove(uni);
 				uni.setName((String) value);
 				break;
 			case STATE:
@@ -118,7 +120,7 @@ public class UniversityController {
 			default:
 
 			}
-		} catch (Exception ex) {
+		} catch (ClassCastException ex) {
 			/* If anything fails just give up and return false */
 			return false;
 		}

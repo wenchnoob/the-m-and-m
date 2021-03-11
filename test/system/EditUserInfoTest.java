@@ -50,6 +50,7 @@ public class EditUserInfoTest extends TestCase {
 		db = null;
 		controller = null;
 	}
+	
 	@Test
 	public void testEditBasicUserInfoMainScenario(){
 		// Test an admin changing a basic user's name and succeeding;

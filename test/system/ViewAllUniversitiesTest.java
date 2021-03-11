@@ -27,7 +27,7 @@ private DBInteractions db;
 	
 	@Test
 	public void testViewAllUniversities() {
-		// Trivial test case, as long as the database is not empty
+		// Test case, as long as the database is not empty
 		// this use case should never fail.
 		List<University> unis = db.getAllUniversities();
 		Assert.assertFalse("If there is at least one user in the databsse the returned list should never be empty." , unis.size() <= 0);

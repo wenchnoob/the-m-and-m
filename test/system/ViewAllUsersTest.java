@@ -26,7 +26,7 @@ public class ViewAllUsersTest extends TestCase {
 	
 	@Test
 	public void testViewAllUsers() {
-		// Trivial test case, as long as the database is not empty
+		// Test case, as long as the database is not empty
 		// this use case should never fail.
 		List<Account> users = db.getAllUsers();
 		Assert.assertFalse("If there is at least one user in the databsse the returned list should never be empty." , users.size() <= 0);
