@@ -81,8 +81,7 @@ public class SearchTest {
 				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>());
-		System.out.println(searchResults);
-		System.out.println(uniBySizeandState);
+
 		for (int I = 0; I < searchResults.size(); I++) {
 
 			//Assert.assertEquals("Ensure that search finds correct Universities", flUnis, searchResults);

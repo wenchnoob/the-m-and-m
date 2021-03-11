@@ -26,8 +26,8 @@ public class SearchControllerTest {
 	List <University> smallUni = new ArrayList<University>();
 	List <University> largeUni = new ArrayList<University>();
 	
-	private University testUniversity;
 	private University testUniversity2;
+	private University testUniversity5;
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -64,14 +64,15 @@ public class SearchControllerTest {
 		University uni10 = controller2.getUniversityByName("UNIVERSITY OF TOLEDO");
 		unisBySize.add(uni10);
 		
-		University testUniversity = new University("LOWATTENDS", "", "", "", 1000, 1, 1, 1, 1, 1, 1, null,
+		University testUniversity5 = new University("LOWATTENDS", "", "", "", 1000, 1, 1, 1, 1, 1, 1, null,
 				1.0f, 1.0f, 1.0f, 1.0f, 1);
-		controller2.save(testUniversity);
-		smallUni.add(testUniversity);
+		controller2.save(testUniversity5);
+		smallUni.add(testUniversity5);
+		
 		University testUniversity2 = new University("HIGHATTENDS", "", "", "", 100000, 1, 1, 1, 1, 1, 1, null,
 				1.0f, 1.0f, 1.0f, 1.0f, 1);
 		controller2.save(testUniversity2);
-		largeUni.add(testUniversity);
+		largeUni.add(testUniversity2);
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class SearchControllerTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		controller2.remove(testUniversity);
+		controller2.remove(testUniversity5);
 		controller2.remove(testUniversity2);
 	}
 	
@@ -144,8 +145,10 @@ public class SearchControllerTest {
 				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>());
+		System.out.println(searchResults);
+		System.out.println(smallUni);
 		for (int I = 0; I < searchResults.size(); I++) {
-
+			
 			//Assert.assertEquals("Ensure that search finds correct Universities", uniBySizeandState, searchResults);
 			Assert.assertEquals(smallUni.get(I), searchResults.get(I));
 			
@@ -162,6 +165,8 @@ public class SearchControllerTest {
 				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>());
+		System.out.println(searchResults);
+		System.out.println(largeUni);
 		for (int I = 0; I < searchResults.size(); I++) {
 
 			//Assert.assertEquals("Ensure that search finds correct Universities", uniBySizeandState, searchResults);
