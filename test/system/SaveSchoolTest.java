@@ -1,4 +1,4 @@
-package com.cmc.model;
+package system;
 
 import junit.framework.TestCase;
 
@@ -8,6 +8,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.cmc.database.DBInteractions;
+import com.cmc.model.Account;
+import com.cmc.model.User;
+import com.cmc.model.UserSchool;
 
 public class SaveSchoolTest extends TestCase {
 
@@ -29,7 +32,7 @@ public class SaveSchoolTest extends TestCase {
 	}
 	
 	@Test
-	public void testSaveSchool() {
+	public void testSaveSchoolMainScenario() {
 		// Tries to save a null school
 		boolean saved = ((User)testUser).saveSchool(null);
 		Assert.assertFalse("Method is call with no school to be saved.", saved);
@@ -41,6 +44,9 @@ public class SaveSchoolTest extends TestCase {
 		// Tries to save a know school
 		saved = ((User)testUser).saveSchool("BARD");
 		Assert.assertTrue("User saved a known school from the database.", saved);
+	}
+	public void testSaveSchoolAlternateScenario(){
+		
 	}
 
 }

@@ -9,18 +9,29 @@ import com.cmc.model.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
 //import csb.sju.csci.*;
 
+<<<<<<< HEAD
 
 //import csb.sju.csci.*;
 // import dblibrary.project.csci230.UniversityDBLibrary;
 
 
 
+=======
+/**
+ * Class intended for the handling of all university functionalities in the system.
+ * @author Wenchy Dutreuil, Kristiana Anderson, and Joseph Mathias
+ */
+>>>>>>> b4784ba13b24a286dc4ecf961054b8ce77672b3d
 
 public class DBInteractions {
 	
 	private static DBInteractions self;
 	private  UniversityDBLibrary db;
 	
+	/**
+	 * Private constructor to prevent construction of objects
+	 * of this class from outside of this class.
+	 */
 	private DBInteractions() {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
@@ -31,11 +42,25 @@ public class DBInteractions {
 		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 	}
 	
+	/**
+	 * Static method to return a reference to a singleton instance of this class.
+	 * 
+	 * @author Channa, Kristiana, Wenchy
+	 * 
+	 * @return AccountController - An singleton instance of this class.
+	 * */
 	public static DBInteractions getInstance() {
 		if (self == null) self = new DBInteractions();
 		return self;
 	}
 	
+	/**
+	 * Returns a list of all users that are in the database.
+	 * 
+	 * @author wench
+	 * 
+	 * @return List<Account> - A list containing all the accounts in the database.
+	 * */
 	public List<Account> getAllUsers() {
 		String[][] allUsersData = db.user_getUsers();
 		List<Account> allUsers = new ArrayList<Account>();
@@ -62,6 +87,13 @@ public class DBInteractions {
 		return allUsers;
 	}
 	
+	/**
+	 * Private method to load the user schools.
+	 * 
+	 * @author wench
+	 * 
+	 * @param users - The users to load the schools for.
+	 * */
 	private void loadUserSchools(List<Account> users) {
 		String[][] usersAndSchools = db.user_getUsernamesWithSavedSchools();
 		Map<String, Map<String, UserSchool>> mapping = mapify(usersAndSchools);
@@ -72,6 +104,15 @@ public class DBInteractions {
 		});
 	}
 	
+	/**
+	 * Private method to make a map of username to a map of a school name and it's UserSchool object.
+	 * 
+	 * @author wench
+	 * 
+	 * @param userAndSchools - A two dimensional array of arrays of username and school name pairs.
+	 * 
+	 * @return Map<String, Map<String, UserSchool>> - A map that holds username and the corresponding saved schools.
+	 * */
 	private Map<String, Map<String, UserSchool>> mapify(String[][] userAndSchools) {
 		Map<String, Map<String, UserSchool>> userToSchools = new HashMap<String,  Map<String, UserSchool>>();
 		Map<String, University> universities = getAllUniversities()
@@ -100,6 +141,15 @@ public class DBInteractions {
 		return userToSchools;
 	}
 	
+	/**
+	 * Returns an account object that correlates with the username and the information stored in the database.
+	 * 
+	 * @author wench
+	 * 
+	 * @param username - The username to search for.
+	 * 
+	 * @return Account - The account object that correlates with the username. Null if the username is not in the database.
+	 * */
 	public Account getUserByUserName(String username) {
 		for (Account user: getAllUsers()) {
 			if (user.getUsername().equals(username)) return user;
@@ -107,6 +157,15 @@ public class DBInteractions {
 		return null;
 	}
 	
+	/**
+	 * Save an account to the database.
+	 * 
+	 * @author wench
+	 * 
+	 * @param toSave - The account object to be saved to the database.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean save(Account toSave) {
 		if (toSave == null) return false;
 		String firstName = toSave.getFirstName();
@@ -129,19 +188,46 @@ public class DBInteractions {
 		return success;
 	}
 	
+	/**
+	 * Saves the users saved Schools.
+	 * 
+	 * @author wench
+	 * 
+	 * @param user - The user whose saved schools should be saved to the database.
+	 * */
 	private void saveUserSchools(User user) {
 		if (user.getSavedSchools() == null) return;
 		user.getSavedSchools().forEach((k, v) -> db.user_saveSchool(user.getUsername(), k));
 	}
 	
+	/**
+	 * Removes an account from the database.
+	 * 
+	 * @author wench
+	 * 
+	 * @param toRemove - The account to be removed from the database.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean remove(Account toRemove) {
 		if (toRemove == null) return true;
-		if (toRemove.getType()==Account.AccountType.BASIC_USER) {
+		if (toRemove.getClass() == User.class) {
 			removeAllUserSchool((User) toRemove);
 		}
 		return db.user_deleteUser(toRemove.getUsername()) > 0;
 	}
 	
+	/**
+	 * Removes a users saved school from the database.
+	 * 
+	 * @author joseph and kristiana
+	 * 
+	 * @param user - The user whose save school should be removed.
+	 * @param school - The saved School that should be removed.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * 
+	 * */
 	public boolean removeIndividualSchool(User user, UserSchool school) {
 		if (user == null || school == null|| school.getUniversity() == null) return false;
 		String username = user.getUsername();
@@ -149,6 +235,15 @@ public class DBInteractions {
 		return db.user_removeSchool(username, removedSchool) > 0;
 	}
 	
+	/**
+	 * Removes all the saved schools of a user from the database.
+	 * 
+	 * @author joseph and krisitana
+	 * 
+	 * @param user - The user whose schools should be removed.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean removeAllUserSchool(User user) {
 		if (user == null) return false;
 		boolean success = true;
@@ -158,7 +253,13 @@ public class DBInteractions {
 		return success;
 	}
 	
-	// TODO
+	/**
+	 * Returns a list of all the universities in the database.
+	 * 
+	 * @author kristiana
+	 * 
+	 * @return List<University> - A list of the all the universities in the database.
+	 * */
 	public List<University> getAllUniversities() {
 		List<University> universities = new ArrayList<>();
 		String[][] allUniversities = db.university_getUniversities();
@@ -202,18 +303,32 @@ public class DBInteractions {
 		return universities;
 	}
 	
-
+	/**
+	 * Returns a university object that correlates with the name passed and the information stored in the database.
+	 * 
+	 * @author kristiana
+	 * 
+	 * @param name - The name to search for.
+	 * 
+	 * @return University - The university object that correlates with the name. Null if the name is not in the database.
+	 * */
 	public University getUniversityByName(String name) {
 		List<University> allUniversities = getAllUniversities();
 		for (University school:allUniversities) {
-			if (name.equals(school.getName())){
-				return school;
-			}
+			if (name.equals(school.getName())) return school;
 		}
 		return null;
 	}
 	
-
+	/**
+	 * Saves a university to the database.
+	 * 
+	 * @author kristiana
+	 * 
+	 * @param toSave - The university to save.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean save(University toSave) {
 		if (toSave == null) return false;
 		String universityName = toSave.getName();
@@ -247,10 +362,25 @@ public class DBInteractions {
 		return success;
 	}
 	
-
+	
+	/**
+	 * Removes a university from the database.
+	 * 
+	 * @author kristiana
+	 * 
+	 * @param toRemove - The university to remove.
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean remove(University toRemove) {
 		if (toRemove == null) return false;
-		return db.university_deleteUniversity(toRemove.getName()) > 0;
+		return removeEmphases(toRemove) && db.university_deleteUniversity(toRemove.getName()) > 0;
+	}
+	
+	// TODO
+	public boolean removeEmphases(University toRemove) {
+		// TODO
+		return false;
 	}
 	
 
