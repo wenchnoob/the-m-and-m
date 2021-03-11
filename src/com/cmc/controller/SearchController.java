@@ -8,21 +8,25 @@ import com.cmc.database.DBInteractions;
 import com.cmc.model.University;
 
 /**
+ * Class intended for the handling of all search functionalities in the system.
  * @author Channa Kalsow and Kristiana Anderson and Wenchy
- *
  */
 public class SearchController {
 	
 	private static SearchController self;
 	
-	private SearchController() {
-		
-	}
+	/**
+	 * Private constructor to prevent construction of objects
+	 * of this class from outside of this class.
+	 */
+	private SearchController() {}
 	
 	/**
-	 * singleton
+	 * Static method to return a reference to a singleton instance of this class.
+	 * 
 	 * @author Channa, Kristiana, Wenchy
-	 * @return an instance of itself
+	 * 
+	 * @return AccountController - An singleton instance of this class.
 	 * */
 	public static SearchController getInstance() {
 		if (self == null) self = new SearchController();
@@ -30,7 +34,7 @@ public class SearchController {
 	}
 	
 	/**
-	 * lists all accounts
+	 * Returns a list of the search results for any given search query (the arguments passed).
 	 * @author Channa, Kristiana, Wenchy
 	 * @param schoolName
 	 * @param state

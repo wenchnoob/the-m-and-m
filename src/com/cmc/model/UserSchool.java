@@ -55,5 +55,6 @@ public class UserSchool {
 	public String toString() {
 		return university.toString() + "   " + owner.toString();
 	}
+	
 
 }
