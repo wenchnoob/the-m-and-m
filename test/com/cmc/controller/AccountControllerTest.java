@@ -8,9 +8,8 @@ import com.cmc.model.Admin;
 import com.cmc.model.User;
 import com.cmc.model.UserSchool;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
 import org.junit.*;
+import junit.framework.TestCase;
 
 /**
  * 
@@ -87,7 +86,7 @@ public class AccountControllerTest extends TestCase {
 		loggedInUser = controller.logon(testUser.getUsername(), testUser.getPassword() + "wrong");
 		Assert.assertEquals("There should be no logged on user. ENABLED BUT INVALID.", null, loggedInUser);
 		
-		//username doesn't exist
+		// Username doesn't exist
 		loggedInUser = controller.logon("unicorn", "puppetry");
 		Assert.assertEquals("There should be no logged on user. FAKE ACCOUNT.", null, loggedInUser);
 		
