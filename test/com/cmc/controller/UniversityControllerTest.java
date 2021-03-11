@@ -41,7 +41,7 @@ public class UniversityControllerTest extends TestCase {
 	@Override
 	@After
 	protected void tearDown() throws Exception {
-		//db.remove(testUniversity);
+		db.remove(testUniversity);
 		db.remove(testAccount);
 		db.remove(testAdmin);
 		testAccount = null;
