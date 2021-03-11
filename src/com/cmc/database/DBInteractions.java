@@ -5,27 +5,14 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
-<<<<<<< HEAD
-//import csb.sju.csci.*;
+
+// import csb.sju.csci.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
-=======
-
-
-import csb.sju.csci.*;
-// import dblibrary.project.csci230.UniversityDBLibrary;
-
-
-
-//import csb.sju.csci.*;
-// import dblibrary.project.csci230.UniversityDBLibrary;
-
 
 /**
  * Class intended for the handling of all university functionalities in the system.
  * @author Wenchy Dutreuil, Kristiana Anderson, and Joseph Mathias
  */
-
->>>>>>> 3920e35ae7842b3a05fe730dd29dc6480730fb64
 
 public class DBInteractions {
 	
@@ -40,12 +27,8 @@ public class DBInteractions {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
 
-<<<<<<< HEAD
-		 db = new UniversityDBLibrary("megatherium", "csci230");
 
-=======
 		db = new UniversityDBLibrary("megatherium", "csci230");
->>>>>>> 3920e35ae7842b3a05fe730dd29dc6480730fb64
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
 		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
@@ -362,6 +345,7 @@ public class DBInteractions {
 		if (db.university_addUniversity(universityName,state,location,control,numOfStudents,perFemale,
 				satVerbal,satMath,expenses,perFinAid,numOfApps,perAdmitted,perEnrolled,
 				academicScale,socialScale,qualityOfLife) <= 0) {
+			
 			success = db.university_editUniversity(universityName,state,location,control,numOfStudents,perFemale,
 					satVerbal,satMath,expenses,perFinAid,numOfApps,perAdmitted,perEnrolled,
 					academicScale,socialScale,qualityOfLife) > 0;
@@ -385,15 +369,7 @@ public class DBInteractions {
 		return removeEmphases(toRemove) && db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
 	
-	/**
-	 * Removes all the emphases tied to particular university.
-	 * 
-	 * @author wench
-	 * 
-	 * @param toRemove - The university 
-	 * 
-	 * @return boolean - Whether the operation was successful.
-	 * */
+	// TODO
 	public boolean removeEmphases(University toRemove) {
 		if (toRemove == null || toRemove.getEmphases() == null) return false;
 		AtomicReference<Boolean> success = new AtomicReference<>(true);
@@ -407,16 +383,6 @@ public class DBInteractions {
 		return success.get();
 	}
 	
-	/**
-	 * Removes a specified emphasis that is tied to a specified school
-	 * 
-	 * @author wench
-	 * 
-	 * @param school - Name of target school
-	 * @param emphasis - Name of target emphasis
-	 * 
-	 * @return boolean - Whether the operation was successful.
-	 * */
 	public boolean removeEmphasis(String school, String emphasis) {
 		return db.university_removeUniversityEmphasis(school, emphasis) > 0;
 	}

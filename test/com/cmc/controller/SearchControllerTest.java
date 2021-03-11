@@ -147,6 +147,8 @@ public class SearchControllerTest {
 				-1, -1, new ArrayList<String>());
 		System.out.println(searchResults);
 		System.out.println(smallUni);
+		controller2.remove(controller2.getUniversityByName("TEST"));
+		controller2.remove(controller2.getUniversityByName("Apple Uni"));
 		for (int I = 0; I < searchResults.size(); I++) {
 			
 			//Assert.assertEquals("Ensure that search finds correct Universities", uniBySizeandState, searchResults);
