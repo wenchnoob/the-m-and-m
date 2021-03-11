@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import com.cmc.model.*;
 
 
-// import csb.sju.csci.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
+import csb.sju.csci.*;
+// import dblibrary.project.csci230.UniversityDBLibrary;
 
 
 
@@ -352,7 +352,6 @@ public class DBInteractions {
 		if (db.university_addUniversity(universityName,state,location,control,numOfStudents,perFemale,
 				satVerbal,satMath,expenses,perFinAid,numOfApps,perAdmitted,perEnrolled,
 				academicScale,socialScale,qualityOfLife) <= 0) {
-			
 			success = db.university_editUniversity(universityName,state,location,control,numOfStudents,perFemale,
 					satVerbal,satMath,expenses,perFinAid,numOfApps,perAdmitted,perEnrolled,
 					academicScale,socialScale,qualityOfLife) > 0;
@@ -376,7 +375,15 @@ public class DBInteractions {
 		return removeEmphases(toRemove) && db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
 	
-	// TODO
+	/**
+	 * Removes all the emphases tied to particular university.
+	 * 
+	 * @author wench
+	 * 
+	 * @param toRemove - The university 
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean removeEmphases(University toRemove) {
 		if (toRemove == null || toRemove.getEmphases() == null) return false;
 		AtomicReference<Boolean> success = new AtomicReference<>(true);
@@ -390,6 +397,16 @@ public class DBInteractions {
 		return success.get();
 	}
 	
+	/**
+	 * Removes a specified emphasis that is tied to a specified school
+	 * 
+	 * @author wench
+	 * 
+	 * @param school - Name of target school
+	 * @param emphasis - Name of target emphasis
+	 * 
+	 * @return boolean - Whether the operation was successful.
+	 * */
 	public boolean removeEmphasis(String school, String emphasis) {
 		return db.university_removeUniversityEmphasis(school, emphasis) > 0;
 	}
