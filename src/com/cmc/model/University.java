@@ -351,7 +351,7 @@ public class University {
 	
 	@Override
 	public boolean equals(Object o) {
-		return this.name == ((University) o).name;
+		return this.name.equals(((University) o).name);
 	}
 
 }

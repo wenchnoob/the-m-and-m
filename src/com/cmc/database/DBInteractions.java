@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.cmc.model.*;
-
 //import csb.sju.csci.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
@@ -17,8 +16,8 @@ public class DBInteractions {
 		// Initializer for All
 		// Uncomment the below line if you are in horizon view.
 
-
 		 db = new UniversityDBLibrary("megatherium", "csci230");
+
 		
 		// Initializer for Wenchy (Comment out if you are not wenchy)
 		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
