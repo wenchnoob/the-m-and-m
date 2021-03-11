@@ -33,16 +33,9 @@ public class SaveSchoolTest extends TestCase {
 	
 	@Test
 	public void testSaveSchoolMainScenario() {
-		// Tries to save a null school
-		boolean saved = ((User)testUser).saveSchool(null);
-		Assert.assertFalse("Method is call with no school to be saved.", saved);
-		
-		// Tries to save a school that is not in the database
-		saved = ((User)testUser).saveSchool("Fuddruckers University");
-		Assert.assertFalse("User tries to save an unknown school.", saved);
 		
 		// Tries to save a known school
-		saved = ((User)testUser).saveSchool("BARD");
+		boolean  saved = ((User)testUser).saveSchool("BARD");
 		Assert.assertTrue("User saved a known school from the database.", saved);
 	}
 	public void testSaveSchoolAlternateScenario() {
