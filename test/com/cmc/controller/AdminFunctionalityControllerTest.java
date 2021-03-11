@@ -6,10 +6,13 @@ import org.junit.Test;
 import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 import com.cmc.model.Admin;
+import com.cmc.model.University;
 import com.cmc.model.User;
 import com.cmc.model.UserSchool;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -35,6 +38,9 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		testUser = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
 		testAdmin = new Admin("Wenchy", "Dutreuil", "", "", "admin", "admin", true);
 		testAdmin2 = new Admin("Wenchy2", "Dutreuil2", "", "", "admin2", "admin2", true);
+		db.save(testUser);
+		db.save(testAdmin);
+		db.save(testAdmin2);
 	}
 	
 	@Override
@@ -161,12 +167,16 @@ public class AdminFunctionalityControllerTest extends TestCase {
 	
 	@Test
 	public void testViewAllUniversities() {
-		fail("Not yet implemented.");
+		//Test viewing universities from the database
+		List<University> universities = DBInteractions.getInstance().getAllUniversities();
+		Assert.assertNotSame("Ensure that the universities being viewed are not null", null, universities);
 	}
 	
 	@Test
 	public void testViewAllAccounts() {
-		fail("Not yet implemented.");
+		//Test viewing all accounts from the database
+		List<Account> accounts = DBInteractions.getInstance().getAllUsers();
+		Assert.assertNotSame("Ensure that the accounts being viewed are not null", null, accounts);
 	}
 	
 
