@@ -36,6 +36,26 @@ public class UniversityController {
 	}
 
 	/**
+	 * Allows an admin to add a university
+	 * 
+	 *@author Joseph
+	 *
+	 * @return boolean whether the university was added 
+	 */
+	public boolean addUniversity(Account src, String name, String state, String location, String control,
+			int numStudents, int satMath, int satVerbal, int expenses,
+			int numOfApps, int academicScale, int socialScale, List<String> emphases, float perFemale,
+			float perFinAid, float perAdmitted, float perEnrolled, int qualityLife) {
+
+		if (src.getType() != Account.AccountType.ADMIN) return false;
+		if (DBInteractions.getInstance().getUniversityByName(name)!= null) return false;
+			University newUniversity = new University(name, state, location, control, numStudents, satMath, satVerbal, expenses,
+					numOfApps, academicScale, socialScale, emphases, perFemale, perFinAid, perAdmitted, perEnrolled, qualityLife);
+		return DBInteractions.getInstance().save(newUniversity);
+	}
+
+
+	/**
 	 * Returns a university object that represents the university name that was passed in.
 	 * If the university name does not exist in the database, then a null reference is returned.
 	 * 
