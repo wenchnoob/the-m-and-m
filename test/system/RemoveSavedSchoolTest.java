@@ -1,7 +1,5 @@
 package system;
 
-import static org.junit.Assert.*;
-
 import java.util.HashMap;
 
 import org.junit.After;
