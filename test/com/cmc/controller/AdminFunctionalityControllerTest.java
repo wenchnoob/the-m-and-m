@@ -52,21 +52,7 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		testAdmin = null;
 		testUser = null;
 	}
-	
-	@Test
-	public void testAddUser() {
-		// Failed add
-		// User attempting to add a user
-		controller.addUser(testUser, "Kristian", "Kalsow", usernameToBeAdded, 
-				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
-		Assert.assertSame("The user should have failed to add another user.", null, db.getUserByUserName(usernameToBeAdded)); 
-		
-		// Successful add
-		// Admin attempting to add a user
-		controller.addUser(testAdmin, "Kristian", "Kalsow", usernameToBeAdded, 
-				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
-		Assert.assertNotEquals("The admin should have succeeded in adding another user.", null, db.getUserByUserName(usernameToBeAdded));
-	}
+
 	
 	@Test
 	public void testChangeUserType() {
