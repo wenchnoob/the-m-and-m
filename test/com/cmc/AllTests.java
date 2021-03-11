@@ -22,7 +22,7 @@ import system.ChangeTypeTest;
 import system.EditUserInfoTest;
 import system.LoginTest;
 import system.LogoutTest;
-import system.RemoveSavedSchoolTest;
+import com.cmc.model.RemoveSavedSchoolTest;
 import system.SaveSchoolTest;
 import system.SearchTest;
 import system.ViewAllUniversitiesTest;
