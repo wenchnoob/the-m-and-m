@@ -34,7 +34,7 @@ import system.ViewUserTest;
 @SuiteClasses({AccountControllerTest.class, AdminFunctionalityControllerTest.class, SearchControllerTest.class, UniversityControllerTest.class,
 	DatabaseTest.class, AccountTest.class, RemoveSavedSchoolTest.class, UniversityTest.class, UserSchoolTest.class, UserTest.class, AddUniversityTest.class,
 	AddUserTest.class, ChangeStatusTest.class, ChangeTypeTest.class, EditUserInfoTest.class, LoginTest.class, LogoutTest.class, SaveSchoolTest.class, 
-	SearchTest.class, ViewAllUniversitiesTest.class, ViewAllUsersTest.class, ViewUniversityTest.class, ViewUserTest.class })
+	SearchTest.class, ViewAllUniversitiesTest.class, ViewAllUsersTest.class, ViewUniversityTest.class, ViewUserTest.class, UniversityTest.class })
 public class AllTests extends TestSuite {
 
 }
