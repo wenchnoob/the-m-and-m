@@ -57,4 +57,15 @@ public class UserTest {
 		saved = ((User)testUser).saveSchool("BARD");
 		Assert.assertTrue("User saved a known school from the database.", saved);
 	}
+	
+	@Test
+	public void testRemoveSaveSchool() {
+		//Adds a school to the user
+		//Tries to remove a known school
+		boolean saved = ((User)testUser).saveSchool("BARD");
+		Assert.assertTrue("User saved a known school from the database.", saved);
+		boolean removed = ((User)testUser).unsaveSchool("BARD");
+		Assert.assertTrue("User removed a known school from their list", removed);
+	}
+	
 }
