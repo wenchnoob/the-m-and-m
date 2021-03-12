@@ -45,5 +45,18 @@ public class AccountTest extends TestCase {
 		Assert.assertEquals("Test to ensure that the recovery answer was properly inititialized.", testAccount.getRecoveryAnswer(), rA);
 		Assert.assertEquals("Test to ensure that the status was properly initialized.", testAccount.isEnabled(), enabled);
 	}
+	
+	@Test
+	public void testGetType() {
+		// Test the get Account type
+		Assert.assertEquals("The returned type should be of type admin.", Account.AccountType.ADMIN, testAccount.getType());
+	}
+	
+	@Test
+	public void testSetEnabledAndIsEnabled() {
+		// Sets enable getter and setters together
+		testAccount.setEnabled(false);
+		Assert.assertFalse("The account should be disabled.", testAccount.isEnabled());
+	}
 
 }
