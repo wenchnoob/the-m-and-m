@@ -2,9 +2,8 @@ package system;
 
 import java.util.HashMap;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+
 
 import com.cmc.controller.AccountController;
 import com.cmc.database.DBInteractions;
@@ -14,7 +13,7 @@ import com.cmc.model.User;
 import com.cmc.model.UserSchool;
 
 import junit.framework.TestCase;
-import junit.framework.Assert;
+
 
 /**
  * 

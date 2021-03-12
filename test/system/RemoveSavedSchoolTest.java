@@ -2,10 +2,8 @@ package system;
 
 import java.util.HashMap;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+
 
 import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
@@ -17,8 +15,6 @@ public class RemoveSavedSchoolTest {
 
 	private DBInteractions db;
 	private Account testUser;
-	private boolean saved;
-	
 	@Before
 	public void setUp() throws Exception {
 		db = DBInteractions.getInstance();
