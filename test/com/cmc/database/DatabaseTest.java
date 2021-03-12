@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.cmc.model.Account;
+import com.cmc.model.University;
 import com.cmc.model.User;
 
 import junit.framework.Assert;
@@ -50,6 +51,12 @@ public class DatabaseTest extends TestCase {
 	@Test
 	public void testSaveUser() {
 		Assert.assertTrue("Asserts that the database can save a valid user object.", db.save(testUser));
+	}
+	// Black Box Test
+	@Test
+	public void testGetUniversityByName() {
+		University realUniversity = db.getUniversityByName("BARD");
+		Assert.assertEquals("Asserts that the university can be called by name", "BARD", realUniversity.toString());
 	}
 	
 }
