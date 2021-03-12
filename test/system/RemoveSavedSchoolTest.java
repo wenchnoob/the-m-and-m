@@ -20,8 +20,7 @@ public class RemoveSavedSchoolTest {
 		db = DBInteractions.getInstance();
 		testUser = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
 		db.save(testUser);
-		boolean saved = ((User)testUser).saveSchool("BARD");
-
+		((User)testUser).saveSchool("BARD");
 	}
 
 	/**

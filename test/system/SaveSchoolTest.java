@@ -41,7 +41,7 @@ public class SaveSchoolTest extends TestCase {
 	public void testSaveSchoolAlternateScenario() {
 		
 		//Tries to save a school that is already in the database
-		boolean saved = ((User)testUser).saveSchool("FLORIDA STATE");
+		((User)testUser).saveSchool("FLORIDA STATE");
 		boolean savedTwice = ((User)testUser).saveSchool("FLORIDA STATE");
 		Assert.assertFalse("User tries to save a school that is already in their list", savedTwice);
 		
