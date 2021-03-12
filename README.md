@@ -22,19 +22,19 @@ Step 6) Open the CMC project folder
 Step 7) Open the tests package
 
 
-Step 8) Open the com.cmc package
+Step 8) Next open the com.cmc package
 
 
-Step 7) Open the AllTests.java file
+Step 9) Open the AllTests.java file
 
 
-Step 8) Find the green play button toward the top middle of the toolbar in Eclipse that shows “Run controller” when you hover your mouse over it
+Step 10) Find the green play button toward the top middle of the toolbar in Eclipse that shows “Run controller” when you hover your mouse over it
 
 
-Step 9) Click the button
+Step 11) Click the button
 
 
-Step 10) View output in the JUnit console screen in Eclipse.
+Step 12) View output in the JUnit console screen in Eclipse.
 
 
 
