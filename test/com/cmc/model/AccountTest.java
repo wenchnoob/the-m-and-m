@@ -45,10 +45,5 @@ public class AccountTest extends TestCase {
 		Assert.assertEquals("Test to ensure that the recovery answer was properly inititialized.", testAccount.getRecoveryAnswer(), rA);
 		Assert.assertEquals("Test to ensure that the status was properly initialized.", testAccount.isEnabled(), enabled);
 	}
-	
-	@Test
-	public void testAccountObjectMutation() {
-		// Test that the account object changes properly when setters and getters are invoked.
-	}
 
 }
