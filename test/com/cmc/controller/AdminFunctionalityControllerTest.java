@@ -174,7 +174,6 @@ public class AdminFunctionalityControllerTest extends TestCase {
 	
 	@Test
 	public void testAddUser() {
-		
 		// Failed add
 		// Name: NULL F
 		controller.addUser(testAdmin, null, null, usernameToBeAdded, 

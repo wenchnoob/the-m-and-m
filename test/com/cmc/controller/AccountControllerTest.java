@@ -102,7 +102,7 @@ public class AccountControllerTest extends TestCase {
 		boolean logStatus = controller.logout(testUser.getUsername());
 		Assert.assertEquals("The User should have successfully logged out. VALID LOGOUT.", true,  logStatus);
 				
-		// Unsuccessful Logouts
+		// Unsuccessful Logout
 		// Disabled user attempts to logout using valid credentials
 		// DISABLED BUT VALID
 		logStatus = controller.logout(disabledTestUser.getUsername());
