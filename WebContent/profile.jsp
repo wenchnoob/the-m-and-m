@@ -8,5 +8,7 @@
 </head>
 <body>
 
+
+	<button onclick="window.location.href='<%= (String)session.getAttribute("from") %>'">Go Back!</button>
 </body>
 </html>

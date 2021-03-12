@@ -4,7 +4,7 @@
 package com.cmc.controller;
 
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 
@@ -118,8 +118,8 @@ public class AdminFunctionalityController {
 	 * 
 	 * @return universities list - An iterator over all the Universities.
 	 * */
-	public Iterator<University> viewAllUniversities() {
-		return DBInteractions.getInstance().getAllUniversities().iterator();
+	public List<University> viewAllUniversities() {
+		return DBInteractions.getInstance().getAllUniversities();
 	}
 	
 	/**
@@ -129,8 +129,8 @@ public class AdminFunctionalityController {
 	 * 
 	 * @return accounts list - An iterator over all the Accounts.
 	 * */
-	public Iterator<Account> viewAllAccounts(){
-		return DBInteractions.getInstance().getAllUsers().iterator();
+	public List<Account> viewAllAccounts(){
+		return DBInteractions.getInstance().getAllUsers();
 	}
 	
 

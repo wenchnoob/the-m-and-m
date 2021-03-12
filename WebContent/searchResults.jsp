@@ -8,5 +8,7 @@
 </head>
 <body>
 
+<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a>
+	<% session.setAttribute("from", "searchResults.jsp"); %>
 </body>
 </html>
