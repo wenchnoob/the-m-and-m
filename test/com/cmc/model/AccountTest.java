@@ -58,5 +58,31 @@ public class AccountTest extends TestCase {
 		testAccount.setEnabled(false);
 		Assert.assertFalse("The account should be disabled.", testAccount.isEnabled());
 	}
+	
+	@Test
+	public void testUserLogon() {
+		// Name: LOGOUT
+		boolean loggedIn = testAccount.logout();
+		Assert.assertFalse("The user should not be logged in. LOGOUT.", !loggedIn);
+		
+		// Name: 
+		loggedIn = testAccount.isLoggedOn();
+		Assert.assertFalse("The user should not be logged in. LOGOUT.", loggedIn);
+		
+		// Name: FAILED LOGIN
+		loggedIn = testAccount.logon(password + "no");
+		Assert.assertFalse("The user should not be logged in. FAILED LOGIN.", loggedIn);
+		
+		loggedIn = testAccount.isLoggedOn();
+		Assert.assertFalse("The user should not be logged in. FAILED LOGIN.", loggedIn);
+		
+		// Name: SUCCESSFUL LOGIN
+		loggedIn =testAccount.logon(password);
+		Assert.assertTrue("The user should now be logged in. SUCCESSFUL LOGIN.", loggedIn);
+		
+		loggedIn = testAccount.isLoggedOn();
+		Assert.assertTrue("The user should now be logged in. SUCCESSFUL LOGIN.", loggedIn);
+	}
+	
 
 }

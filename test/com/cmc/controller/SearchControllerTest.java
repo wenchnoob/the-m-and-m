@@ -148,7 +148,6 @@ public class SearchControllerTest {
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>());
 		for (int I = 0; I < searchResults.size(); I++) {
-			
 			//Assert.assertEquals("Ensure that search finds correct Universities", uniBySizeandState, searchResults);
 			Assert.assertEquals(smallUni.get(I), searchResults.get(I));
 			

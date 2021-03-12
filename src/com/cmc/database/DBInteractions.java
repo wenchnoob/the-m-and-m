@@ -242,7 +242,7 @@ public class DBInteractions {
 	 * @return boolean - Whether the operation was successful.
 	 * */
 	public boolean removeAllUserSchool(User user) {
-		if (user == null) return false;
+		if (user == null || user.getSavedSchools() == null) return false;
 		boolean success = true;
 		for (UserSchool school: user.getSavedSchools().values()) {
 			success &= removeIndividualSchool(user, school);

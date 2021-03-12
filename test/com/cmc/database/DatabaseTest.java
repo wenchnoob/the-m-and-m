@@ -29,6 +29,8 @@ public class DatabaseTest extends TestCase {
 				"What's your name?", "Channa", true, null);
 		testUniversity = new University("SCHOOL", "STATE", "LOCATION", "CONTROL", 1, 1, 1, 1, 1, 1, 
 				1, emphases, 1.0f, 1.0f, 1.0f, 1.0f, 1);
+		db.save(testUser);
+		db.save(testUniversity);
 	}
 	
 	@Override
