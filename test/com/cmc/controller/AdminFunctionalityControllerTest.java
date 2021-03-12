@@ -58,21 +58,6 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		testUser = null;
 	}
 
-	@Test
-	public void testAddUser() {
-		// Failed add
-		// User attempting to add a user
-		controller.addUser(testUser, "Kristian", "Kalsow", usernameToBeAdded, 
-				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
-		Assert.assertSame("The user should have failed to add another user.", null, db.getUserByUserName(usernameToBeAdded)); 
-		
-		// Successful add
-		// Admin attempting to add a user
-		controller.addUser(testAdmin, "Kristian", "Kalsow", usernameToBeAdded, 
-				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
-		Assert.assertNotEquals("The admin should have succeeded in adding another user.", null, db.getUserByUserName(usernameToBeAdded));
-	}
-
 	
 	@Test
 	public void testChangeUserType() {
@@ -96,13 +81,13 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		// Name: ADMIN -> OTHER
 		initialType = testUser.getType();
 		typeChanged = controller.changeUserType(testAdmin, testUser, Account.AccountType.ADMIN);
-		Assert.assertTrue("Whether the user's type has changed. ADMIN -> OTHER", typeChanged);
-		Assert.assertNotSame("Test to see that the user's type has changed after the operation. ADMIN -> OTHER", initialType, testUser.getType());
+		Assert.assertTrue("Whether the user's type has changed. ADMIN -> SELF", typeChanged);
+		Assert.assertNotSame("Test to see that the user's type has not change after the operation. ADMIN -> SELF", initialType, testUser.getType());
 		
 		initialType = testAdmin.getType();
 		typeChanged = controller.changeUserType(testAdmin2, testAdmin, Account.AccountType.BASIC_USER);
-		Assert.assertTrue("Whether the user's type has changed. ADMIN -> OTHER", typeChanged);
-		Assert.assertNotSame("Test to see that the user's type has changed after the operation. ADMIN -> OTHER", initialType, testAdmin.getType());
+		Assert.assertTrue("Whether the user's type has changed. ADMIN -> SELF", typeChanged);
+		Assert.assertNotSame("Test to see that the user's type has not change after the operation. ADMIN -> SELF", initialType, testAdmin.getType());
 	}
 	
 	@Test
@@ -119,6 +104,14 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		Assert.assertFalse("Whether the user's status has changed after the test. BASIC_USER -> SELF.", statusChanged);
 		Assert.assertEquals("Ensure that the user's current status is actually the user's initial status. BASIC_USER -> SELF.", initialStatus, testUser.isEnabled());
 	
+		// Failed status change
+		// User tries to change own status while not being a an admin.
+		// Name: BASIC_USER -> ADMIN
+		initialStatus = testAdmin.isEnabled();
+		statusChanged = controller.changeStatus(testUser, testAdmin, false);
+		Assert.assertFalse("Whether the user's status has changed after the test. BASIC_USER -> ADMIN.", statusChanged);
+		Assert.assertEquals("Ensure that the user's current status is actually the user's initial status. BASIC_USER -> ADMIN.", initialStatus, testAdmin.isEnabled());
+		
 		// Failed status change
 		// Admin user tries to change own status.
 		// Name: ADMIN -> SELF
@@ -179,5 +172,25 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		Assert.assertNotSame("Ensure that the accounts being viewed are not null", null, accounts);
 	}
 	
+	@Test
+	public void testAddUser() {
+		// Failed add
+		// Name: NULL F
+		controller.addUser(testAdmin, null, null, usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertEquals("The admin should have failed in adding another user. NUll F.", null, db.getUserByUserName(usernameToBeAdded));
+		
+		// Failed add
+		// Name: F
+		controller.addUser(testAdmin, "", "Kalsow", usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertEquals("The admin should have failed in adding another user. F.", null, db.getUserByUserName(usernameToBeAdded));
+		
+		// Successful add
+		// Name: S
+		controller.addUser(testAdmin, "Kristian", "Kalsow", usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertNotEquals("The admin should have succeeded in adding another user. S.", null, db.getUserByUserName(usernameToBeAdded));
+	}
 
 }

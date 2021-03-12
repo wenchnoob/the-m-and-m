@@ -86,8 +86,8 @@ public class SearchControllerTest {
 		controller2.remove(testUniversity5);
 		controller2.remove(testUniversity2);
 	}
-	
-	//searches all schools in Florida
+	//Below are extra tests removed during progress meeting but are still useful
+	//searches all schools in florida
 	@Test
 	public void testMainSearchScenario() {
 		List <University> searchResults = controller.searchUniversity("", "FLORIDA", "", "",
@@ -95,6 +95,7 @@ public class SearchControllerTest {
 				-1,(float) -1, (float) -1, -1, -1, (float) -1, (float) -1,
 				(float) -1, (float) -1,-1, -1, -1, -1,
 				-1, -1, new ArrayList<String>());
+		
 		for (int I = 0; I < searchResults.size(); I++) {
 
 			//Assert.assertEquals("Ensure that search finds correct Universities", flUnis, searchResults);
