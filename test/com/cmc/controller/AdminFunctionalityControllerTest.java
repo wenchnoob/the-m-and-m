@@ -10,7 +10,6 @@ import com.cmc.model.University;
 import com.cmc.model.User;
 import com.cmc.model.UserSchool;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 

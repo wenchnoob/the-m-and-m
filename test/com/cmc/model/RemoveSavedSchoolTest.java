@@ -1,11 +1,10 @@
 package com.cmc.model;
 
-import static org.junit.Assert.*;
+import org.junit.*;
 
 import java.util.HashMap;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 

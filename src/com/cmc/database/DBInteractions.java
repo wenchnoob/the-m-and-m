@@ -6,19 +6,10 @@ import java.util.stream.Collectors;
 
 import com.cmc.model.*;
 
-//import csb.sju.csci.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
-
-
-<<<<<<< HEAD
-=======
-
 
 //import csb.sju.csci.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
-
->>>>>>> 2a84cf6e0697826b6ddd6900d9202eb77d21d04a
 /**
  * Class intended for the handling of all university functionalities in the system.
  * @author Wenchy Dutreuil, Kristiana Anderson, and Joseph Mathias
@@ -247,7 +238,7 @@ public class DBInteractions {
 	 * @return boolean - Whether the operation was successful.
 	 * */
 	public boolean removeAllUserSchool(User user) {
-		if (user == null) return false;
+		if (user == null || user.getSavedSchools() == null) return false;
 		boolean success = true;
 		for (UserSchool school: user.getSavedSchools().values()) {
 			success &= removeIndividualSchool(user, school);
