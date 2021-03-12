@@ -10,7 +10,6 @@ import com.cmc.model.UserSchool;
 
 import org.junit.*;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**

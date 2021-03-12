@@ -3,15 +3,13 @@
  */
 package system;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+
 
 import com.cmc.controller.AccountController;
 import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
 
-import junit.framework.Assert;
 
 /**
  * @author kanderson003

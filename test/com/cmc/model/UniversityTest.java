@@ -5,20 +5,16 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.cmc.database.DBInteractions;
-
 import junit.framework.TestCase;
 
 public class UniversityTest extends TestCase {
 	
-	private DBInteractions db;
 	private University testUniversity;
 	ArrayList<String> emphases = new ArrayList<String>();
 	
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		db = DBInteractions.getInstance();
 		emphases.add("String");
 		testUniversity = new University("SCHOOL", "STATE", "LOCATION", "CONTROL", 1, 1, 1, 1, 1, 1, 
 				1, emphases, 1.0f, 1.0f, 1.0f, 1.0f, 1);
@@ -27,7 +23,6 @@ public class UniversityTest extends TestCase {
 
 	protected void tearDown() throws Exception {
 		super.tearDown();
-		db = null;
 		emphases = null;
 		testUniversity = null;
 	}

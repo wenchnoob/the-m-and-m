@@ -1,15 +1,10 @@
 package system;
 
-import static org.junit.Assert.*;
+import org.junit.*;
 
 import java.util.ArrayList;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
-import com.cmc.controller.AdminFunctionalityController;
 import com.cmc.controller.UniversityController;
 import com.cmc.database.DBInteractions;
 import com.cmc.model.Account;
