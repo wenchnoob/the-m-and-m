@@ -60,6 +60,12 @@ public class DatabaseTest extends TestCase {
 	public void testSaveUser() {
 		Assert.assertTrue("Asserts that the database can save a valid user object.", db.save(testUser));
 	}
+	// Black Box Test
+	@Test
+	public void testGetUniversityByName() {
+		University realUniversity = db.getUniversityByName("BARD");
+		Assert.assertEquals("Asserts that the university can be called by name", "BARD", realUniversity.toString());
+	}
 	
 	@Test
 	public void testSaveUniversity() {
