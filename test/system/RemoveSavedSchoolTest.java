@@ -19,13 +19,15 @@ public class RemoveSavedSchoolTest {
 
 	private DBInteractions db;
 	private Account testUser;
-	
+	private boolean saved;
 	
 	@Before
 	public void setUp() throws Exception {
 		db = DBInteractions.getInstance();
 		testUser = new User("Joe","Mathias","Who am i?","Me","Jmath","Password",true,new HashMap<String,UserSchool>());
 		db.save(testUser);
+		boolean saved = ((User)testUser).saveSchool("BARD");
+
 	}
 
 	/**
@@ -42,8 +44,6 @@ public class RemoveSavedSchoolTest {
 	public void testRemoveSaveSchool() {
 		//Adds a school to the user
 		//Tries to remove a known school
-		boolean saved = ((User)testUser).saveSchool("BARD");
-		Assert.assertTrue("User saved a known school from the database.", saved);
 		boolean removed = ((User)testUser).unsaveSchool("BARD");
 		Assert.assertTrue("User removed a known school from their list", removed);
 	}
