@@ -264,7 +264,7 @@ public class AccountControllerTest extends TestCase {
 		controller.editBasicUserInfo(testAdmin2, testAdmin1, AccountController.ManagedField.RECOVERY_ANSWER, "you");
 		Assert.assertEquals("you",testAdmin1.getRecoveryAnswer());
 	}
-	//Tests basic user changing admin recovery question
+	//Tests basic user changing admin recovery answer
 	//Test should fail
 	@Test 
 	public void testBasicUserEditAdminRecoveryAnswer() {
