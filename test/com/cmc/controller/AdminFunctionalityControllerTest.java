@@ -97,13 +97,13 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		// Name: ADMIN -> OTHER
 		initialType = testUser.getType();
 		typeChanged = controller.changeUserType(testAdmin, testUser, Account.AccountType.ADMIN);
-		Assert.assertTrue("Whether the user's type has changed. ADMIN -> SELF", typeChanged);
-		Assert.assertNotSame("Test to see that the user's type has not change after the operation. ADMIN -> SELF", initialType, testUser.getType());
+		Assert.assertTrue("Whether the user's type has changed. ADMIN -> OTHER", typeChanged);
+		Assert.assertNotSame("Test to see that the user's type has changed after the operation. ADMIN -> OTHER", initialType, testUser.getType());
 		
 		initialType = testAdmin.getType();
 		typeChanged = controller.changeUserType(testAdmin2, testAdmin, Account.AccountType.BASIC_USER);
-		Assert.assertTrue("Whether the user's type has changed. ADMIN -> SELF", typeChanged);
-		Assert.assertNotSame("Test to see that the user's type has not change after the operation. ADMIN -> SELF", initialType, testAdmin.getType());
+		Assert.assertTrue("Whether the user's type has changed. ADMIN -> OTHER", typeChanged);
+		Assert.assertNotSame("Test to see that the user's type has changed after the operation. ADMIN -> OTHER", initialType, testAdmin.getType());
 	}
 	
 	@Test
