@@ -105,6 +105,14 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		Assert.assertEquals("Ensure that the user's current status is actually the user's initial status. BASIC_USER -> SELF.", initialStatus, testUser.isEnabled());
 	
 		// Failed status change
+		// User tries to change own status while not being a an admin.
+		// Name: BASIC_USER -> ADMIN
+		initialStatus = testAdmin.isEnabled();
+		statusChanged = controller.changeStatus(testUser, testAdmin, false);
+		Assert.assertFalse("Whether the user's status has changed after the test. BASIC_USER -> ADMIN.", statusChanged);
+		Assert.assertEquals("Ensure that the user's current status is actually the user's initial status. BASIC_USER -> ADMIN.", initialStatus, testAdmin.isEnabled());
+		
+		// Failed status change
 		// Admin user tries to change own status.
 		// Name: ADMIN -> SELF
 		initialStatus = testAdmin.isEnabled();
@@ -164,5 +172,26 @@ public class AdminFunctionalityControllerTest extends TestCase {
 		Assert.assertNotSame("Ensure that the accounts being viewed are not null", null, accounts);
 	}
 	
+	@Test
+	public void testAddUser() {
+		
+		// Failed add
+		// Name: NULL F
+		controller.addUser(testAdmin, null, null, usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertEquals("The admin should have failed in adding another user. NUll F.", null, db.getUserByUserName(usernameToBeAdded));
+		
+		// Failed add
+		// Name: F
+		controller.addUser(testAdmin, "", "Kalsow", usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertEquals("The admin should have failed in adding another user. F.", null, db.getUserByUserName(usernameToBeAdded));
+		
+		// Successful add
+		// Name: S
+		controller.addUser(testAdmin, "Kristian", "Kalsow", usernameToBeAdded, 
+				"koool", "2+2?", "4", true, Account.AccountType.ADMIN);
+		Assert.assertNotEquals("The admin should have succeeded in adding another user. S.", null, db.getUserByUserName(usernameToBeAdded));
+	}
 
 }
