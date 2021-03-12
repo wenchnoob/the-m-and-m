@@ -30,7 +30,7 @@ public class AddUniversityTest extends TestCase {
 	@After
 	public void tearDown() throws Exception {
 		db.remove(testAdmin);
-
+		db.remove(db.getUniversityByName("SCHOOL"));
 		db = null;
 		testAdmin = null;
 		emphases = null;

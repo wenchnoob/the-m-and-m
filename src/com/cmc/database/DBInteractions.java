@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import com.cmc.model.*;
 
 
-//import csb.sju.csci.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
+import csb.sju.csci.*;
+//import dblibrary.project.csci230.UniversityDBLibrary;
 
 /**
  * Class intended for the handling of all university functionalities in the system.
@@ -366,7 +366,7 @@ public class DBInteractions {
 	 * @return boolean - Whether the operation was successful.
 	 * */
 	public boolean remove(University toRemove) {
-		if (toRemove == null) return false;
+		if (toRemove == null) return true;
 		return removeEmphases(toRemove) && db.university_deleteUniversity(toRemove.getName()) > 0;
 	}
 	
