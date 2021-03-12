@@ -61,7 +61,9 @@ public class AdminFunctionalityController {
 	 * */
 	public boolean addUser(Account src, String firstName, String lastName, String username, String password, String rQuestion, String rAnswer,
 			boolean  enabled, Account.AccountType type) {
+		if (src == null || firstName == null || lastName == null || username == null || password == null || rQuestion == null || rAnswer == null || type == null) return false;
 		if (src.getType() != Account.AccountType.ADMIN) return false;
+		if (firstName.equals("") || lastName.equals("") || username.equals("") || password.equals("") || rQuestion.equals("") || rAnswer.equals("")) return false;
 		Account user;
 		if(type == Account.AccountType.ADMIN) {
 			user = new Admin(firstName, lastName, username, password, rQuestion, rAnswer, enabled);
