@@ -74,4 +74,12 @@ public class DatabaseTest extends TestCase {
 		Assert.assertTrue("Asserts that the database can save a valid user object.", db.save(testUniversity));
 	}
 	
+	@Test
+	public void testRemoveUserAccount() {
+		boolean success = db.remove(testUser);
+		Assert.assertTrue("Makes sure that the testUser was removed from the database", success);
+		
+		
+	}
+	
 }
