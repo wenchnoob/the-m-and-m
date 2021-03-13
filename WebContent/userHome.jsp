@@ -25,6 +25,7 @@
 					if (loggedInUser.getType() == Account.AccountType.BASIC_USER) {
 				%>
 					<li><a href="search.jsp">Search Universities</a></li>
+					<li><a href = "viewSavedSchools.jsp">View Saved Schools</a></li>
 				<%
 					}
 				%>
@@ -37,12 +38,12 @@
 				<%
 					}
 				%>
+				<li><a href = "logout.jsp">Log Out</a></li>
 			</ul>
 		</div>
 	<% } else { %>
 		<h1>Error Something went wrong</h1>
 	<% } %>
-	
 	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a>
 	<% session.setAttribute("from", "userHome.jsp"); %>
 </body>
