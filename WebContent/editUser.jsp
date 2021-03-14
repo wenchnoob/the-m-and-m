@@ -32,14 +32,14 @@
 					<td><input type="text" name="lastName"></td>
 				</tr>
 				<tr>
-					<td>Username</td>
-					<td><%=user.getUsername()%></td>
-					<td><input type="text" name="username"></td>
-				</tr>
-				<tr>
 					<td>Password</td>
 					<td><%=user.getPassword()%></td>
 					<td><input type="text" name="password"></td>
+				</tr>
+				<tr>
+					<td>Type</td>
+					<td><%=user.getType()%></td>
+					<td><input type="text" name="type"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="Submit"></td>
