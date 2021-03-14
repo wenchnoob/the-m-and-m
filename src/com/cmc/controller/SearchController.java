@@ -193,7 +193,7 @@ public class SearchController {
 	private static List<University> filterByName(List<University> universities, String schoolName){
 		List<University> fittingUniversities = new ArrayList<>();
 		for (University school: universities) {
-			if (school.getName().equals(schoolName)) {
+			if (school.getName().equalsIgnoreCase(schoolName)) {
 				fittingUniversities.add(school);
 			}
 		}
@@ -475,6 +475,9 @@ public class SearchController {
 	 * @return list of universities that pass filter
 	 * */
 	private static List<University> filterByEmphases(List<University> universities, List<String> listOfEmphases){
+		for (int i = 0; i< 5; i++) {
+			listOfEmphases.remove("");
+		}
 		if (listOfEmphases == null || listOfEmphases.size() == 0)
 		{
 			return universities;
