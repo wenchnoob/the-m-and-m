@@ -32,6 +32,7 @@
 				<th>Percent Admitted</th>
 				<th>Percent Enrolled</th>
 				<th>Quality of Life</th>
+				<th>View</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -89,6 +90,9 @@
 				</td>
 				<td>
 					<%= uni.getQualityLife() %>
+				</td>
+				<td>
+					<a href="viewUniversity.jsp?viewing=<%=uni.getName()%>">View</a>
 				</td>
 			</tr>	
 		<%
