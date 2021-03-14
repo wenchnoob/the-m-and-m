@@ -1,14 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import = "com.cmc.model.*, java.util.*, com.cmc.database.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Saved Schools</title>
 </head>
 <body>
+	
+	<%
+		Account user = (Account)session.getAttribute("loggedInUser");
+		if (user == null || user.getClass() != User.class) {
+			application.getRequestDispatcher("/index.jsp").forward(request, response);
+			return;
+		}
+		
+		Map<String, UserSchool> school = ((User)user).getSavedSchools();
+		DBInteractions interactions = DBInteractions.getInstance();
+	%>
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">Saved Schools</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<% for (String schoolName: school.keySet()) { %>
+						<td><%= schoolName %></td>
+						<td><a href="viewUniversity.jsp?viewing=<%=schoolName%>">View</a></td>
+					<% } %>
+				</tr>
+			</tbody>
+		</table>
+		
+	
+	
 
 	<a href="userHome.jsp">Home</a><br>
 	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
+	<% session.setAttribute("from", "viewSavedSchools.jsp"); %>
 </body>
 </html>
