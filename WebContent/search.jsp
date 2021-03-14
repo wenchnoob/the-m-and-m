@@ -9,8 +9,7 @@
 </head>
 <body>
 
-	<% session.setAttribute("from", "search.jsp"); %>
-	<p><h1>Search Schools</h1></p>
+	<h1>Search Schools</h1>
 	<form action = "searchResults.jsp" method = "post">
 	<table border=1 width="88%">
 	<tr>
@@ -88,7 +87,9 @@
 	<td><input type="reset" value="Reset"></td>
 	</tr>
 	</table>
+	
 	<a href="userHome.jsp">Home</a><br>
 	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
+	<% session.setAttribute("from", "search.jsp"); %>
 </body>
 </html>

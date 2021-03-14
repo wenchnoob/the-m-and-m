@@ -8,7 +8,9 @@
 <title>Edit Profile Information</title>
 </head>
 <body>
-<% Account user = (Account)session.getAttribute("viewing"); %>
+<% 
+	Account user = (Account)session.getAttribute("viewing"); 
+%>
 	<p>Your profile information:</p>
 	
 	<form action = "editUserPortal.jsp" method = "post">
@@ -36,11 +38,24 @@
 					<td><%=user.getPassword()%></td>
 					<td><input type="text" name="password"></td>
 				</tr>
-				<tr>
-					<td>Type</td>
-					<td><%=user.getType()%></td>
-					<td><input type="text" name="type"></td>
-				</tr>
+				<% if (!user.equals((Account)session.getAttribute("loggedInUser"))) { %>
+					<tr>
+						<td>Enabled</td>
+						<td><%=user.isEnabled()%></td>
+						<td>
+							<label>TRUE:<input type="radio" name="status" value="TRUE"></label><br>
+							<label>FALSE:<input type="radio" name="status" value="FALSE"></label>
+						</td>
+					</tr>
+					<tr>
+						<td>Type</td>
+						<td><%=user.getType()%></td>
+						<td>
+							<label>ADMIN:<input type="radio" name="type" value="ADMIN"></label><br>
+							<label>BASIC_USER:<input type="radio" name="type" value="BASIC_USER"></label>
+						</td>
+					</tr>
+				<% } %>
 				<tr>
 					<td colspan="2"><input type="submit" value="Submit"></td>
 					<td><input type="reset" value="Reset"></td>

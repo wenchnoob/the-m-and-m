@@ -3,6 +3,8 @@
  */
 package com.cmc.model;
 
+import com.cmc.database.DBInteractions;
+
 /**
  *  This class is an abstract class that is supposed to express the basic functionality
  *  of any account in the system.
@@ -222,16 +224,8 @@ public abstract class Account {
 	@Override
 	public boolean equals(Object o) {
 		if (o == null || o.getClass() != this.getClass()) return false;
-		
 		Account other = (Account) o;
-		
-		boolean firstNameMatch = this.firstName.equals(other.getFirstName());
-		boolean lastNameMatch = this.lastName.equals(other.getLastName());
-		boolean usernameMatch = this.username.equals(other.getUsername());
-		boolean passwordMatch = this.password.equals(other.getPassword());
-		boolean typeMatch = this.type == other.getType();
-		
-		return firstNameMatch && lastNameMatch && usernameMatch && passwordMatch && typeMatch;
+		return this.username.equals(other.getUsername());
 	}
 	
 }

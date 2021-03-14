@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import com.cmc.model.*;
 
 
-//import csb.sju.csci.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
+import csb.sju.csci.*;
+//import dblibrary.project.csci230.UniversityDBLibrary;
 
 /**
  * Class intended for the handling of all university functionalities in the system.
@@ -29,9 +29,9 @@ public class DBInteractions {
 		// Uncomment the below line if you are in horizon view.
 
 		// Initializer for Wenchy (Comment out if you are not wenchy)
-		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 
-		db = new UniversityDBLibrary("megatherium", "csci230");
+		//db = new UniversityDBLibrary("megatherium", "csci230");
 
 	}
 	
@@ -165,7 +165,7 @@ public class DBInteractions {
 		String lastName = toSave.getLastName();
 		String username = toSave.getUsername();
 		String password = toSave.getPassword();
-		char type = toSave.getClass() == User.class ? 'u': 'a';
+		char type = toSave.getType() == Account.AccountType.ADMIN ? 'a': 'u';
 		char enabled = toSave.isEnabled() ? 'Y' : 'N';
 		
 		boolean success = true;
@@ -176,7 +176,9 @@ public class DBInteractions {
 		
 		if (!toSave.isEnabled()) success = db.user_editUser(username, firstName, lastName, password, type, enabled) > 0;
 		
-		if (type == 'u') saveUserSchools((User)toSave);
+		try {
+			if (type == 'u') saveUserSchools((User)toSave);
+		} catch (ClassCastException ex) {}
 		
 		return success;
 	}

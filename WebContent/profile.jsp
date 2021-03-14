@@ -9,8 +9,7 @@
 </head>
 <body>
 <%
-	Account user = DBInteractions.getInstance().getUserByUserName(request.getParameter("viewing")); 
-	if (user == null) user = (Account)session.getAttribute("viewing");
+	Account user = DBInteractions.getInstance().getUserByUserName(request.getParameter("viewing"));
 	session.setAttribute("viewing", user);
 %>
 	<p>Your profile information:</p>
@@ -33,12 +32,16 @@
 				<td><%=user.getPassword() %></td>
 			</tr>
 			<tr>
+				<td>Status</td>
+				<td><%=user.isEnabled() == true ? "ENABLED": "DISABLED" %></td>
+			</tr>
+			<tr>
 				<td>Type</td>
 				<td><%=user.getType() %></td>
 			</tr>
 		</table>
 	<% } %>
-	<a href = "editUser.jsp">Edit User</a><br>
+	<a href="editUser.jsp">Edit User</a><br>
 	<a href="userHome.jsp">Home</a><br>
 	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
 	<%session.setAttribute("from", "profile.jsp"); %>
