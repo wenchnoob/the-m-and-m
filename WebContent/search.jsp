@@ -10,6 +10,7 @@
 <body>
 
 	<h1>Search Schools</h1>
+
 	<form action="searchResults.jsp" method="post">
 		<table border=1 width="88%">
 			<tr>
