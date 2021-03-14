@@ -104,7 +104,7 @@ public class AccountController {
 	 * @return boolean - Whether the operation was successful or not.
 	 * */
 	public boolean editBasicUserInfo(Account src, Account targ, ManagedField field, String value) {
-		if (src.getType() != Account.AccountType.ADMIN && src != targ) return false;
+		if (src.getType() != Account.AccountType.ADMIN && !src.equals(targ)) return false;
 		if (value == null || value.length() <= 0) return false;
 
 		DBInteractions db = DBInteractions.getInstance();

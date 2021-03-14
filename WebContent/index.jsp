@@ -14,7 +14,7 @@
 		</ul>
 	</div>
 	
-	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a>
+	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
 	<% session.setAttribute("from", "index.jsp"); %>
 </body>
 </html>

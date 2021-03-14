@@ -16,8 +16,7 @@
 		<input type="submit" value="Submit">
 	</form>
 	
-	<button onclick="window.location.href='<%= (String)session.getAttribute("from") %>'">Go Back!</button>
-	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a>
+	<a href="index.jsp">Home</a><br>
 	<% session.setAttribute("from", "login.jsp"); %>
 </body>
 </html>

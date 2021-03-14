@@ -165,7 +165,7 @@ public class DBInteractions {
 		String lastName = toSave.getLastName();
 		String username = toSave.getUsername();
 		String password = toSave.getPassword();
-		char type = toSave.getClass() == User.class ? 'u': 'a';
+		char type = toSave.getType() == Account.AccountType.ADMIN ? 'a': 'u';
 		char enabled = toSave.isEnabled() ? 'Y' : 'N';
 		
 		boolean success = true;
@@ -176,7 +176,9 @@ public class DBInteractions {
 		
 		if (!toSave.isEnabled()) success = db.user_editUser(username, firstName, lastName, password, type, enabled) > 0;
 		
-		if (type == 'u') saveUserSchools((User)toSave);
+		try {
+			if (type == 'u') saveUserSchools((User)toSave);
+		} catch (ClassCastException ex) {}
 		
 		return success;
 	}
