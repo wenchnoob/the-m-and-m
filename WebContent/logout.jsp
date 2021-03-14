@@ -7,9 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>You have logged out of CMC</title>
 </head>
-<%session.setAttribute("loggedInUser", AccountController.getInstance().logout(request.getParameter("username")));%>
+<%
+	AccountController.getInstance().logout(request.getParameter("username"));
+	session.removeAttribute("loggedInUser");
+%>
 <body>
 <p>You have logged out successfully.</p>
-<a href = "index.jsp">Back to start page</a>
+<a href = "index.jsp">Main Page</a>
 </body>
-</html>

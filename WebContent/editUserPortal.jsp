@@ -8,6 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%editBasicUserInfo(session.getAttribute("loggedInUser"), session.getAttribute("loggedInUser"),ManagedField field, String value) %>
+
+	<%
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		Account src = (Account)session.getAttribute("loggedInUser");
+		Account targ = (Account)session.getAttribute("viewing");
+		
+		AccountController controller = AccountController.getInstance();
+		if (firstName != null && !firstName.trim().equals("")) controller.editBasicUserInfo(src, targ, AccountController.ManagedField.FIRSTNAME, firstName);
+		
+		
+		
+		application.getRequestDispatcher("/userHome.jsp").forward(request, response);
+	%>
 </body>
 </html>

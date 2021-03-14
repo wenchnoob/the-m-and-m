@@ -18,6 +18,7 @@
 				<th>Username</th>
 				<th>Type</th>
 				<th>Enabled Status</th>
+				<th>View</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,6 +38,9 @@
 				<td>
 					<%= user.isEnabled() ? "YES": "NO" %>
 				</td>
+				<td>
+					<a href="profile.jsp?viewing=<%=user.getUsername()%>">View</a>
+				</td>
 			</tr>	
 		<%
 			}
@@ -44,7 +48,9 @@
 		</tbody>
 	</table>
 	
-	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a>
+	<a href="">Add Account</a><br>
+	<a href="userHome.jsp">Home</a><br>
+	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
 	<% session.setAttribute("from", "allAccounts.jsp"); %>
 </body>
 </html>

@@ -23,7 +23,7 @@ public class University {
 	 * University constructor
 	 * @author Channa, Kristiana, Wenchy
 	 * @param name
-	 * @param address
+	 * @param state
 	 * @param location
 	 * @param control
 	 * @param numStudents

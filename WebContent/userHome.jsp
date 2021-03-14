@@ -19,13 +19,13 @@
 		<h1>Choose My College</h1>
 		<div>
 			<ul>
-				<li><a href="profile.jsp">View Profile</a></li>
+				<li><a href="profile.jsp?viewing=<%=loggedInUser.getUsername()%>">View Profile</a></li>
 				
 				<% 
 					if (loggedInUser.getType() == Account.AccountType.BASIC_USER) {
 				%>
 					<li><a href="search.jsp">Search Universities</a></li>
-					<li><a href = "viewSavedSchools.jsp">View Saved Schools</a></li>
+					<li><a href="viewSavedSchools.jsp">View Saved Schools</a></li>
 				<%
 					}
 				%>
@@ -38,13 +38,15 @@
 				<%
 					}
 				%>
-				<li><a href = "logout.jsp">Log Out</a></li>
+				
+				<li><a href="logout.jsp">Log Out</a></li>
 			</ul>
 		</div>
 	<% } else { %>
 		<h1>Error Something went wrong</h1>
 	<% } %>
-	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a>
+	
+	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
 	<% session.setAttribute("from", "userHome.jsp"); %>
 </body>
 </html>
