@@ -30,7 +30,7 @@
 				<td><%= user.getUsername() %></td>
 				<td><%= user.getType() %></td>
 				<td><%= user.isEnabled() ? "YES": "NO" %></td>
-				<td><a href="profile.jsp?viewing=<%=user.getUsername()%>">View</a>
+				<td><a href="../views/profile.jsp?viewing=<%=user.getUsername()%>">View</a>
 				</td>
 			</tr>
 			<%
@@ -38,7 +38,7 @@
 		%>
 		</tbody>
 	</table>
-	<a href="addUser.jsp">Add Account</a><br>
-	<a href="userHome.jsp">Home</a><br>
+	<a href="../views/addUser.jsp">Add Account</a><br>
+	<a href="../views/userHome.jsp">Home</a><br>
 </body>
 </html>
