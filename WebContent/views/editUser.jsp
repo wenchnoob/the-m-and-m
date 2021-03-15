@@ -13,7 +13,7 @@
 %>
 	<p>Your profile information:</p>
 	
-	<form action = "editUserPortal.jsp" method = "post">
+	<form action = "../actions/update/editUserPortal.jsp" method = "post">
 		<table border=1 width="75%">
 			<thead>
 				<tr>
