@@ -22,7 +22,7 @@
 		<table border="2">
 			<thead>
 				<tr>
-					<th colspan="2">Saved Schools</th>
+					<th colspan="3">Saved Schools</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,12 +30,11 @@
 					<tr>	
 						<td><%= schoolName %></td>
 						<td><a href="viewUniversity.jsp?viewing=<%=schoolName%>">View</a></td>
+						<td><a href="unsaveUniversity.jsp?remove=<%=schoolName%>">Remove</a></td>
 					</tr>
 				<% } %>
 			</tbody>
 		</table>
-		
-	
 	
 
 	<a href="userHome.jsp">Home</a><br>
