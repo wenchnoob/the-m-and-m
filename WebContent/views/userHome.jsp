@@ -39,7 +39,7 @@
 					}
 				%>
 				
-				<li><a href="logout.jsp">Log Out</a></li>
+				<li><a href="../../actions/update/logout.jsp">Log Out</a></li>
 			</ul>
 		</div>
 	<% } else { %>

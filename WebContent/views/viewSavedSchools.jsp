@@ -12,7 +12,7 @@
 	<%
 		Account user = (Account)session.getAttribute("loggedInUser");
 		if (user == null || user.getClass() != User.class) {
-			application.getRequestDispatcher("/index.jsp").forward(request, response);
+			application.getRequestDispatcher("../index.jsp").forward(request, response);
 			return;
 		}
 		
@@ -30,7 +30,7 @@
 					<tr>	
 						<td><%= schoolName %></td>
 						<td><a href="viewUniversity.jsp?viewing=<%=schoolName%>">View</a></td>
-						<td><a href="unsaveUniversity.jsp?remove=<%=schoolName%>">Remove</a></td>
+						<td><a href="../actions/remove/unsaveUniversity.jsp?remove=<%=schoolName%>">Remove</a></td>
 					</tr>
 				<% } %>
 			</tbody>
