@@ -19,19 +19,19 @@
 		Map<String, UserSchool> school = ((User)user).getSavedSchools();
 		DBInteractions interactions = DBInteractions.getInstance();
 	%>
-		<table>
+		<table border="2">
 			<thead>
 				<tr>
 					<th colspan="2">Saved Schools</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<% for (String schoolName: school.keySet()) { %>
+				<% for (String schoolName: school.keySet()) { %>
+					<tr>	
 						<td><%= schoolName %></td>
 						<td><a href="viewUniversity.jsp?viewing=<%=schoolName%>">View</a></td>
-					<% } %>
-				</tr>
+					</tr>
+				<% } %>
 			</tbody>
 		</table>
 		

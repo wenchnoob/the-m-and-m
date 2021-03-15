@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import com.cmc.model.*;
 
 
-//import csb.sju.csci.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
+import csb.sju.csci.*;
+//import dblibrary.project.csci230.UniversityDBLibrary;
 
 /**
  * Class intended for the handling of all university functionalities in the system.
@@ -25,13 +25,11 @@ public class DBInteractions {
 	 * of this class from outside of this class.
 	 */
 	private DBInteractions() {
-		// Initializer for All
-		// Uncomment the below line if you are in horizon view.
 
 		// Initializer for Wenchy (Comment out if you are not wenchy)
-		//db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
+		db = new UniversityDBLibrary("jdbc:mysql://localhost:3306/megatherium", "cmc", "pleasejustwork!");
 
-		db = new UniversityDBLibrary("megatherium", "csci230");
+		//db = new UniversityDBLibrary("megatherium", "csci230");
 
 	}
 	
@@ -90,10 +88,12 @@ public class DBInteractions {
 	private void loadUserSchools(List<Account> users) {
 		String[][] usersAndSchools = db.user_getUsernamesWithSavedSchools();
 		Map<String, Map<String, UserSchool>> mapping = mapify(usersAndSchools);
-		
+		System.out.println(mapping);
 		users.forEach(user -> {
+			if (user.getClass() == Admin.class) return;
 			String username = user.getUsername();
 			if (mapping.containsKey(username)) ((User)user).setSavedSchools(mapping.get(username));
+			else ((User)user).setSavedSchools( new HashMap<String, UserSchool>());
 		});
 	}
 	
