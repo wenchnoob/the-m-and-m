@@ -10,7 +10,7 @@
 	<h1>Choose My College</h1>
 	<div>
 		<ul>
-			<li><a href="login.jsp">Login</a></li>
+			<li><a href="/views/login.jsp">Login</a></li>
 		</ul>
 	</div>
 	
