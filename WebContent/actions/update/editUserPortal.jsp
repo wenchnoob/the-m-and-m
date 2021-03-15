@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Edit User Portal</title>
 </head>
 <body>
 
@@ -39,7 +39,7 @@
 			controller2.changeUserType(src, targ, acctype);
 		}
 		
-		application.getRequestDispatcher("/profile.jsp?viewing=" + targ.getUsername()).forward(request, response);
+		application.getRequestDispatcher("../../views/profile.jsp?viewing=" + targ.getUsername()).forward(request, response);
 	%>
 </body>
 </html>

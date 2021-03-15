@@ -22,6 +22,6 @@
 			out.println("<h1>Failed unsave.</h1>");
 		}
 	%>
-	<a href="userHome.jsp">Home</a><br>
+	<a href="/views/userHome.jsp">Home</a><br>
 </body>
 </html>
