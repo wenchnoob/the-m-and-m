@@ -55,7 +55,6 @@
 							value="TRUE"></label><br> <label>FALSE:<input
 							type="radio" name="status" value="FALSE"></label></td>
 				</tr>
-
 				<tr>
 					<td style="vertical-align: top;"><input value="Add" name="Add"
 						type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -67,5 +66,7 @@
 		<br>
 	</form>
 	<br>
+<a href="allAccounts.jsp">View Accounts</a>
+<br>
 </body>
 </html>

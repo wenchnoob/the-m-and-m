@@ -122,12 +122,7 @@
 	</table>
 	<a href="userHome.jsp">Home</a>
 	<br>
-	<a
-		href="<%=(String) session.getAttribute("from") == null ? "index.jsp" : (String) session.getAttribute("from")%>">Go
-		Back!</a>
+	<a href="search.jsp">Search Again</a>
 	<br>
-	<%
-	session.setAttribute("from", "searchResults.jsp");
-	%>
 </body>
 </html>

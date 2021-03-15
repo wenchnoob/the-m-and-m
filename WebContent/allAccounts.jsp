@@ -38,6 +38,7 @@
 		%>
 		</tbody>
 	</table>
+<<<<<<< HEAD
 
 	<a href="addUser.jsp">Add Account</a>
 	<br>
@@ -48,5 +49,10 @@
 		Back!</a>
 	<br>
 	<% session.setAttribute("from", "allAccounts.jsp"); %>
+=======
+	
+	<a href="addUser.jsp">Add Account</a><br>
+	<a href="userHome.jsp">Home</a><br>
+>>>>>>> 0f3d43d965025fd0bf091c03bc30facd91435b73
 </body>
 </html>
