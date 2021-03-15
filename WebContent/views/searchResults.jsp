@@ -113,16 +113,16 @@
 		%>
 		<tr>
 			<td><%=uni.getName()%></td>
-			<td><a href="viewUniversity.jsp?viewing=<%=uni.getName()%>">View</a>
+			<td><a href="/views/viewUniversity.jsp?viewing=<%=uni.getName()%>">View</a>
 			</td>
 		</tr>
 		<%
 		}
 		%>
 	</table>
-	<a href="userHome.jsp">Home</a>
+	<a href="/views/userHome.jsp">Home</a>
 	<br>
-	<a href="search.jsp">Search Again</a>
+	<a href="/views/search.jsp">Search Again</a>
 	<br>
 </body>
 </html>
