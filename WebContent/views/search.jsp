@@ -23,13 +23,21 @@
 			</tr>
 			<tr>
 				<td>Location</td>
-				<td><input type="text" name="location"> (SUBURBAN,
-					URBAN, SMALL-CITY, OR -1 FOR UNKNOWN)</td>
+				<td>
+					<label>SUBURBAN<input type="radio" name="location" value="SUBURBAN"></label><br>
+					<label>URBAN<input type="radio" name="location" value="URBAN"></label><br>
+					<label>SMALL-CITY<input type="radio" name="location" value="SMALL-CITY"></label><br>
+					<label>UNKNOWN<input type="radio" name="location" value="UNKNOWN"></label><br>
+				</td>
 			</tr>
 			<tr>
 				<td>Control</td>
-				<td><input type="text" name="control"> (PRIVATE, STATE,
-					CITY, OR -1 FOR UNKNOWN)</td>
+				<td>
+				<label>PRIVATE<input type="radio" name="control" value="PRIVATE"></label><br>
+				<label>STATE<input type="radio" name="control" value="STATE"></label><br>
+				<label>CITY<input type="radio" name="control" value="CITY"></label><br>
+				<label>UNKOWN<input type="radio" name="control" value="UNKOWN"></label><br>
+				</td>
 			</tr>
 			<tr>
 				<td>Number of Students</td>

@@ -39,7 +39,7 @@
 			controller2.changeUserType(src, targ, acctype);
 		}
 		
-		application.getRequestDispatcher("../../views/profile.jsp?viewing=" + targ.getUsername()).forward(request, response);
+		response.sendRedirect("../../views/profile.jsp?viewing=" + targ.getUsername());
 	%>
 </body>
 </html>

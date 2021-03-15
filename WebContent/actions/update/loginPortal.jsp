@@ -10,7 +10,7 @@
 <body>
 	<%
 		session.setAttribute("loggedInUser", AccountController.getInstance().logon(request.getParameter("username"), request.getParameter("password")));
-		application.getRequestDispatcher("../../views/userHome.jsp").forward(request, response);
+		response.sendRedirect("../../views/userHome.jsp");
 	%>
 </body>
 </html>

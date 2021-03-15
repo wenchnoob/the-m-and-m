@@ -16,9 +16,9 @@
 
 	String state = request.getParameter("state");
 
-	String location = request.getParameter("location");
+	String location = request.getParameter("location") == null ? "" :  request.getParameter("location");
 
-	String control = request.getParameter("control");
+	String control = request.getParameter("control") == null ? "" : request.getParameter("control");
 
 	String numStudents1req = request.getParameter("numStudents1");
 	int numStudents1 = numStudents1req.equals("") ? -1 : Integer.parseInt(numStudents1req);
@@ -113,16 +113,16 @@
 		%>
 		<tr>
 			<td><%=uni.getName()%></td>
-			<td><a href="/views/viewUniversity.jsp?viewing=<%=uni.getName()%>">View</a>
+			<td><a href="viewUniversity.jsp?viewing=<%=uni.getName()%>">View</a>
 			</td>
 		</tr>
 		<%
 		}
 		%>
 	</table>
-	<a href="/views/userHome.jsp">Home</a>
+	<a href="userHome.jsp">Home</a>
 	<br>
-	<a href="/views/search.jsp">Search Again</a>
+	<a href="search.jsp">Search Again</a>
 	<br>
 </body>
 </html>
