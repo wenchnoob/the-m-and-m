@@ -43,7 +43,5 @@
 	<% } %>
 	<a href="editUser.jsp">Edit User</a><br>
 	<a href="userHome.jsp">Home</a><br>
-	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
-	<%session.setAttribute("from", "profile.jsp"); %>
 </body>
 </html>

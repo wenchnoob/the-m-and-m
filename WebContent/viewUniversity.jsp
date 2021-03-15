@@ -9,10 +9,10 @@
 </head>
 <body>
 	<%
-		University uni = DBInteractions.getInstance().getUniversityByName(request.getParameter("viewing")); 
-		if (uni == null) uni = (University)session.getAttribute("viewing");
+		University uni = DBInteractions.getInstance().getUniversityByName(request.getParameter("viewing"));
 		session.setAttribute("viewing", uni);
 	%>
+	
 	<p>University Information:</p>
 	<% if (uni != null) { %>
 		<table border=1 width="75%">
@@ -93,10 +93,17 @@
 				</tr>	
 			</tbody>
 		</table>
+		<%
+			Account curUser = (Account)session.getAttribute("loggedInUser");
+			if (curUser != null && curUser.getType() == Account.AccountType.BASIC_USER) {
+		%>
+			<a href="saveUniversity.jsp?viewing=<%=uni.getName()%>">Save</a><br>
+		<% } %>
 	<% } %>
 	<a href="editUniversity.jsp">Edit University</a><br>
 	<a href="userHome.jsp">Home</a><br>
 	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
-	<%session.setAttribute("from", "viewUniversity.jsp"); %>
+	
+	<% session.setAttribute("from", "viewUniversity.jsp"); %>
 </body>
 </html>
