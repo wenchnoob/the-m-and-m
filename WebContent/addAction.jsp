@@ -11,23 +11,34 @@
 <body>
 
 	<%
-		String firstName = request.getParameter("firstName");
-		System.out.println(firstName);
-		String lastName = request.getParameter("lastName");
-		System.out.println(lastName);
-		String username = request.getParameter("username");
-		System.out.println(username);
-		String password = request.getParameter("password");
-		System.out.println(password);
-		String type = request.getParameter("type");
-		System.out.println(type);
-		String status = request.getParameter("status");
-		System.out.println(status);
+		String firstName = request.getParameter("firstName").trim();
+		
+		String lastName = request.getParameter("lastName").trim();
+		
+		String username = request.getParameter("username").trim();
+		
+		String password = request.getParameter("password").trim();
+		
+		String type = request.getParameter("type").trim();
+		
+		String status = request.getParameter("status").trim();
+		
+		
+		AdminFunctionalityController controller = AdminFunctionalityController.getInstance();
+		
+		boolean enabled = status.equals("TRUE");
+
+		Account.AccountType acctype = type.trim().equals("ADMIN") ? Account.AccountType.ADMIN : Account.AccountType.BASIC_USER;
+		
+		boolean works = controller.addUser((Account)session.getAttribute("loggedInUser"), firstName, lastName, username, password, "basic question", "basic answer",
+				enabled, acctype);
+		
+		System.out.println(works);
 		//Account user = new User(firstName, lastName, username, password, type.charAt(0), status.charAt(0));
 
 		//controller.addUser(user);
 
-		application.getRequestDispatcher("/Menu.jsp").forward(request, response);
+		application.getRequestDispatcher("/allAccounts.jsp").forward(request, response);
 	%>
 </body>
 </html>

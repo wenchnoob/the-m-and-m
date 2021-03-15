@@ -11,7 +11,7 @@
 <br>
 Add User form:<br>
 <br>
-<form method="post" action="Add_action.jsp" name="addUser"><br>
+<form method="post" action="addAction.jsp" name="addUser"><br>
 <table style="text-align: left; width: 266px; height: 228px;"
 border="1" cellpadding="2" cellspacing="2">
 <tbody>
@@ -40,12 +40,16 @@ border="1" cellpadding="2" cellspacing="2">
 <tr>
 <td style="vertical-align: top;">Type<br>
 </td>
-<td style="vertical-align: top;"><input name="type"> </td>
+<td> <label>ADMIN:<input type="radio" name="type" value="ADMIN"></label><br>
+	<label>BASIC_USER:<input type="radio" name="type" value="BASIC_USER"></label> </td>
 </tr>
 <tr>
 <td style="vertical-align: top;">Status<br>
 </td>
-<td style="vertical-align: top;"><input name="status"> </td>
+<td>
+	<label>TRUE:<input type="radio" name="status" value="TRUE"></label><br>
+	<label>FALSE:<input type="radio" name="status" value="FALSE"></label>
+	</td>
 </tr>
 
 <tr>
