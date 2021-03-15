@@ -88,7 +88,6 @@ public class DBInteractions {
 	private void loadUserSchools(List<Account> users) {
 		String[][] usersAndSchools = db.user_getUsernamesWithSavedSchools();
 		Map<String, Map<String, UserSchool>> mapping = mapify(usersAndSchools);
-		System.out.println(mapping);
 		users.forEach(user -> {
 			if (user.getClass() == Admin.class) return;
 			String username = user.getUsername();

@@ -24,13 +24,13 @@
 	int numStudents1 = numStudents1req.equals("") ? -1 : Integer.parseInt(numStudents1req);
 
 	String numStudents2req = request.getParameter("numStudents2");
-	int numStudents2 = numStudents1req.equals("") ? -1 : Integer.parseInt(numStudents2req);
+	int numStudents2 = numStudents2req.equals("") ? -1 : Integer.parseInt(numStudents2req);
 
 	String pFemale1req = request.getParameter("perFemale1");
-	float pFemale1 = numStudents1req.equals("") ? -1 : Float.parseFloat(pFemale1req);
+	float pFemale1 = pFemale1req.equals("") ? -1 : Float.parseFloat(pFemale1req);
 
 	String pFemale2req = request.getParameter("perFemale2");
-	float pFemale2 = numStudents1req.equals("") ? -1 : Float.parseFloat(pFemale2req);
+	float pFemale2 = pFemale2req.equals("") ? -1 : Float.parseFloat(pFemale2req);
 
 	String satv1req = request.getParameter("satv1");
 	int satv1 = satv1req.equals("") ? -1 : Integer.parseInt(satv1req);
