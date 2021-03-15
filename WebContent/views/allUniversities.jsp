@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>All Universities</title>
 </head>
 <body>
 	<h1>All Universities in our system</h1>
@@ -92,7 +92,7 @@
 					<%= uni.getQualityLife() %>
 				</td>
 				<td>
-					<a href="viewUniversity.jsp?viewing=<%=uni.getName()%>">View</a>
+					<a href="../views/viewUniversity.jsp?viewing=<%=uni.getName()%>">View</a>
 				</td>
 			</tr>	
 		<%
@@ -101,6 +101,6 @@
 		</tbody>
 	</table>
 	
-	<a href="userHome.jsp">Home</a><br>
+	<a href="../views/userHome.jsp">Home</a><br>
 </body>
 </html>
