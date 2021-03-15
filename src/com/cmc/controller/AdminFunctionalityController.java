@@ -61,21 +61,15 @@ public class AdminFunctionalityController {
 	 * */
 	public boolean addUser(Account src, String firstName, String lastName, String username, String password, String rQuestion, String rAnswer,
 			boolean  enabled, Account.AccountType type) {
-		System.out.println("Start");
 		if (src == null || firstName == null || lastName == null || username == null || password == null || rQuestion == null || rAnswer == null || type == null) return false;
-		System.out.println("Checkpoint 1 reached");
 		if (src.getType() != Account.AccountType.ADMIN) return false;
-		System.out.println("Checkpoint 2 reached");
 		if (firstName.equals("") || lastName.equals("") || username.equals("") || password.equals("") || rQuestion.equals("") || rAnswer.equals("")) return false;
 		Account user;
-		System.out.println("Checkpoint 3 reached");
 		if(type == Account.AccountType.ADMIN) {
 			user = new Admin(firstName, lastName, username, password, rQuestion, rAnswer, enabled);
-			System.out.println("Checkpoint 4 (if) reached");
 		} else {
 			Map<String, UserSchool> userSchools = new HashMap<String, UserSchool>();
 			user = new User(firstName, lastName, username, password, rQuestion, rAnswer, enabled, userSchools);
-			System.out.println("Checkpoint 4 (else) reached");
 		}
 		return DBInteractions.getInstance().save(user);
 	}

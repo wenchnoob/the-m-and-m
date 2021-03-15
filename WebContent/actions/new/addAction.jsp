@@ -14,7 +14,7 @@
 	<%
 	if (request.getParameter("firstName") == null || request.getParameter("lastName") == null || request.getParameter("username") == null 
 	|| request.getParameter("password") == null || request.getParameter("type") == null || request.getParameter("status") == null){
-		application.getRequestDispatcher("/allAccounts.jsp").forward(request, response);
+		response.sendRedirect("../../views/userHome.jsp");
 		return;
 	}
 		
@@ -39,8 +39,8 @@
 		
 		boolean works = controller.addUser((Account)session.getAttribute("loggedInUser"), firstName, lastName, username, password, "basic question", "basic answer",
 				enabled, acctype);
-
-		application.getRequestDispatcher("/allAccounts.jsp").forward(request, response);
+		
+		response.sendRedirect("../../views/userHome.jsp");
 	%>
 </body>
 </html>

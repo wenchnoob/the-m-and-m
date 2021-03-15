@@ -97,7 +97,7 @@
 	</table>
 	<%
 		Account curUser = (Account) session.getAttribute("loggedInUser");
-			if (curUser != null && curUser.getType() == Account.AccountType.BASIC_USER) {
+		if (curUser != null && curUser.getType() == Account.AccountType.BASIC_USER) {
 	%>
 	<a href="../actions/update/saveUniversity.jsp?viewing=<%=uni.getName()%>">Save</a>
 	<br>
@@ -113,13 +113,11 @@
 	%>
 	<a href="../actions/update/editUniversity.jsp">Edit University</a>
 	<br>
-	<a href="userHome.jsp">Home</a>
-	<br>
-	<%
-		}
-		%>
-	<a href="search.jsp">Search Again</a>
-
+	
+	<% }  else { %>
+		<a href="search.jsp">Search Again</a><br>
+	<% } %>
+	<a href="userHome.jsp">Home</a><br>
 
 
 </body>

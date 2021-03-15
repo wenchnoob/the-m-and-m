@@ -44,7 +44,10 @@
 		</div>
 	<% } else { %>
 		<h1>Error Something went wrong</h1>
+		<a href = "../index.jsp">Main Page</a>
 	<% } %>
+	
+	
 	
 </body>
 </html>
