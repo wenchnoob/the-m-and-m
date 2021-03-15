@@ -13,5 +13,5 @@
 %>
 <body>
 <p>You have logged out successfully.</p>
-<a href = "index.jsp">Main Page</a>
+<a href = "../../index.jsp">Main Page</a>
 </body>
