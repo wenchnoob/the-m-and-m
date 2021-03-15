@@ -99,7 +99,7 @@
 		Account curUser = (Account) session.getAttribute("loggedInUser");
 			if (curUser != null && curUser.getType() == Account.AccountType.BASIC_USER) {
 	%>
-	<a href="saveUniversity.jsp?viewing=<%=uni.getName()%>">Save</a>
+	<a href="../actions/update/saveUniversity.jsp?viewing=<%=uni.getName()%>">Save</a>
 	<br>
 	<%
 		}
@@ -111,7 +111,7 @@
 		Account curUser = (Account) session.getAttribute("loggedInUser");
 		if (curUser != null && curUser.getType() == Account.AccountType.ADMIN) {
 	%>
-	<a href="editUniversity.jsp">Edit University</a>
+	<a href="../actions/update/editUniversity.jsp">Edit University</a>
 	<br>
 	<a href="userHome.jsp">Home</a>
 	<br>
