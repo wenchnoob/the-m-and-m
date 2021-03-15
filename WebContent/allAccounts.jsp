@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 
-<%@ page import="com.cmc.controller.*, com.cmc.model.*" %>
+<%@ page import="com.cmc.controller.*, com.cmc.model.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -22,35 +22,31 @@
 			</tr>
 		</thead>
 		<tbody>
-		<%
+			<%
 			for (Account user: AdminFunctionalityController.getInstance().viewAllAccounts()) {
 		%>
 			<tr>
-				<td>
-					<%= user.getLastName() + ", " + user.getFirstName() %>
+				<td><%= user.getLastName() + ", " + user.getFirstName() %></td>
+				<td><%= user.getUsername() %></td>
+				<td><%= user.getType() %></td>
+				<td><%= user.isEnabled() ? "YES": "NO" %></td>
+				<td><a href="profile.jsp?viewing=<%=user.getUsername()%>">View</a>
 				</td>
-				<td>
-					<%= user.getUsername() %>
-				</td>
-				<td>
-					<%= user.getType() %>
-				</td>
-				<td>
-					<%= user.isEnabled() ? "YES": "NO" %>
-				</td>
-				<td>
-					<a href="profile.jsp?viewing=<%=user.getUsername()%>">View</a>
-				</td>
-			</tr>	
-		<%
+			</tr>
+			<%
 			}
 		%>
 		</tbody>
 	</table>
-	
-	<a href="addUser.jsp">Add Account</a><br>
-	<a href="userHome.jsp">Home</a><br>
-	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
+
+	<a href="addUser.jsp">Add Account</a>
+	<br>
+	<a href="userHome.jsp">Home</a>
+	<br>
+	<a
+		href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go
+		Back!</a>
+	<br>
 	<% session.setAttribute("from", "allAccounts.jsp"); %>
 </body>
 </html>
