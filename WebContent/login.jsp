@@ -12,11 +12,10 @@
 	<h1>Login</h1>
 	<form action="loginPortal.jsp" method="post">
 		<label>Username: <input type="text" name="username"></label><br>
-		<label>Password: <input type="text" name="password"></label><br>
+		<label>Password: <input type="password" name="password"></label><br>
 		<input type="submit" value="Submit">
 	</form>
 	
 	<a href="index.jsp">Home</a><br>
-	<% session.setAttribute("from", "login.jsp"); %>
 </body>
 </html>

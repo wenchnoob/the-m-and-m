@@ -50,7 +50,5 @@
 	
 	<a href="addUser.jsp">Add Account</a><br>
 	<a href="userHome.jsp">Home</a><br>
-	<a href="<%=(String)session.getAttribute("from") == null ? "index.jsp":  (String)session.getAttribute("from")%>">Go Back!</a><br>
-	<% session.setAttribute("from", "allAccounts.jsp"); %>
 </body>
 </html>

@@ -62,6 +62,7 @@ name="Reset" type="reset"></td>
 </table>
 <br>
 </form>
+<a href="allAccounts.jsp">View Accounts</a>
 <br>
 </body>
 </html>
