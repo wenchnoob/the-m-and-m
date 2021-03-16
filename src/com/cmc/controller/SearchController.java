@@ -192,8 +192,9 @@ public class SearchController {
 	 * */
 	private static List<University> filterByName(List<University> universities, String schoolName){
 		List<University> fittingUniversities = new ArrayList<>();
+		schoolName = schoolName.toUpperCase();
 		for (University school: universities) {
-			if (school.getName().equalsIgnoreCase(schoolName)) {
+			if (school.getName().contains(schoolName)) {
 				fittingUniversities.add(school);
 			}
 		}
@@ -209,8 +210,9 @@ public class SearchController {
 	 * */
 	private static List<University> filterByState(List<University> universities, String state){
 		List<University> fittingUniversities = new ArrayList<>();
+		state = state.toUpperCase();
 		for (University school:universities) {
-			if (school.getState().equalsIgnoreCase(state)) {
+			if (school.getState().contains(state)) {
 				fittingUniversities.add(school);
 			}
 		}
@@ -486,7 +488,7 @@ public class SearchController {
 		for (University school : universities) {
 			for (String major : listOfEmphases) {
 				if (fittingUniversities.contains(school)) continue;
-				if(school.getEmphases().contains(major)){
+				if(school.getEmphases().contains(major.toUpperCase())){
 					fittingUniversities.add(school);
 				}
 			}
